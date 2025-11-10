@@ -1,0 +1,10 @@
+$pdf_mode = 1;
+$aux_dir = 'auxd';
+$out_dir = 'out';
+$pdflatex = 'pdflatex -file-line-error -interaction=nonstopmode -synctex=1 %O %S';
+$bibtex_use = 1;
+@generated_exts = qw(aux bbl blg brf fls fdb_latexmk lof log lot out toc synctex.gz);
+mkdir $aux_dir unless -d $aux_dir;
+mkdir $out_dir unless -d $out_dir;
+$print_good = "=== LaTeX build succeeded ===";
+$print_bad  = "=== LaTeX build failed! ===";
