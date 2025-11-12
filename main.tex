@@ -8,13 +8,26 @@
 
 \chapter{Informacje wspólne}\label{ch:info}
 
+Rozdział ten skupia się na informacjach mających znaczenie dla więcej niż jednego z laboratoriów.
+W związku z tym, w celu niepowtarzania tychże informacji w każdym istotnym miejscu, umieszczone są one w przodującej
+sekcji pracy.
+
 \section{Dostępny sprzęt}\label{sec:harware}
 
 \subsection{Raspberry Pi}\label{subsec:rpi}
 
-Opis
+\emph{Raspberry Pi}~\cite{pi} to~seria małych komputerów jednopłytkowych stworzonych przez Fundację Raspberry~Pi
+w~Wielkiej Brytanii.
+Celem fundacji jest szeroka dostępność systemów o~możliwościach obliczeniowych, co~wpływa na~ograniczony koszt płytki,
+wykorzystanie standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi}, \emph{Bluetooth}), a~zarazem
+szerokie możliwości wykorzystania do~budowy urządzeń m.in.~Internetu Rzeczy.
 
-Raspberry Pi kontra Arduino
+Koszt najtańszego modelu wynosi ok.~20zł, a~najtańszy pełnoprawny komputer w~serii kosztuje ok.~50zł.
+
+Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów~\cite{pinout} \emph{GPIO} pozwalających
+na~budowę dowolnych połączeń wykorzystujących zasilanie 3,3V lub 5V\@.
+Stanowią dzięki~temu przystępną drogę zarówno do~nauki i~użytkowania systemów komputerowych, jak~i~eksperymentacji
+z~budowaniem własnych urządzeń.
 
 \subsection{Moduły}\label{subsec:modules}
 
@@ -35,18 +48,54 @@ Niektóre moduły zostały wyłączone z~procesu selekcji:
         nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista.
   \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu 12V lub 24V,
         co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę.
-  \item Unicorn HAT -- jest wyposażony w~macierz diod 8~x~8, podobnie do~Sense HAT, który~ma~szersze możliwości.
+  \item Unicorn HAT -- jest wyposażony w~macierz diod 8~x~8, podobnie do~\emph{Sense HAT}, który~ma~szersze możliwości.
 \end{itemize}
 
 Przydział pozostałych modułów opisany jest w~sekcjach przeznaczonych dla~każdego z~laboratoriów.
-W związku z~ilością możliwych zastosowań zestawu Grove,
+W związku z~ilością możliwych zastosowań zestawu \emph{Grove},
 został on~wykorzystany (używając różne urządzenia zewnętrzne) dwukrotnie.
+
+\section{Uzupełnienie: Alternatywy Raspberry Pi}\label{sec:alternate}
+
+Wspominając o~tym urządzeniu nie~można zapomnieć o~podobnych urządzeniach dostępnych na~rynku.
+W~ostatnich latach na~rynku pojawiły się~bowiem alternatywy o~porównywalnej lub~nawet korzystniejszej cenie,
+lecz~to \emph{Raspberry Pi} pełniło ważną funkcję w~popularyzowaniu pojęcia komputerów jednopłytkowych jako~niedrogiego
+narzędzia do~nauki i~prototypowania.
+Nadal jest najlepiej udokumentowaną z~konkurentów, co~jest ważnym elementem przystępności w~środowisku naukowym.
+Alternatywy często skupiają~się w~pierwszej kolejności na~udostępnieniu wyższej funkcjonalności, co~sprawia,~że
+są~dobrą opcją dla~bardziej zaawansowanych użytkowników.
+
+Osobnym rodzajem popularnych urządzeń jest~seria \emph{Arduino}, która jest~często przytaczana wraz~z~\emph{Raspberry Pi}.
+Istnieją między nimi jednak istotne różnice, z~powodu których urządzenia~te nie~odgrywają tej~samej roli.
+Urządzenia \emph{Arduino} nie~są pełnoprawnymi komputerami (wymagają osobnego urządzenia do zaprogramowania)
+i~konkurują jedynie z~\emph{Raspberry Pi Pico}, a~nie~z~resztą płytek o~możliwości obsługi pełnego systemu operacyjnego.
 
 \section{Połączenia fizyczne}\label{sec:connector}
 
 \subsection{GPIO}\label{subsec:gpio}
 
-Lorem ipsum
+Interfejs \emph{GPIO} płytki \emph{Raspberry Pi} składa~się z~czterdziestu pinów pozwalających płytce na~współpracę
+z~innymi urządzeniami.
+Część możliwości wymaga konfiguracji jądra systemu, co~jest przez~producenta udostępnione w~przystępny sposób.
+Poniższy rysunek zaznacza te~dodatkowe możliwości; piny wchodzące w~ich skład można również użyć w~standardowy sposób.
+
+\begin{figure}[ht]
+  \caption{Układ pinów \emph{Raspberry Pi} -- adresacja BCM}
+  \label{fig:pinout}
+  \centering
+  \copyrightbox{
+    \includegraphics[height=35mm]{media/pinoutxyz_bcmPinout}
+  }{
+    \textcopyright pinout.xyz; Philip~Howard, RogueM i~inni
+  }
+\end{figure}
+
+Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~1~i~2 odnosząca~się odpowiednio
+do~pinów 3,3V i~5V po~lewej stronie powyższego rysunku, numerując kolejne kolumny tegoż rysunku.
+
+Piny oznaczone mianem \emph{GCLK} udostępniają dostęp do~wbudowanego zegara sprzętowego.
+\emph{PWM}, \emph{I²C}, \emph{UART}, i~\emph{SPI} zostaną omówione w~sekcji~\ref{sec:protocol} opisującej
+połączenia logiczne.
 
 \subsection{Grove}\label{subsec:grove}
 
@@ -99,11 +148,17 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 
 \section{Połączenia logiczne}\label{sec:protocol}
 
+\subsection{PWM}\label{subsec:pwm}
+
+Technika, nie protokół
+
 \subsection{I²C}\label{subsec:i2c}
 
 \subsection{I²S}\label{subsec:i2s}
 
 \subsection{SPI}\label{subsec:spi}
+
+\subsection{UART}\label{subsec:uart}
 
 \section{Oprogramowanie}\label{sec:software}
 
