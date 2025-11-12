@@ -20,29 +20,90 @@ Raspberry Pi kontra Arduino
 
 Dostępne prowadzącemu moduły:
 \begin{itemize}
-  \item Sense HAT
-  \item Fan HAT
-  \item Flick HAT
-  \item Grove Base Kit
-  \item Automation HAT Mini
-  \item Enviro HAT
-  \item Unicorn HAT
-  \item Traffic pHAT
+  \item Sense HAT~\cite{sense}
+  \item Flick HAT~\cite{flick}
+  \item Grove Base Kit~\cite{grove}
+  \item Automation HAT Mini~\cite{automation}
+  \item Enviro HAT~\cite{enviro}
+  \item Unicorn HAT~\cite{unicorn}
+  \item Traffic pHAT~\cite{traffic}
 \end{itemize}
 
-Moduły niewybrane do laboratoriów i dlaczego
+Niektóre moduły zostały wyłączone z~procesu selekcji:
+\begin{itemize}
+  \item Flick HAT -- firma producenta została rozwiązana~\cite{pisupply}, oficjalna dokumentacja ich~produktów
+        nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista.
+  \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu 12V lub 24V,
+        co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę.
+  \item Unicorn HAT -- jest wyposażony w~macierz diod 8~x~8, podobnie do~Sense HAT, który~ma~szersze możliwości.
+\end{itemize}
 
-``Przydział pozostałych modułów opisany jest w sekcjach przeznaczonych dla każdego z laboratoriów''
+Przydział pozostałych modułów opisany jest w~sekcjach przeznaczonych dla~każdego z~laboratoriów.
+W związku z~ilością możliwych zastosowań zestawu Grove,
+został on~wykorzystany (używając różne urządzenia zewnętrzne) dwukrotnie.
 
 \section{Połączenia fizyczne}\label{sec:connector}
 
-Spis złącz fizycznych wykorzystywanych przez wybrane moduły.
-%\subsection{Przykład: GPIO}\label{subsec:conn-ex}
+\subsection{GPIO}\label{subsec:gpio}
+
+Lorem ipsum
+
+\subsection{Grove}\label{subsec:grove}
+
+Moduł \emph{Grove Base HAT} jest~podłączony do~płytki \emph{Raspberry~Pi} przy pomocy interfejsu \emph{GPIO}
+i~pełni funkcję adaptera tego~interfejsu na~własny system złączy~\cite{grovedesc}.
+Moduł wyprowadza interfejs \emph{GPIO}, jednak wiele połączeń pokrywa się z~systemem \emph{Grove},
+w~związku z~czym wykorzystanie ich nie~jest bezpieczne bez~wcześniejszego zrozumienia tego~systemu.
+Na~module \emph{Grove Base HAT} złącza podpisane są~przy użyciu numeracji \emph{BCM}.
+
+Połączenia fizyczne wykorzystywane przez interfejs \emph{Grove} są~podobne do~standardowych połączeń \emph{I²C}\@.
+Połączenia \emph{VCC} i~\emph{GND} zawsze dostarczają elementom zasilanie,
+jednak pozostałe~dwa zachowują~się w~różny sposób w~zależności od~rodzaju złącza.
+Połączenia te~wykorzystują interfejs \emph{GPIO} do~komunikacji z~płytką, więc~wykorzystanie danego portu \emph{Grove}
+wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
+
+\begin{figure}[ht]
+  \caption{Diagram złączy \emph{Grove Base HAT}}
+  \label{fig:grovehat}
+  \centering
+  \copyrightbox{
+    \includegraphics[height=7cm]{media/botland_GroveBaseHat}
+  }{
+    \textcopyright Botland B. Derkacz Sp. k.
+  }
+\end{figure}
+
+\begin{table}[ht]
+  \caption{Opis złączy \emph{Grove Base HAT}}
+  \label{tab:grove}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    GPIO      & Bezpośrednie połączenie do złącza \emph{GPIO} płytki \emph{Raspberry~Pi}.
+                Może powodować konflikty ze złączami \emph{Grove}. \\
+    I²C       & Zgodnie ze~standardowymi łączeniami, zewnętrzny pin pełni funkcję zegara, a~wewnętrzny przesyłu
+                danych. \\
+    Cyfrowy   & Zewnętrzny pin pełni funkcję pierwszego cyfrowego łącza wejścia/wyjścia, a~wewnętrzny jest łączem
+                dodatkowym dla~modułów wykorzystujących dwie linie. \\
+    UART      & Specjalizowana forma trybu cyfrowego, pierwszy pin odbiera dane od~podłączonego urządzenia, a~drugi
+                wysyła. \\
+    Analogowy & Wejścia analogowe są~podłączone do~wbudowanego przetwornika analogowo-cyfrowego, co~pozwala
+                na~ich~użycie z~płytką \emph{Raspberry~Pi}, nie~posiadającej natywnie takiej możliwości.
+                Podobnie do~trybu cyfrowego, linia zewnętrzna jest wykorzystywana w~pierwszej kolejności, a~wewnętrzna
+                w~drugiej. \\
+    PWM       & Port \emph{PWM} podłączony~jest do~sprzętowego złącza \emph{PWM} \emph{Raspberry~Pi}.
+                Pozostałe złącza mogą~być używane jako~\emph{PWM} na~poziomie oprogramowania.
+                Złącze sprzętowe pozwala na~lepszą dokładność przy~wysokich częstotliwościach, jednak wchodzi w~konflikt
+                z~niektórymi innymi funkcjami płytki. \\
+    SWD       & Dostęp do wbudowanego oprogramowania modułu Grove Base HAT\@.
+  \end{tabularx}
+\end{table}
 
 \section{Połączenia logiczne}\label{sec:protocol}
 
-Spis protokołów komunikacyjnych wykorzystywanych przez wybrane moduły.
-%\subsection{Przykład: I2C}\label{subsec:proto-ex}
+\subsection{I²C}\label{subsec:i2c}
+
+\subsection{I²S}\label{subsec:i2s}
+
+\subsection{SPI}\label{subsec:spi}
 
 \section{Oprogramowanie}\label{sec:software}
 
@@ -80,7 +141,7 @@ Testy rozwiązań studentów.
 
 Opis bezpieczeństwa udostępniania i testów.
 
-\chapter{Laboratorium \RNum{1}}\label{ch:lab-1}
+\chapter{Laboratorium I}\label{ch:lab-1}
 
 \section{Wybrany sprzęt}\label{sec:lab1-hw}
 
@@ -88,7 +149,7 @@ Opis bezpieczeństwa udostępniania i testów.
 
 \section{Rozwiązanie}\label{sec:lab1-sol}
 
-\chapter{Laboratorium \RNum{2}}\label{ch:lab2}
+\chapter{Laboratorium II}\label{ch:lab2}
 
 \section{Wybrany sprzęt}\label{sec:lab2-hw}
 
@@ -96,7 +157,7 @@ Opis bezpieczeństwa udostępniania i testów.
 
 \section{Rozwiązanie}\label{sec:lab2-sol}
 
-\chapter{Laboratorium \RNum{3}}\label{ch:lab3}
+\chapter{Laboratorium III}\label{ch:lab3}
 
 \section{Wybrany sprzęt}\label{sec:lab3-hw}
 
@@ -104,7 +165,7 @@ Opis bezpieczeństwa udostępniania i testów.
 
 \section{Rozwiązanie}\label{sec:lab3-sol}
 
-\chapter{Laboratorium \RNum{4}}\label{ch:lab4}
+\chapter{Laboratorium IV}\label{ch:lab4}
 
 \section{Wybrany sprzęt}\label{sec:lab4-hw}
 
@@ -112,7 +173,7 @@ Opis bezpieczeństwa udostępniania i testów.
 
 \section{Rozwiązanie}\label{sec:lab4-sol}
 
-\chapter{Laboratorium \RNum{5}}\label{ch:lab5}
+\chapter{Laboratorium V}\label{ch:lab5}
 
 \section{Wybrany sprzęt}\label{sec:lab5-hw}
 

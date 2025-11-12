@@ -22,10 +22,12 @@
 \usepackage{color}
 \usepackage{memhfixc}
 \usepackage{pdfpages}
+\usepackage{copyrightbox}
 
 \renewcommand\familydefault{\sfdefault}
 \renewcommand{\bibitempages}[1]{\newblock {\scriptsize [\mbox{str.\ }#1]}}
 \renewcommand{\emph}[1]{\textit{#1}}
+\renewcommand\sf{\sffamily}
 
 \definecolor{greenyellow}   {cmyk}{0.15,    0, 0.69,    0}
 \definecolor{yellow}        {cmyk}{   0,    0,    1,    0}
@@ -112,15 +114,12 @@
 \ifpdf
     \hypersetup{
         plainpages=false,
-        pdfpagelabels,
         bookmarksnumbered,
         colorlinks=true,
         linkcolor=black,
         citecolor=black,
         filecolor=black,
-        pagecolor=black,
         urlcolor=black,
-        pdftex,
         unicode
     }
     \pdfimageresolution=600
@@ -200,4 +199,5 @@
 	\setcounter{page}{\temppagenumber}%
 }
 
+\newcommand{\link}[1]{\href{https://#1}{\nolinkurl{#1}}}
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}

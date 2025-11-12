@@ -1,103 +1,106 @@
-% Wykorzystanie pinów przez moduły
-% Użyłem tego do dowiedzenia się czy płytka będzie działać z uruchomionymi modułami jądra.
-@misc{pinout,
-    title = {Układ pinów},
-    author = {Howard, Philip and RogueM and inni},
-    howpublished = {\url{https://pinout.xyz}},
+% Sklepy modułów
+@misc{sense,
+    howpublished = {\link{raspberrypi.com/products/sense-hat}},
 }
-
-% Oficjalna dokumentacja Sense HAT
-@misc{sensehat,
-    title = {Dokumentacja {Sense HAT}},
-    author = {{Fundacja Raspberry Pi}},
-    howpublished = {\url{https://www.raspberrypi.com/documentation/accessories/sense-hat.html}},
+@misc{flick,
+    howpublished = {\href{https://seeedstudio.com/Flick-HAT-3D-Tracking-Gesture-HAT-for-Raspberry-Pi.html}{\nolinkurl{seeedstudio.com/Flick-HAT-3D-Tracking-Gesture-HAT-}\break\nolinkurl{for-Raspberry-Pi.html}}},
+    note = {Sklep nieoficjalny},
 }
-
-% Oficjalna dokumentacja modułów Grove
 @misc{grove,
-    title = {Dokumentacja Grove},
-    author = {{Seeed Studio}},
-    howpublished = {\url{https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi}},
+    howpublished = {\link{seeedstudio.com/Grove-Base-Kit-for-Raspberry-Pi-p-2945.html}},
 }
-
-% Repozytorium Enviro HAT
-% Dokumentacja istnieje tylko dla Enviro+, więc trzeba patrzeć w kod.
-@misc{enviro,
-    title = {Repozytorium Enviro+},
-    author = {{Pimoroni Ltd}},
-    howpublished = {\url{https://github.com/pimoroni/enviroplus-python}},
-}
-
-% Zgłoszony brak dokumentacji
-@misc{enviro-issue,
-    author = {Dończyk, Remigiusz},
-    howpublished = {\url{https://github.com/pimoroni/enviroplus-python/issues/157}}
-}
-
-% Strona opisująca Automation HAT
-% Wymagane zewnętrzne urządzenia o napięciu, które może uszkodzić płytkę, więc nie wybrane do zadań.
 @misc{automation,
-    title = {Opis nakładki Automation {HAT} Mini},
-    author = {{Pimoroni Ltd}},
-    howpublished = {\url{https://shop.pimoroni.com/products/automation-hat-mini}},
-
+    howpublished = {\link{shop.pimoroni.com/products/automation-hat-mini}},
 }
-
-% Unicorn HAT nie jest sprzedawany
-% Rodzaj wyświetlacza pokrywa się z nakładką Sense HAT więc nie wybrałem do zadań.
+@misc{enviro,
+    howpublished = {\link{seeedstudio.com/Grove-Base-Kit-for-Raspberry-Pi-p-2945.html}},
+}
 @misc{unicorn,
-    title = {Opis nakładki Unicorn {HAT}},
-    author = {{Pimoroni Ltd}},
-    howpublished = {\url{https://shop.pimoroni.com/products/unicorn-hat}},
+    howpublished = {\link{shop.pimoroni.com/products/unicorn-hat}},
+}
+@misc{traffic,
+    howpublished = {\href{https://anodas.lt/en/traffic-phat-led-overlay-for-raspberry-pi-zero-pi-supply-pis-1778}{\nolinkurl{anodas.lt/en/traffic-phat-led-overlay-for-}\break\nolinkurl{raspberry-pi-zero-pi-supply-pis-1778}}},
+    note = {Sklep nieoficjalny},
 }
 
 % Firma Pi Supply została rozwiązana
 % Traffic pHAT i Flick HAT straciły przez to oficjalną dokumentację.
 @misc{pisupply,
-    title = {Status firmy Pi Supply},
-    author = {{Rząd Wielkiej Brytanii}},
-    howpublished = {\url{https://find-and-update.company-information.service.gov.uk/company/08518826}},
+    howpublished = {\link{find-and-update.company-information.service.gov.uk/company/08518826}},
+}
+@misc{grovedesc,
+    howpublished = {\link{botland.pl/content/245-grove-base-hat-dla-raspberry-pi}},
 }
 
-% Nieoficjalna strona opisująca Pi Supply Traffic pHAT
-@misc{traffic,
-    title = {Opis nakładki Traffic {pHAT}},
-    author = {{V-SLOT Polska}},
-    howpublished = {\url{https://www.v-slot.pl/pl/p/Traffic-pHAT-nakladka-LED-do-Raspberry-Pi-Zero-Pi-SupplyPIS-1778/5463}}
+%%% JESZCZE NIEUŻYTE ALE WIEM ŻE UŻYWAŁEM STRON PODCZAS PISANIA LABORATORIÓW
+
+% Wykorzystanie pinów przez moduły
+% Użyłem tego do dowiedzenia się czy płytka będzie działać z uruchomionymi modułami jądra.
+@misc{pinout,
+    title = {Układ pinów},
+    author = {Howard, Philip and RogueM and inni},
+    howpublished = {\link{pinout.xyz}},
+}
+
+% Oficjalna dokumentacja Sense HAT
+@misc{senseDoc,
+    title = {Dokumentacja {Sense HAT}},
+    author = {{Fundacja Raspberry Pi}},
+    howpublished = {\link{raspberrypi.com/documentation/accessories/sense-hat.html}},
+}
+
+% Oficjalna dokumentacja modułów Grove
+@misc{groveDoc,
+    title = {Dokumentacja Grove},
+    author = {{Seeed Studio}},
+    howpublished = {\link{wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi}},
+}
+
+% Repozytorium Enviro HAT
+% Dokumentacja istnieje tylko dla Enviro+, więc trzeba patrzeć w kod.
+@misc{enviroDoc,
+    title = {Repozytorium Enviro+},
+    author = {{Pimoroni Ltd}},
+    howpublished = {\link{github.com/pimoroni/enviroplus-python}},
+}
+
+% Zgłoszony brak dokumentacji
+@misc{enviroIssue,
+    author = {Dończyk, Remigiusz},
+    howpublished = {\link{github.com/pimoroni/enviroplus-python/issues/157}}
 }
 
 % Nieoficjalna kopia dokumentacji płytki
-% Z powodu braku dokładnych informacji przez zamknięcie firmy nie wybrałem nakładki do zadań.
-@misc{flick,
+@misc{flickDoc,
     title = {Dokumentacja nakładki Flick HAT},
     author = {{Pi Supply Ltd}},
-    howpublished = {\url{https://www.farnell.com/datasheets/2311496.pdf}},
+    howpublished = {\link{farnell.com/datasheets/2311496.pdf}},
 }
 
 % Język skryptowy instalatora
 @misc{bash,
     title = {Opis oprogramowania Bash},
     author = {Fox, Brian and Ramey, Chet},
-    howpublished = {\url{https://www.gnu.org/software/bash}},
+    howpublished = {\link{gnu.org/software/bash}},
 }
 
 % Język skryptowy laboratoriów
 @misc{python,
     title = {Opis języka Python},
     author = {van Rossum, Guido and {Python Software Foundation}},
-    howpublished = {\url{https://www.python.org}},
+    howpublished = {\link{python.org}},
 }
 
 % Dokumentacja biblioteki zastępującej RPi.GPIO na nowych systemach
 @misc{lgpio,
     title = {Biblioteka rpi-lgpio},
     author = {Jones, Dave},
-    howpublished = {\url{https://rpi-lgpio.readthedocs.io}},
+    howpublished = {\link{rpi-lgpio.readthedocs.io}},
 }
 
 % Porównianie marimo z Jupyterem
-@misc{marimo-faq,
+@misc{marimoFaq,
     title = {Wybór marimo},
     author = {Agrawal, Akshay and Scolnick, Myles},
-    howpublished = {\url{https://docs.marimo.io/faq/#choosing-marimo}},
+    howpublished = {\link{docs.marimo.io/faq#choosing-marimo}},
 }
