@@ -61,7 +61,7 @@ Wspominając o~tym urządzeniu nie~można zapomnieć o~podobnych urządzeniach d
 W~ostatnich latach na~rynku pojawiły się~bowiem alternatywy o~porównywalnej lub~nawet korzystniejszej cenie,
 lecz~to \emph{Raspberry Pi} pełniło ważną funkcję w~popularyzowaniu pojęcia komputerów jednopłytkowych jako~niedrogiego
 narzędzia do~nauki i~prototypowania.
-Nadal jest najlepiej udokumentowaną z~konkurentów, co~jest ważnym elementem przystępności w~środowisku naukowym.
+Nadal jest najlepiej udokumentowanym z~konkurentów, co~jest ważnym elementem przystępności w~środowisku naukowym.
 Alternatywy często skupiają~się w~pierwszej kolejności na~udostępnieniu wyższej funkcjonalności, co~sprawia,~że
 są~dobrą opcją dla~bardziej zaawansowanych użytkowników.
 
@@ -75,11 +75,12 @@ i~konkurują jedynie z~\emph{Raspberry Pi Pico}, a~nie~z~resztą płytek o~możl
 \subsection{GPIO}\label{subsec:gpio}
 
 Interfejs \emph{GPIO} płytki \emph{Raspberry Pi} składa~się z~czterdziestu pinów pozwalających płytce na~współpracę
-z~innymi urządzeniami.
+z~innymi urządzeniami~\cite{pinout}.
 Część możliwości wymaga konfiguracji jądra systemu, co~jest przez~producenta udostępnione w~przystępny sposób.
-Poniższy rysunek zaznacza te~dodatkowe możliwości; piny wchodzące w~ich skład można również użyć w~standardowy sposób.
+Rysunek~\ref{fig:pinout} zaznacza te~dodatkowe możliwości; piny wchodzące w~ich skład można również użyć
+w~standardowy sposób.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \caption{Układ pinów \emph{Raspberry Pi} -- adresacja BCM}
   \label{fig:pinout}
   \centering
@@ -97,6 +98,11 @@ Piny oznaczone mianem \emph{GCLK} udostępniają dostęp do~wbudowanego zegara s
 \emph{PWM}, \emph{I²C}, \emph{UART}, i~\emph{SPI} zostaną omówione w~sekcji~\ref{sec:protocol} opisującej
 połączenia logiczne.
 
+Istnieje wiele bibliotek oferujących środowiska upraszczające interakcję z~urządzeniami wykorzystującymi interfejs
+\emph{GPIO}, w~zależności od~języka programowania.
+Praca~ta używa języka programowania Python, więc przykłady wykorzystują wiązania liblgpio dla~tego~języka
+(opisane bardziej szczegółowo w~sekcji~\ref{subsec:lgpio}).
+
 \subsection{Grove}\label{subsec:grove}
 
 Moduł \emph{Grove Base HAT} jest~podłączony do~płytki \emph{Raspberry~Pi} przy pomocy interfejsu \emph{GPIO}
@@ -111,18 +117,18 @@ jednak pozostałe~dwa zachowują~się w~różny sposób w~zależności od~rodzaj
 Połączenia te~wykorzystują interfejs \emph{GPIO} do~komunikacji z~płytką, więc~wykorzystanie danego portu \emph{Grove}
 wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \caption{Diagram złączy \emph{Grove Base HAT}}
   \label{fig:grovehat}
   \centering
   \copyrightbox{
-    \includegraphics[height=7cm]{media/botland_GroveBaseHat}
+    \includegraphics[height=6cm]{media/botland_GroveBaseHat}
   }{
     \textcopyright Botland B. Derkacz Sp. k.
   }
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[H]
   \caption{Opis złączy \emph{Grove Base HAT}}
   \label{tab:grove}
   \begin{tabularx}{\linewidth}{@{}lX@{}}
@@ -150,11 +156,87 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 
 \subsection{PWM}\label{subsec:pwm}
 
-Technika, nie protokół
+\emph{Pulse Width Modulation}~\cite{pwm} to~technika polegająca na~kodowaniu wartości sygnału danych na~sygnale nośnym
+prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych.
+Wartość przesyłaną ustanawia się~regulując proporcję czasu, w~której sygnał przyjmuje wartość wysoką.
+Zbocze rosnące sygnału jest~wysyłane w~stałych odstępach czasowych, co~pozwala na~wykorzystanie sygnału
+bez~transmisji osobnego sygnału synchronizacyjnego.
+Dzięki zapisowi informacji poza amplitudą sygnału, \emph{PWM} jest~odporne na~typowe szumy transmisyjne.
+
+Wadą \emph{PWM} jest~zmienna zawartość energetyczna pulsów, w~związku z~czym linia transmisyjna i~urządzenia
+korzystające z~tej~modulacji muszą~być odporne na~maksymalną możliwą ilość energii (wypełnienie sygnału bliskie 100\%),
+aby~zapewnić odporność na~uszkodzenia.
+Cecha~ta znalazła jednak zastosowanie jako~prosta metoda kontroli ilości energii dostarczanej do~urządzeń o~zmiennych
+zapotrzebowaniach, np.\ oświetlenia o~regulowanej jasności, bez~zmiany rzeczywistej wartości napięcia.
+
+\begin{figure}[H]
+  \caption{Modulacja szerokości impulsów}
+  \label{fig:pwm}
+  \centering
+  \copyrightbox{
+    \includegraphics[height=6cm]{media/electronicspost_pwm}
+  }{
+    \textcopyright Electronics Post, Sasmita Barik
+  }
+\end{figure}
 
 \subsection{I²C}\label{subsec:i2c}
 
+\emph{Inter-Integrated Circuit}~\cite{i2c} to~synchroniczna szeregowa magistrala komunikacyjna pozwalająca
+na~komunikację wielu urządzeń za~pomocą dwóch linii transmisyjnych.
+Nazwa wywodzi~się ze~wczesnego użycia jako~metoda komunikacyjna między układami scalonymi na~jednej płytce drukowanej.
+
+Oryginalna idea I²C zakłada istnienie tylko jednego urządzenia nadającego, jednak dzięki podłączeniu urządzeń za~pomocą
+otwartego drenu lub~kolektora oraz~istnieniu mechanizmu wykrywającego kolizje możliwa~jest praca w~systemie zawierającym
+wiele urządzeń nadawczych.
+Standardowa 7-bitowa adresacja pozwala na~podłączenie 127~urządzeń odbierających, jednak z~powodu maksymalnej
+dopuszczalnej pojemności o~wartości 400pF w~praktyce długość linii jest~ograniczona do~kilku metrów, co~w~większości
+przypadków ogranicza ilość podłączonych urządzeń.
+Dla sytuacji niestandardowych jest~również dostępna adresacja 10-bitowa, zwiększająca limit do~1023 odbiorców.
+
+Obie linie są~w~stanie spoczynku utrzymywane w~stanie wysokim.
+Rozpoczęcie transmisji jest sygnalizowane poprzez zmianę stanu przez nadajnik na~stan niski na~obu liniach,
+a~następnie uruchomienie zegara i~przesłanie wiadomości o~formacie przedstawionym na~rysunku~\ref{fig:i2c}.
+Wiadomość może zawierać jedną lub~więcej sekcję danych w~zależności od~rodzaju komunikacji.
+Transmisja jest~zakończona poprzez powrót w~stan spoczynku.
+
+\begin{figure}[H]
+  \caption{Przykład wiadomości na linii SDA I²C}
+  \label{fig:i2c}
+  \centering
+  \copyrightbox{
+    \includegraphics[width=0.9\linewidth]{media/soldered_i2c}
+  }{
+    \textcopyright Soldered Electronics d.o.o.
+  }
+\end{figure}
+
 \subsection{I²S}\label{subsec:i2s}
+
+\emph{Inter-Integrated Circuit Sound}~\cite{i2s} nie~jest powiązane z~I²C, jednak ta~sama firma utworzyła
+ich~specyfikacje.
+Protokół~ten jest~skupiony na~wbudowanych urządzeniach audio, zapewniając prostą i~ograniczoną funkcjonalność w~celu
+zapewnienia niezawodności i~prostoty wykorzystania.
+
+Magistrala wykorzystuje trzy linie komunikacyjne, w~tym dwa zegary.
+Pierwszy z~zegarów ustanawia rytm przesyłania bitów informacyjnych.
+Drugi zegar jest~sygnałem wybierającym jeden z~dwóch dostępnych kanałów informacyjnych na~linii danych.
+W~teorii sygnał~ten może~być niepodłączony do~zegara, jednak oba kanały przesyłają tą~samą ilość danych, w~związku
+z~czym użycie odpowiednio dostosowanego zegara znacząco upraszcza implementację i~nie stosuje~się w~praktyce innych
+rozwiązań.
+Trzecia z~linii przesyła dane dźwiękowe szeregowo, zakodowane kodem uzupełnień do~dwóch, zaczynając od~najbardziej
+znaczącego bitu danych jeden cykl po~przełączeniu kanału.
+
+\begin{figure}[H]
+  \caption{Diagram czasowy I²S}
+  \label{fig:i2s}
+  \centering
+  \copyrightbox{
+    \includegraphics[width=0.9\linewidth]{media/wikipedia_i2s}
+  }{
+    \textcopyright Walter Dvorak
+  }
+\end{figure}
 
 \subsection{SPI}\label{subsec:spi}
 
@@ -176,7 +258,17 @@ Język skryptowy.
 
 \subsection{rpi-lgpio}\label{subsec:lgpio}
 
-Biblioteka do użytkowania interfejsu GPIO zastępująca RPi.GPIO\@.
+Wiązania języka C do~użytkowania interfejsu \emph{GPIO} zastępujące bibliotekę rpi-gpio\@.
+Wykorzystuje te same nazwy importowane i~sygnatury w~celu zapewnienia kompatybilności wstecznej.
+Istnieje z~powodu usunięcia interfejsu sysfs \emph{GPIO} z~nowszych wersji jądra systemowego.
+Zamiast przestarzałego interfejsu sysfs wykorzystuje nowszy plik urządzenia gpiochip.
+Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
+
+\begin{figure}[H]
+  \caption{Podstawowe wykorzystanie GPIO w języku Python}
+  \label{fig:gpio}
+  \lstinputlisting[language=python,label={lst:gpio}]{media/gpio.py}
+\end{figure}
 
 \subsection{marimo}\label{subsec:marimo}
 
