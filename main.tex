@@ -85,7 +85,7 @@ w~standardowy sposób.
   \label{fig:pinout}
   \centering
   \copyrightbox{
-    \includegraphics[height=35mm]{media/pinoutxyz_bcmPinout}
+    \includegraphics[width=0.9\linewidth]{media/pinoutxyz_bcmPinout}
   }{
     \textcopyright pinout.xyz; Philip~Howard, RogueM i~inni
   }
@@ -122,7 +122,7 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
   \label{fig:grovehat}
   \centering
   \copyrightbox{
-    \includegraphics[height=6cm]{media/botland_GroveBaseHat}
+    \includegraphics[width=0.6\linewidth]{media/botland_GroveBaseHat}
   }{
     \textcopyright Botland B. Derkacz Sp. k.
   }
@@ -174,7 +174,7 @@ zapotrzebowaniach, np.\ oświetlenia o~regulowanej jasności, bez~zmiany rzeczyw
   \label{fig:pwm}
   \centering
   \copyrightbox{
-    \includegraphics[height=6cm]{media/electronicspost_pwm}
+    \includegraphics[width=0.7\linewidth]{media/electronicspost_pwm}
   }{
     \textcopyright Electronics Post, Sasmita Barik
   }
@@ -240,7 +240,86 @@ znaczącego bitu danych jeden cykl po~przełączeniu kanału.
 
 \subsection{SPI}\label{subsec:spi}
 
+\emph{Serial Peripheral Interface}~\cite{spi} to~synchroniczny szeregowy interfejs komunikacyjny z~jednym urządzeniem
+nadzorczym i~wieloma podrzędnymi wykorzystujący cztery linie.
+Połączone urządzenia tworzą ze~swoich rejestrów wewnętrznych bufor kołowy, co~zapewnia prostą implementację
+komunikacji w~trybie pełny dupleks.
+
+Wykorzystywane linie pełnią następujące role:
+\begin{itemize}
+  \item Chip Select         -- Sygnał aktywny w~stanie niskim przesyłany przez~urządzenie nadzorcze, uruchamiający
+                               obsługę komend przez~podłączone urządzenia.
+  \item Serial Clock        -- Sygnał zegarowy nadawany przez~urządzenie nadzorcze.
+  \item Master Out Slave In -- Linia wysyłająca dane urządzenia nadzorczego.
+  \item Master In Slave Out -- Linia odbierająca dane urządzenia nadzorczego.
+\end{itemize}
+
+Przesłane komendy są~wykonywane w~momencie wykrycia zbocza rosnącego sygnału \emph{Chip Select}
+Standardowe~są dwa~sposoby połączeń wykorzystujące linie w~odmienny sposób.
+
+W~pierwszej z~nich dla~$N$ urządzeń podrzędnych wymagane~jest~$N$ linii \emph{Chip Select}.
+Na~potrzeby tej~pracy nadam tej~metodzie nazwę ``bezpośredniej'', gdyż~każde z~urządzeń podrzędnych jest~bezpośrednio
+wybrane do~komunikacji przez~urządzenie nadzorcze, które przełącza w~tryb niski linię \emph{Chip Select} danego
+urządzenia podrzędnego.
+Linia \emph{MISO} jest~współdzielona, więc w~danym czasie wybrane może~być dokładnie jedno z~urządzeń.
+Wszystkie urządzenia podrzędne otrzymują w~tym samym czasie te~same dane, gdyż~linia \emph{MOSI} również
+jest~współdzielona, ale na~linii \emph{MISO} odpowiada jedynie wybrane urządzenie.
+
+\begin{figure}[H]
+  \caption{Łącze bezpośrednie SPI}
+  \label{fig:spi1}
+  \centering
+  \copyrightbox{
+    \includegraphics[width=0.7\linewidth]{media/analog_spi1}
+  }{
+    \textcopyright Analog Devices Inc.
+  }
+\end{figure}
+
+Druga z~wykorzystywanych konfiguracji nie~wymaga wykorzystania więcej niż~jednej linii \emph{Chip Select},
+w~zamian za~nieco bardziej skomplikowany schemat komunikacji wywołany niejednolitą ilością cykli zegara obsługującą
+dane urządzenie podrzędne.
+W~tym schemacie wejścia kolejnych urządzeń podrzędnych są~podłączone do~wyjść poprzedzających urządzeń.
+Urządzenie nadzorcze wysyła serię komend dla~wszystkich z~urządzeń podrzędnych, wykorzystując cechę
+składania~się przez~nie w~bufor kołowy, a~następnie aktywuje je~wszystkie jednocześnie zmieniając stan współdzielonej
+linii \emph{Chip Select}.
+Urządzenia podrzędne bez~zleconego zadania muszą otrzymać wartość zerową, która~jest~traktowana jako~brak danych.
+Następnie urządzenie nadzorcze zbiera wszystkie odpowiedzi.
+
+\begin{figure}[H]
+  \caption{Łącze cykliczne SPI}
+  \label{fig:spi2}
+  \centering
+  \copyrightbox{
+    \includegraphics[width=0.7\linewidth]{media/analog_spi2}
+  }{
+    \textcopyright Analog Devices Inc.
+  }
+\end{figure}
+
 \subsection{UART}\label{subsec:uart}
+
+\emph{Universal Asynchronous Receiver-Transmitter}~\cite{uart} to~protokół komunikacyjny wykorzystujący dwie~linie
+oraz~wspólne uziemienie.
+Jest~to~protokół asynchroniczny, w~związku z~czym oba~uczestniczące w~transmisji urządzenia należy przygotować
+do~komunikacji poprzez dobór parametrów komunikacyjnych na~te~same wartości, wspierane przez oba~urządzenia,
+gdyż~protokół nie~wykorzystuje linii zegara synchronizującego.
+Linia \emph{TX} jednego z~urządzeń jest~połączona do~linii \emph{RX} drugiego i~vice~versa.
+
+Wiadomość UART składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii (stanem niskim) o~czasie trwania
+równym jednemu bitowi, a~następnie przesłanie 5--9 bitów wiadomości i~opcjonalnego bitu parzystości.
+Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadającym 1--2 bitom w~stanie spoczynku.
+
+\begin{figure}[H]
+  \caption{Schemat wiadomości UART}
+  \label{fig:uart}
+  \centering
+  \copyrightbox{
+    \includegraphics[width=0.8\linewidth]{media/arduino_uart}
+  }{
+    \textcopyright Arduino
+  }
+\end{figure}
 
 \section{Oprogramowanie}\label{sec:software}
 
