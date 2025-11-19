@@ -25,6 +25,7 @@
 \usepackage{memhfixc}
 \usepackage{pdfpages}
 \usepackage{copyrightbox}
+\usepackage{attachfile2}
 
 \renewcommand\familydefault{\sfdefault}
 \renewcommand{\bibitempages}[1]{\newblock {\scriptsize [\mbox{str.\ }#1]}}
@@ -131,6 +132,21 @@
     \pdfcompresslevel=9
     \usepackage{thumbpdf}
 \fi
+
+\attachfilesetup{
+    color=black
+}
+
+\newcounter{ax}[chapter]
+\newlistof{listofappendices}{loa}{Spis załączników}
+\DeclareDocumentCommand{\ax}{ m m o }{%
+    \refstepcounter{ax}%
+    \textattachfile[#3]{#2}{#1~[\thechapter.\theax]}%
+    \addcontentsline{loa}{ax}{\protect\numberline{\thechapter.\theax}#1}%
+}
+\makeatletter
+\let\l@ax\l@figure
+\makeatother
 
 \settypeblocksize{23cm}{16cm}{*}
 
