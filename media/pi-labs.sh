@@ -9,6 +9,13 @@
 #
 # Proponowane umieszczenie kopii skryptu na serwerach uniwersyteckich w celu osiągnięcia niezależności danych
 
+set -e
+if [ $EUID -ne 0 ]; then
+  echo 'Uruchom skrypt jako administrator (sudo)'
+  exit 1
+fi
+TMPDIR="$(mktemp -d)"
+pushd $TMPDIR
 # Utworzenie plików marimo do laboratoriów
 cat >0-wprowadzenie.py <<'END'
 import marimo
@@ -2225,7 +2232,7 @@ pillow==11.1.0
 pimoroni-bme280==1.0.0
 pms5003==1.0.1
 polars==1.26.0
-propcache==0.4.0
+propcache==0.4.1
 psutil==7.0.0
 pyarrow==19.0.1
 pycparser==2.23
@@ -2245,7 +2252,7 @@ ruff==0.11.2
 Seeed-grove.py @ git+https://github.com/Seeed-Studio/grove.py.git@614734d1ed73e512439185484d19e787dea7cc87
 sense-hat==2.6.0
 smbus==1.1.post2
-smbus2==0.5.0
+smbus2==0.4.2
 sniffio==1.3.1
 sounddevice==0.5.2
 spidev==3.8
@@ -2314,24 +2321,30 @@ include_default_snippets = true
 [runtime]
 watcher_on_save = "lazy"
 std_stream_max_bytes = 1000000
-on_cell_change = "lazy"
+on_cell_change = "autorun"
 pythonpath = []
 auto_instantiate = true
 output_max_bytes = 8000000
-auto_reload = "off"
+auto_reload = "autorun"
 END
+chmod 755 .
+chmod 777 requirements.txt
 install -m 755 -o student -g student -d /home/student/.config/marimo
 install -m 644 -o student -g student marimo.toml /home/student/.config/marimo/
 # Ustawienia systemowe
+nmcli con mod preconfigured wifi.powersave disable
 raspi-config nonint do_i2c 0
 raspi-config nonint do_spi 0
 grep -Fxq 'dtoverlay=adau7002-simple' /boot/firmware/config.txt || sed -i '1i dtoverlay=adau7002-simple' /boot/firmware/config.txt
 grep -Fxq 'dtparam=i2s=on' /boot/firmware/config.txt || sed -i '1i dtparam=i2s=on' /boot/firmware/config.txt
 apt update
-apt install -y python3.11 python3.11-venv libopenjp2-7 octave
-setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/python3.11
+apt install -y python3 python3-venv pyenv git libopenjp2-7 octave
+if [ ! -d /home/student/.pyenv/versions/3.11.11 ]; then
+  su student -c 'cd ~; pyenv install 3.11.11'
+  setcap CAP_NET_BIND_SERVICE=+eip /home/student/.pyenv/versions/3.11.11/bin/python3.11
+fi
 if [ ! -d /home/student/.venv ]; then
-  su student -c 'python3.11 -m venv ~/.venv && ~/.venv/bin/pip install -U pip==25.0.1 && ~/.venv/bin/pip install -r requirements.txt'
+  su student -c '~/.pyenv/versions/3.11.11/bin/python3 -m venv ~/.venv && ~/.venv/bin/pip install -U pip==25.0.1 && ~/.venv/bin/pip install -r requirements.txt'
 fi
 # Uruchomienie środowiska przy włączeniu systemu
 cat >pi-labs-workspace.service <<'END'
