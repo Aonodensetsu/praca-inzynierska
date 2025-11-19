@@ -33,21 +33,21 @@ z~budowaniem własnych urządzeń.
 
 Dostępne prowadzącemu moduły:
 \begin{itemize}
-  \item Sense HAT~\cite{sense}
-  \item Flick HAT~\cite{flick}
-  \item Grove Base Kit~\cite{grove}
-  \item Automation HAT Mini~\cite{automation}
-  \item Enviro HAT~\cite{enviro}
-  \item Unicorn HAT~\cite{unicorn}
-  \item Traffic pHAT~\cite{traffic}
+  \item Sense HAT~\cite{sense};
+  \item Flick HAT~\cite{flick};
+  \item Grove Base Kit~\cite{grove};
+  \item Automation HAT Mini~\cite{automation};
+  \item Enviro HAT~\cite{enviro};
+  \item Unicorn HAT~\cite{unicorn};
+  \item Traffic pHAT~\cite{traffic}.
 \end{itemize}
 
 Niektóre moduły zostały wyłączone z~procesu selekcji:
 \begin{itemize}
   \item Flick HAT -- firma producenta została rozwiązana~\cite{pisupply}, oficjalna dokumentacja ich~produktów
-        nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista.
+        nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista;
   \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu 12V lub 24V,
-        co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę.
+        co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę;
   \item Unicorn HAT -- jest wyposażony w~macierz diod 8~x~8, podobnie do~\emph{Sense HAT}, który~ma~szersze możliwości.
 \end{itemize}
 
@@ -81,14 +81,14 @@ Rysunek~\ref{fig:pinout} zaznacza te~dodatkowe możliwości; piny wchodzące w~i
 w~standardowy sposób.
 
 \begin{figure}[H]
-  \caption{Układ pinów \emph{Raspberry Pi} -- adresacja BCM}
-  \label{fig:pinout}
   \centering
   \copyrightbox{
     \includegraphics[width=0.9\linewidth]{media/pinoutxyz_bcmPinout}
   }{
     \textcopyright pinout.xyz; Philip~Howard, RogueM i~inni
   }
+  \caption{Układ pinów \emph{Raspberry Pi} -- adresacja BCM}
+  \label{fig:pinout}
 \end{figure}
 
 Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~1~i~2 odnosząca~się odpowiednio
@@ -111,21 +111,22 @@ Moduł wyprowadza interfejs \emph{GPIO}, jednak wiele połączeń pokrywa się z
 w~związku z~czym wykorzystanie ich nie~jest bezpieczne bez~wcześniejszego zrozumienia tego~systemu.
 Na~module \emph{Grove Base HAT} złącza podpisane są~przy użyciu numeracji \emph{BCM}.
 
-Połączenia fizyczne wykorzystywane przez interfejs \emph{Grove} są~podobne do~standardowych połączeń \emph{I²C}\@.
+Połączenia fizyczne wykorzystywane przez interfejs \emph{Grove} przedstawione na~rysunku~\ref{fig:grovehat} są~podobne
+do~standardowych połączeń \emph{I²C}\@.
 Połączenia \emph{VCC} i~\emph{GND} zawsze dostarczają elementom zasilanie,
 jednak pozostałe~dwa zachowują~się w~różny sposób w~zależności od~rodzaju złącza.
 Połączenia te~wykorzystują interfejs \emph{GPIO} do~komunikacji z~płytką, więc~wykorzystanie danego portu \emph{Grove}
 wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 
 \begin{figure}[H]
-  \caption{Diagram złączy \emph{Grove Base HAT}}
-  \label{fig:grovehat}
   \centering
   \copyrightbox{
     \includegraphics[width=0.6\linewidth]{media/botland_GroveBaseHat}
   }{
     \textcopyright Botland B. Derkacz Sp. k.
   }
+  \caption{Diagram złączy \emph{Grove Base HAT}}
+  \label{fig:grovehat}
 \end{figure}
 
 \begin{table}[H]
@@ -157,7 +158,8 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 \subsection{PWM}\label{subsec:pwm}
 
 \emph{Pulse Width Modulation}~\cite{pwm} to~technika polegająca na~kodowaniu wartości sygnału danych na~sygnale nośnym
-prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych.
+prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych, przedstawiona
+na~rysunku~\ref{fig:pwm}.
 Wartość przesyłaną ustanawia się~regulując proporcję czasu, w~której sygnał przyjmuje wartość wysoką.
 Zbocze rosnące sygnału jest~wysyłane w~stałych odstępach czasowych, co~pozwala na~wykorzystanie sygnału
 bez~transmisji osobnego sygnału synchronizacyjnego.
@@ -170,14 +172,14 @@ Cecha~ta znalazła jednak zastosowanie jako~prosta metoda kontroli ilości energ
 zapotrzebowaniach, np.\ oświetlenia o~regulowanej jasności, bez~zmiany rzeczywistej wartości napięcia.
 
 \begin{figure}[H]
-  \caption{Modulacja szerokości impulsów}
-  \label{fig:pwm}
   \centering
   \copyrightbox{
     \includegraphics[width=0.7\linewidth]{media/electronicspost_pwm}
   }{
     \textcopyright Electronics Post, Sasmita Barik
   }
+  \caption{Modulacja szerokości impulsów}
+  \label{fig:pwm}
 \end{figure}
 
 \subsection{I²C}\label{subsec:i2c}
@@ -201,14 +203,14 @@ Wiadomość może zawierać jedną lub~więcej sekcję danych w~zależności od~
 Transmisja jest~zakończona poprzez powrót w~stan spoczynku.
 
 \begin{figure}[H]
-  \caption{Przykład wiadomości na linii SDA I²C}
-  \label{fig:i2c}
   \centering
   \copyrightbox{
     \includegraphics[width=0.9\linewidth]{media/soldered_i2c}
   }{
     \textcopyright Soldered Electronics d.o.o.
   }
+  \caption{Przykład wiadomości na linii SDA I²C}
+  \label{fig:i2c}
 \end{figure}
 
 \subsection{I²S}\label{subsec:i2s}
@@ -226,16 +228,17 @@ z~czym użycie odpowiednio dostosowanego zegara znacząco upraszcza implementacj
 rozwiązań.
 Trzecia z~linii przesyła dane dźwiękowe szeregowo, zakodowane kodem uzupełnień do~dwóch, zaczynając od~najbardziej
 znaczącego bitu danych jeden cykl po~przełączeniu kanału.
+Rysunek~\ref{fig:i2s} prezentuje te zależności.
 
 \begin{figure}[H]
-  \caption{Diagram czasowy I²S}
-  \label{fig:i2s}
   \centering
   \copyrightbox{
     \includegraphics[width=0.9\linewidth]{media/wikipedia_i2s}
   }{
     \textcopyright Walter Dvorak
   }
+  \caption{Diagram czasowy I²S}
+  \label{fig:i2s}
 \end{figure}
 
 \subsection{SPI}\label{subsec:spi}
@@ -248,9 +251,9 @@ komunikacji w~trybie pełny dupleks.
 Wykorzystywane linie pełnią następujące role:
 \begin{itemize}
   \item Chip Select         -- Sygnał aktywny w~stanie niskim przesyłany przez~urządzenie nadzorcze, uruchamiający
-                               obsługę komend przez~podłączone urządzenia.
-  \item Serial Clock        -- Sygnał zegarowy nadawany przez~urządzenie nadzorcze.
-  \item Master Out Slave In -- Linia wysyłająca dane urządzenia nadzorczego.
+                               obsługę komend przez~podłączone urządzenia;
+  \item Serial Clock        -- Sygnał zegarowy nadawany przez~urządzenie nadzorcze;
+  \item Master Out Slave In -- Linia wysyłająca dane urządzenia nadzorczego;
   \item Master In Slave Out -- Linia odbierająca dane urządzenia nadzorczego.
 \end{itemize}
 
@@ -264,16 +267,18 @@ urządzenia podrzędnego.
 Linia \emph{MISO} jest~współdzielona, więc w~danym czasie wybrane może~być dokładnie jedno z~urządzeń.
 Wszystkie urządzenia podrzędne otrzymują w~tym samym czasie te~same dane, gdyż~linia \emph{MOSI} również
 jest~współdzielona, ale na~linii \emph{MISO} odpowiada jedynie wybrane urządzenie.
+Rysunek~\ref{fig:spi1} pomija linię \emph{MISO}, gdyż~częstym zastosowaniem architektury jest~jednokierunkowe
+przesyłanie rozkazów do~urządzeń podrzędnych.
 
 \begin{figure}[H]
-  \caption{Łącze bezpośrednie SPI}
-  \label{fig:spi1}
   \centering
   \copyrightbox{
     \includegraphics[width=0.7\linewidth]{media/analog_spi1}
   }{
     \textcopyright Analog Devices Inc.
   }
+  \caption{Łącze bezpośrednie SPI}
+  \label{fig:spi1}
 \end{figure}
 
 Druga z~wykorzystywanych konfiguracji nie~wymaga wykorzystania więcej niż~jednej linii \emph{Chip Select},
@@ -285,16 +290,18 @@ składania~się przez~nie w~bufor kołowy, a~następnie aktywuje je~wszystkie je
 linii \emph{Chip Select}.
 Urządzenia podrzędne bez~zleconego zadania muszą otrzymać wartość zerową, która~jest~traktowana jako~brak danych.
 Następnie urządzenie nadzorcze zbiera wszystkie odpowiedzi.
+Podobnie do~poprzedniego rysunku, połączenie ostatniej linii \emph{DOUT} urządzenia podrzędnego do~linii \emph{MISO}
+została na~rysunku~\ref{fig:spi2} pominięta.
 
 \begin{figure}[H]
-  \caption{Łącze cykliczne SPI}
-  \label{fig:spi2}
   \centering
   \copyrightbox{
     \includegraphics[width=0.7\linewidth]{media/analog_spi2}
   }{
     \textcopyright Analog Devices Inc.
   }
+  \caption{Łącze cykliczne SPI}
+  \label{fig:spi2}
 \end{figure}
 
 \subsection{UART}\label{subsec:uart}
@@ -306,19 +313,20 @@ do~komunikacji poprzez dobór parametrów komunikacyjnych na~te~same wartości, 
 gdyż~protokół nie~wykorzystuje linii zegara synchronizującego.
 Linia \emph{TX} jednego z~urządzeń jest~połączona do~linii \emph{RX} drugiego i~vice~versa.
 
-Wiadomość UART składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii (stanem niskim) o~czasie trwania
-równym jednemu bitowi, a~następnie przesłanie 5--9 bitów wiadomości i~opcjonalnego bitu parzystości.
+Wiadomość UART (rysunek~\ref{fig:uart}) składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii
+(stanem niskim) o~czasie trwania równym jednemu bitowi, a~następnie przesłanie 5--9 bitów wiadomości i~opcjonalnego
+bitu parzystości.
 Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadającym 1--2 bitom w~stanie spoczynku.
 
 \begin{figure}[H]
-  \caption{Schemat wiadomości UART}
-  \label{fig:uart}
   \centering
   \copyrightbox{
     \includegraphics[width=0.8\linewidth]{media/arduino_uart}
   }{
     \textcopyright Arduino
   }
+  \caption{Schemat wiadomości UART}
+  \label{fig:uart}
 \end{figure}
 
 \section{Oprogramowanie}\label{sec:software}
@@ -344,9 +352,9 @@ Zamiast przestarzałego interfejsu sysfs wykorzystuje nowszy plik urządzenia gp
 Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
 
 \begin{figure}[H]
+  \lstinputlisting[language=python,label={lst:gpio}]{media/gpio.py}
   \caption{Podstawowe wykorzystanie GPIO w języku Python}
   \label{fig:gpio}
-  \lstinputlisting[language=python,label={lst:gpio}]{media/gpio.py}
 \end{figure}
 
 \subsection{marimo}\label{subsec:marimo}
