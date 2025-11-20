@@ -313,6 +313,15 @@ do~komunikacji poprzez dobór parametrów komunikacyjnych na~te~same wartości, 
 gdyż~protokół nie~wykorzystuje linii zegara synchronizującego.
 Linia \emph{TX} jednego z~urządzeń jest~połączona do~linii \emph{RX} drugiego i~vice~versa.
 
+Ustawienia, które muszą mieć na urządzeniach zgodne wartości:
+\begin{itemize}
+  \item Baud rate    -- Prędkość transmisji (długość czasu przypisana jednemu bitowi);
+  \item Data         -- Ilość bitów w wiadomości;
+  \item Parity       -- Tryb bitu parzystości (brak, parzysty, nieparzysty);
+  \item Stop bits    -- Długość przerwy między wiadomościami;
+  \item Flow control -- Tryb współpracy z wolniejszymi urządzeniami.
+\end{itemize}
+
 Wiadomość UART (rysunek~\ref{fig:uart}) składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii
 (stanem niskim) o~czasie trwania równym jednemu bitowi, a~następnie przesłanie 5--9 bitów wiadomości i~opcjonalnego
 bitu parzystości.
@@ -333,19 +342,42 @@ Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadają
 
 \subsection{Raspberry Pi OS}\label{subsec:rpi-os}
 
-Dystrybucja GNU/Linux bazująca na dystrybucji Debian.
+\emph{Raspberry Pi OS}~\cite{rpios} (dawniej \emph{Raspbian}) to dystrybucja \emph{GNU/Linux} bazująca na~dystrybucji
+\emph{Debian}, utworzona i~przystosowana do~wykorzystania z~mikrokomputerami \emph{Raspberry Pi}.
+W~momencie pisania pracy najnowsza wersja z~1~października~2025 opiera~się na~\emph{Debianie 13 Trixie}, i~ta właśnie
+wersja jest~wspierana przez skrypt instalacyjny i~środowisko laboratoryjne.
+
+Dystrybucja ma~warianty przystosowane do~poszczególnych kategorii produktów \emph{Raspberry Pi}, optymalizujące system
+do~współpracy na~urządzeniach o~niskiej mocy obliczeniowej, ograniczonej wielkości, i~prędkości dysku (karty SD),
+a~także zawierające pomocne skrypty konfiguracyjne do~ peryferiów płytek.
+Jest~to oficjalny system operacyjny płytek \emph{Raspberry Pi}, w~związku z~czym można spodziewać~się możliwie
+najlepszej stabilności i~wsparcia w~przypadku wystąpienia problemów.
 
 \subsection{Bash}\label{subsec:bash}
 
-Powłoka wykorzystywana często w terminalach GNU/Linux wraz z językiem skryptowym.
+\emph{Bash}~\cite{bash} to jedna z najpopularniejszych powłok (interpreterów poleceń) wykorzystywanych w systemach
+\emph{Unix/Linux} oraz \emph{MacOS}.
+Poza obsługą poleceń użytkownika zawiera zaawansowane możliwości skryptowe, dzięki czemu może być wykorzystywany do
+szeroko zrozumiałej automatyzacji administracji systemem.
+
+W pracy wykorzystany właśnie w tym celu, co ułatwia prowadzącemu wstępną konfigurację, a także czyszczenie środowiska
+między zajęciami -- załączony skrypt instalacyjny \ax{pi-labs.sh}{media/pi-labs.sh}[mimetype=text/plain] wykorzystuje
+możliwości tego narzędzia do pełnej konfiguracji płytki do zajęć przy użyciu jednej komendy.
 
 \subsection{Python}\label{subsec:py}
 
-Język skryptowy.
+\emph{Python}~\cite{python} to~interpretowany, wysokopoziomowy język programowania.
+Jest znany z~przejrzystej składni, łatwości nauki i~rozbudowanego zestawu bibliotek, zarówno wbudowanych
+jak~i~utworzonych przez~społeczność.
+Dzięki~temu również ilość materiałów na~temat wykorzystania języka jest~bardzo~duża.
+
+Ekspresywność języka pozwala na~wyrażenie szerokiego zakresu wyrażeń w~prosty sposób, a~także wykorzystanie wszystkich
+popularnych paradygmatów programowania, co~jest dużą~zaletą w~trakcie nauki innych narzędzi -- dzięki tej~prostocie
+nie~trzeba `walczyć' ze~składnią języka, a~można skupić~się na~przyswojeniu nowych informacji na~temat nowego narzędzia.
 
 \subsection{rpi-lgpio}\label{subsec:lgpio}
 
-Wiązania języka C do~użytkowania interfejsu \emph{GPIO} zastępujące bibliotekę rpi-gpio\@.
+Wiązania \emph{rpi-lgpio}~\cite{lgpio} języka C do~użytkowania interfejsu \emph{GPIO} zastępujące bibliotekę rpi-gpio\@.
 Wykorzystuje te same nazwy importowane i~sygnatury w~celu zapewnienia kompatybilności wstecznej.
 Istnieje z~powodu usunięcia interfejsu sysfs \emph{GPIO} z~nowszych wersji jądra systemowego.
 Zamiast przestarzałego interfejsu sysfs wykorzystuje nowszy plik urządzenia gpiochip.
@@ -418,5 +450,4 @@ Opis bezpieczeństwa udostępniania i testów.
 % CONTENT END
 \bibliography{bibliography}
 \input{tex/backmatter}
-\input{tex/appendix}
 \end{document}
