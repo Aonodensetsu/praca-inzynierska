@@ -16,16 +16,16 @@ sekcji pracy.
 
 \subsection{Raspberry Pi}\label{subsec:rpi}
 
-\emph{Raspberry Pi}~\cite{pi} to~seria małych komputerów jednopłytkowych stworzonych przez Fundację Raspberry~Pi
-w~Wielkiej Brytanii.
-Celem fundacji jest szeroka dostępność systemów o~możliwościach obliczeniowych, co~wpływa na~ograniczony koszt płytki,
+\emph{Raspberry Pi}\thinspace\cite{pi} to~seria małych komputerów jednopłytkowych stworzonych przez Fundację
+Raspberry~Pi w~Wielkiej Brytanii.
+Celem Fundacji jest szeroka dostępność systemów o~możliwościach obliczeniowych, co~wpływa na~ograniczony koszt płytki,
 wykorzystanie standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi}, \emph{Bluetooth}), a~zarazem
 szerokie możliwości wykorzystania do~budowy urządzeń m.in.~Internetu Rzeczy.
 
-Koszt najtańszego modelu wynosi ok.~20zł, a~najtańszy pełnoprawny komputer w~serii kosztuje ok.~50zł.
+Koszt najtańszego modelu wynosi ok.~\dPLN{20}, a~najtańszy pełnoprawny komputer w~serii kosztuje ok.~\dPLN{50}.
 
-Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów~\cite{pinout} \emph{GPIO} pozwalających
-na~budowę dowolnych połączeń wykorzystujących zasilanie 3,3V lub 5V\@.
+Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów\thinspace\cite{pinout} \emph{GPIO}
+pozwalających na~budowę dowolnych połączeń wykorzystujących zasilanie \qty{3.3}{\V} lub \qty{5}{\V}\@.
 Stanowią dzięki~temu przystępną drogę zarówno do~nauki i~użytkowania systemów komputerowych, jak~i~eksperymentacji
 z~budowaniem własnych urządzeń.
 
@@ -33,22 +33,23 @@ z~budowaniem własnych urządzeń.
 
 Dostępne prowadzącemu moduły:
 \begin{itemize}
-  \item Sense HAT~\cite{sense};
-  \item Flick HAT~\cite{flick};
-  \item Grove Base Kit~\cite{grove};
-  \item Automation HAT Mini~\cite{automation};
-  \item Enviro HAT~\cite{enviro};
-  \item Unicorn HAT~\cite{unicorn};
-  \item Traffic pHAT~\cite{traffic}.
+  \item Sense HAT\thinspace\cite{sense};
+  \item Flick HAT\thinspace\cite{flick};
+  \item Grove Base Kit\thinspace\cite{grove};
+  \item Automation HAT Mini\thinspace\cite{automation};
+  \item Enviro HAT\thinspace\cite{enviro};
+  \item Unicorn HAT\thinspace\cite{unicorn};
+  \item Traffic pHAT\thinspace\cite{traffic}.
 \end{itemize}
 
 Niektóre moduły zostały wyłączone z~procesu selekcji:
 \begin{itemize}
-  \item Flick HAT -- firma producenta została rozwiązana~\cite{pisupply}, oficjalna dokumentacja ich~produktów
+  \item Flick HAT -- firma producenta została rozwiązana\thinspace\cite{pisupply}, oficjalna dokumentacja ich~produktów
         nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista;
-  \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu 12V lub 24V,
+  \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu \qty{12}{\V} lub \qty{24}{\V},
         co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę;
-  \item Unicorn HAT -- jest wyposażony w~macierz diod 8~x~8, podobnie do~\emph{Sense HAT}, który~ma~szersze możliwości.
+  \item Unicorn HAT -- jest wyposażony w~macierz diod $8\,\times\,8$, podobnie do~\emph{Sense HAT}, który~ma~szersze
+        możliwości.
 \end{itemize}
 
 Przydział pozostałych modułów opisany jest w~sekcjach przeznaczonych dla~każdego z~laboratoriów.
@@ -75,7 +76,7 @@ i~konkurują jedynie z~\emph{Raspberry Pi Pico}, a~nie~z~resztą płytek o~możl
 \subsection{GPIO}\label{subsec:gpio}
 
 Interfejs \emph{GPIO} płytki \emph{Raspberry Pi} składa~się z~czterdziestu pinów pozwalających płytce na~współpracę
-z~innymi urządzeniami~\cite{pinout}.
+z~innymi urządzeniami\thinspace\cite{pinout}.
 Część możliwości wymaga konfiguracji jądra systemu, co~jest przez~producenta udostępnione w~przystępny sposób.
 Rysunek~\ref{fig:pinout} zaznacza te~dodatkowe możliwości; piny wchodzące w~ich skład można również użyć
 w~standardowy sposób.
@@ -91,8 +92,9 @@ w~standardowy sposób.
   \label{fig:pinout}
 \end{figure}
 
-Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~1~i~2 odnosząca~się odpowiednio
-do~pinów 3,3V i~5V po~lewej stronie powyższego rysunku, numerując kolejne kolumny tegoż rysunku.
+Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~\num{1}~i~\num{2} odnosząca~się
+odpowiednio do~pinów \qty{3.3}{\V} i~\qty{5}{\V} po~lewej stronie powyższego rysunku, numerując kolejne kolumny
+tegoż~rysunku.
 
 Piny oznaczone mianem \emph{GCLK} udostępniają dostęp do~wbudowanego zegara sprzętowego.
 \emph{PWM}, \emph{I²C}, \emph{UART}, i~\emph{SPI} zostaną omówione w~sekcji~\ref{sec:protocol} opisującej
@@ -100,13 +102,13 @@ połączenia logiczne.
 
 Istnieje wiele bibliotek oferujących środowiska upraszczające interakcję z~urządzeniami wykorzystującymi interfejs
 \emph{GPIO}, w~zależności od~języka programowania.
-Praca~ta używa języka programowania Python, więc przykłady wykorzystują wiązania liblgpio dla~tego~języka
+Praca~ta używa języka programowania \emph{Python}, więc przykłady wykorzystują wiązania \emph{liblgpio} dla~tego~języka
 (opisane bardziej szczegółowo w~sekcji~\ref{subsec:lgpio}).
 
 \subsection{Grove}\label{subsec:grove}
 
 Moduł \emph{Grove Base HAT} jest~podłączony do~płytki \emph{Raspberry~Pi} przy pomocy interfejsu \emph{GPIO}
-i~pełni funkcję adaptera tego~interfejsu na~własny system złączy~\cite{grovedesc}.
+i~pełni funkcję adaptera tego~interfejsu na~własny system złączy\thinspace\cite{grovedesc}.
 Moduł wyprowadza interfejs \emph{GPIO}, jednak wiele połączeń pokrywa się z~systemem \emph{Grove},
 w~związku z~czym wykorzystanie ich nie~jest bezpieczne bez~wcześniejszego zrozumienia tego~systemu.
 Na~module \emph{Grove Base HAT} złącza podpisane są~przy użyciu numeracji \emph{BCM}.
@@ -149,7 +151,7 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
                 Pozostałe złącza mogą~być używane jako~\emph{PWM} na~poziomie oprogramowania.
                 Złącze sprzętowe pozwala na~lepszą dokładność przy~wysokich częstotliwościach, jednak wchodzi w~konflikt
                 z~niektórymi innymi funkcjami płytki. \\
-    SWD       & Dostęp do wbudowanego oprogramowania modułu Grove Base HAT\@.
+    SWD       & Dostęp do wbudowanego oprogramowania modułu \emph{Grove Base HAT}\@.
   \end{tabularx}
 \end{table}
 
@@ -157,17 +159,17 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 
 \subsection{PWM}\label{subsec:pwm}
 
-\emph{Pulse Width Modulation}~\cite{pwm} to~technika polegająca na~kodowaniu wartości sygnału danych na~sygnale nośnym
-prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych, przedstawiona
-na~rysunku~\ref{fig:pwm}.
+\emph{Pulse Width Modulation}\thinspace\cite{pwm} to~technika polegająca na~kodowaniu wartości sygnału danych na~sygnale
+nośnym prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych,
+przedstawiona na~rysunku~\ref{fig:pwm}.
 Wartość przesyłaną ustanawia się~regulując proporcję czasu, w~której sygnał przyjmuje wartość wysoką.
 Zbocze rosnące sygnału jest~wysyłane w~stałych odstępach czasowych, co~pozwala na~wykorzystanie sygnału
 bez~transmisji osobnego sygnału synchronizacyjnego.
 Dzięki zapisowi informacji poza amplitudą sygnału, \emph{PWM} jest~odporne na~typowe szumy transmisyjne.
 
 Wadą \emph{PWM} jest~zmienna zawartość energetyczna pulsów, w~związku z~czym linia transmisyjna i~urządzenia
-korzystające z~tej~modulacji muszą~być odporne na~maksymalną możliwą ilość energii (wypełnienie sygnału bliskie 100\%),
-aby~zapewnić odporność na~uszkodzenia.
+korzystające z~tej~modulacji muszą~być odporne na~maksymalną możliwą ilość energii (wypełnienie sygnału bliskie
+\qty{100}{\percent}), aby~zapewnić odporność na~uszkodzenia.
 Cecha~ta znalazła jednak zastosowanie jako~prosta metoda kontroli ilości energii dostarczanej do~urządzeń o~zmiennych
 zapotrzebowaniach, np.\ oświetlenia o~regulowanej jasności, bez~zmiany rzeczywistej wartości napięcia.
 
@@ -184,17 +186,18 @@ zapotrzebowaniach, np.\ oświetlenia o~regulowanej jasności, bez~zmiany rzeczyw
 
 \subsection{I²C}\label{subsec:i2c}
 
-\emph{Inter-Integrated Circuit}~\cite{i2c} to~synchroniczna szeregowa magistrala komunikacyjna pozwalająca
+\emph{Inter-Integrated Circuit}\thinspace\cite{i2c} to~synchroniczna szeregowa magistrala komunikacyjna pozwalająca
 na~komunikację wielu urządzeń za~pomocą dwóch linii transmisyjnych.
 Nazwa wywodzi~się ze~wczesnego użycia jako~metoda komunikacyjna między układami scalonymi na~jednej płytce drukowanej.
 
 Oryginalna idea I²C zakłada istnienie tylko jednego urządzenia nadającego, jednak dzięki podłączeniu urządzeń za~pomocą
 otwartego drenu lub~kolektora oraz~istnieniu mechanizmu wykrywającego kolizje możliwa~jest praca w~systemie zawierającym
 wiele urządzeń nadawczych.
-Standardowa 7-bitowa adresacja pozwala na~podłączenie 127~urządzeń odbierających, jednak z~powodu maksymalnej
-dopuszczalnej pojemności o~wartości 400pF w~praktyce długość linii jest~ograniczona do~kilku metrów, co~w~większości
-przypadków ogranicza ilość podłączonych urządzeń.
-Dla sytuacji niestandardowych jest~również dostępna adresacja 10-bitowa, zwiększająca limit do~1023 odbiorców.
+Standardowa \num{7}-bitowa adresacja pozwala na~podłączenie \num{127}~urządzeń odbierających, jednak z~powodu
+maksymalnej dopuszczalnej pojemności o~wartości \qty{400}{\pF} w~praktyce długość linii jest~ograniczona do~kilku
+metrów, co~w~większości przypadków ogranicza ilość podłączonych urządzeń.
+Dla sytuacji niestandardowych jest~również dostępna adresacja \num{10}-bitowa, zwiększająca limit
+do~\num{1023}~odbiorców.
 
 Obie linie są~w~stanie spoczynku utrzymywane w~stanie wysokim.
 Rozpoczęcie transmisji jest sygnalizowane poprzez zmianę stanu przez nadajnik na~stan niski na~obu liniach,
@@ -215,7 +218,7 @@ Transmisja jest~zakończona poprzez powrót w~stan spoczynku.
 
 \subsection{I²S}\label{subsec:i2s}
 
-\emph{Inter-Integrated Circuit Sound}~\cite{i2s} nie~jest powiązane z~I²C, jednak ta~sama firma utworzyła
+\emph{Inter-Integrated Circuit Sound}\thinspace\cite{i2s} nie~jest powiązane z~I²C, jednak ta~sama firma utworzyła
 ich~specyfikacje.
 Protokół~ten jest~skupiony na~wbudowanych urządzeniach audio, zapewniając prostą i~ograniczoną funkcjonalność w~celu
 zapewnienia niezawodności i~prostoty wykorzystania.
@@ -243,8 +246,8 @@ Rysunek~\ref{fig:i2s} prezentuje te zależności.
 
 \subsection{SPI}\label{subsec:spi}
 
-\emph{Serial Peripheral Interface}~\cite{spi} to~synchroniczny szeregowy interfejs komunikacyjny z~jednym urządzeniem
-nadzorczym i~wieloma podrzędnymi wykorzystujący cztery linie.
+\emph{Serial Peripheral Interface}\thinspace\cite{spi} to~synchroniczny szeregowy interfejs komunikacyjny z~jednym
+urządzeniem nadzorczym i~wieloma podrzędnymi wykorzystujący cztery linie.
 Połączone urządzenia tworzą ze~swoich rejestrów wewnętrznych bufor kołowy, co~zapewnia prostą implementację
 komunikacji w~trybie pełny dupleks.
 
@@ -306,8 +309,8 @@ została na~rysunku~\ref{fig:spi2} pominięta.
 
 \subsection{UART}\label{subsec:uart}
 
-\emph{Universal Asynchronous Receiver-Transmitter}~\cite{uart} to~protokół komunikacyjny wykorzystujący dwie~linie
-oraz~wspólne uziemienie.
+\emph{Universal Asynchronous Receiver-Transmitter}\thinspace\cite{uart} to~protokół komunikacyjny wykorzystujący
+dwie~linie oraz~wspólne uziemienie.
 Jest~to~protokół asynchroniczny, w~związku z~czym oba~uczestniczące w~transmisji urządzenia należy przygotować
 do~komunikacji poprzez dobór parametrów komunikacyjnych na~te~same wartości, wspierane przez oba~urządzenia,
 gdyż~protokół nie~wykorzystuje linii zegara synchronizującego.
@@ -323,9 +326,9 @@ Ustawienia, które muszą mieć na urządzeniach zgodne wartości:
 \end{itemize}
 
 Wiadomość UART (rysunek~\ref{fig:uart}) składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii
-(stanem niskim) o~czasie trwania równym jednemu bitowi, a~następnie przesłanie 5--9 bitów wiadomości i~opcjonalnego
-bitu parzystości.
-Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadającym 1--2 bitom w~stanie spoczynku.
+(stanem niskim) o~czasie trwania równym jednemu bitowi, a~następnie przesłanie \numrange{5}{9} bitów wiadomości
+i~opcjonalnego bitu parzystości.
+Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadającym \numrange{1}{2} bitom w~stanie spoczynku.
 
 \begin{figure}[H]
   \centering
@@ -342,10 +345,10 @@ Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadają
 
 \subsection{Raspberry Pi OS}\label{subsec:rpi-os}
 
-\emph{Raspberry Pi OS}~\cite{rpios} (dawniej \emph{Raspbian}) to dystrybucja \emph{GNU/Linux} bazująca na~dystrybucji
-\emph{Debian}, utworzona i~przystosowana do~wykorzystania z~mikrokomputerami \emph{Raspberry Pi}.
-W~momencie pisania pracy najnowsza wersja z~1~października~2025 opiera~się na~\emph{Debianie 13 Trixie}, i~ta właśnie
-wersja jest~wspierana przez skrypt instalacyjny i~środowisko laboratoryjne.
+\emph{Raspberry Pi OS}\thinspace\cite{rpios} (dawniej \emph{Raspbian}) to~dystrybucja \emph{GNU/Linux} bazująca
+na~dystrybucji \emph{Debian}, utworzona i~przystosowana do~wykorzystania z~mikrokomputerami \emph{Raspberry Pi}.
+W~momencie pisania pracy najnowsza wersja z~\num{1}~października~2025 opiera~się na~\emph{Debianie 13 Trixie}, i~ta
+właśnie wersja jest~wspierana przez skrypt instalacyjny i~środowisko laboratoryjne.
 
 Dystrybucja ma~warianty przystosowane do~poszczególnych kategorii produktów \emph{Raspberry Pi}, optymalizujące system
 do~współpracy na~urządzeniach o~niskiej mocy obliczeniowej, ograniczonej wielkości, i~prędkości dysku (karty SD),
@@ -355,18 +358,18 @@ najlepszej stabilności i~wsparcia w~przypadku wystąpienia problemów.
 
 \subsection{Bash}\label{subsec:bash}
 
-\emph{Bash}~\cite{bash} to jedna z najpopularniejszych powłok (interpreterów poleceń) wykorzystywanych w systemach
-\emph{Unix/Linux} oraz \emph{MacOS}.
-Poza obsługą poleceń użytkownika zawiera zaawansowane możliwości skryptowe, dzięki czemu może być wykorzystywany do
+\emph{Bash}\thinspace\cite{bash} to~jedna z~najpopularniejszych powłok (interpreterów poleceń) wykorzystywanych
+w~systemach \emph{Unix}, \emph{Linux} oraz~\emph{MacOS}.
+Poza obsługą poleceń użytkownika zawiera zaawansowane możliwości skryptowe, dzięki~czemu może~być wykorzystywana~do
 szeroko zrozumiałej automatyzacji administracji systemem.
 
-W pracy wykorzystany właśnie w tym celu, co ułatwia prowadzącemu wstępną konfigurację, a także czyszczenie środowiska
+W~pracy wykorzystany właśnie w~tym celu, co~ułatwia prowadzącemu wstępną konfigurację, a~także czyszczenie środowiska
 między zajęciami -- załączony skrypt instalacyjny \ax{pi-labs.sh}{media/pi-labs.sh}[mimetype=text/plain] wykorzystuje
-możliwości tego narzędzia do pełnej konfiguracji płytki do zajęć przy użyciu jednej komendy.
+możliwości tego narzędzia do~pełnej konfiguracji płytki do~zajęć przy~użyciu jednej komendy.
 
 \subsection{Python}\label{subsec:py}
 
-\emph{Python}~\cite{python} to~interpretowany, wysokopoziomowy język programowania.
+\emph{Python}\thinspace\cite{python} to~interpretowany, wysokopoziomowy język programowania.
 Jest znany z~przejrzystej składni, łatwości nauki i~rozbudowanego zestawu bibliotek, zarówno wbudowanych
 jak~i~utworzonych przez~społeczność.
 Dzięki~temu również ilość materiałów na~temat wykorzystania języka jest~bardzo~duża.
@@ -375,12 +378,17 @@ Ekspresywność języka pozwala na~wyrażenie szerokiego zakresu wyrażeń w~pro
 popularnych paradygmatów programowania, co~jest dużą~zaletą w~trakcie nauki innych narzędzi -- dzięki tej~prostocie
 nie~trzeba `walczyć' ze~składnią języka, a~można skupić~się na~przyswojeniu nowych informacji na~temat nowego narzędzia.
 
+Największą wadą języka jest~prędkość interpretera, która~nie~pozwala na~wykorzystania w~zastosowaniach
+o~krytycznej wydajności.
+Część osób jest~również przeciwna użyciu przez~język białych znaków do~definicji bloków.
+
 \subsection{rpi-lgpio}\label{subsec:lgpio}
 
-Wiązania \emph{rpi-lgpio}~\cite{lgpio} języka C do~użytkowania interfejsu \emph{GPIO} zastępujące bibliotekę rpi-gpio\@.
+Wiązania \emph{rpi-lgpio}\thinspace\cite{lgpio} języka~C do~użytkowania interfejsu \emph{GPIO} zastępujące bibliotekę
+\emph{rpi-gpio}.
 Wykorzystuje te same nazwy importowane i~sygnatury w~celu zapewnienia kompatybilności wstecznej.
-Istnieje z~powodu usunięcia interfejsu sysfs \emph{GPIO} z~nowszych wersji jądra systemowego.
-Zamiast przestarzałego interfejsu sysfs wykorzystuje nowszy plik urządzenia gpiochip.
+Istnieje z~powodu usunięcia interfejsu \emph{sysfs} do \emph{GPIO} z~nowszych wersji jądra systemowego.
+Zamiast przestarzałego interfejsu sysfs wykorzystuje nowszy plik urządzenia \emph{gpiochip}.
 Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
 
 \begin{figure}[H]
@@ -391,13 +399,38 @@ Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
 
 \subsection{marimo}\label{subsec:marimo}
 
-Środowisko-notatnik Python zastępujące Jupyter.
+\emph{Marimo}\thinspace\cite{marimo} jest~środowiskiem notatnikowym \emph{Python} mającym na~celu usunięcie niektórych
+znaczących wad wcześniej istniejących rozwiązań\thinspace\cite{marimofaq}.
+Poza oferowaniem równie zaawansowanej funkcjonalności notatnika, architektura projektu gwarantuje cechy wpływające
+na~wygodę i~stabilność użytkowania.
+
+Wady, na~których rozwiązaniu skupia~się \emph{marimo}:
+\begin{itemize}
+  \item \textbf{Powtarzalność}: kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi
+        projektu, co~sprawia,~że \qty{36}{\percent} nie~jest powtarzalnych\thinspace\cite{jupyfail}.
+        \emph{Marimo} aktualizuje stan pamięci przy~wszelkich zmianach w~kodzie;
+  \item \textbf{Łatwość utrzymania}: notatniki \emph{marimo} są~przechowywane jako~czyste programy \emph{Python},
+        co~pozwala m.in.~na ich~bezproblemowe wersjonowanie;
+  \item \textbf{Interaktywność}: \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
+        automatycznie synchronizowanych w~kodzie przy~zmianie wartości;
+  \item \textbf{Wykorzystanie wtórne}: notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend
+        jak~zwyczajne skrypty w~języku \emph{Python}, można również zaimportować zdefiniowane w~nich symbole
+        do~innych plików;
+  \item \textbf{Udostępnianie}: każdy notatnik \emph{marimo} może~również być~uruchomiony jako~interaktywna aplikacja
+        Internetowa wyświetlająca interfejs użytkownika bez~możliwości edycji kodu.
+\end{itemize}
 
 \section{Wdrożenie rozwiązania}\label{sec:deployment}
 
 \subsection{Udostępnianie}\label{subsec:share}
 
-Skrypt bash dostępny na moim serwerze, docelowo uczelnianym.
+Pierwotną metodą udostępnienia elementu technicznego tej~pracy dyplomowej jest~skrypt \emph{Bash}, zawarty zarówno
+jako~załącznik w~tym~pliku PDF, jako~załącznik w~Archiwum Prac Dyplomowych, a~także na~mojej~stronie
+Internetowej\thinspace\cite{script}.
+Zawiera~on wszystkie informacje niezbędne do~przygotowania i~uruchomienia środowiska laboratoryjnego na~płytce
+\emph{Raspberry Pi} ze~świeżo zainstalowanym systemem opartym~na \emph{Debianie 13 Trixie}.
+Skrypt~ten może~być~również użyty po~zakończeniu laboratoriów do~wyczyszczenia środowiska od~zmian wprowadzonych
+przez~studenta.
 
 \subsection{Testy rozwiązań}\label{subsec:tests}
 
@@ -405,7 +438,11 @@ Testy rozwiązań studentów.
 
 \subsection{Bezpieczeństwo}\label{subsec:security}
 
-Opis bezpieczeństwa udostępniania i testów.
+Przed pierwszym uruchomieniem skryptu z~nieznanego źródła należy zapoznać~się z~jego~treścią przy~użyciu edytora
+tekstowego.
+Nie~należy uruchamiać kodu, którego~treść jest~nam niezrozumiała.
+
+%TODO: Opis działania testów poprawności rozwiązania zadań laboratoryjnych.
 
 \chapter{Laboratorium I}\label{ch:lab-1}
 
@@ -449,5 +486,8 @@ Opis bezpieczeństwa udostępniania i testów.
 
 % CONTENT END
 \bibliography{bibliography}
-\input{tex/backmatter}
+\backmatter\normalfont\clearpage
+\listoffigures\clearpage
+\listoftables\clearpage
+\listofappendices
 \end{document}

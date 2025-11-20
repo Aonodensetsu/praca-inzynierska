@@ -26,6 +26,8 @@
 \usepackage{pdfpages}
 \usepackage{copyrightbox}
 \usepackage{attachfile2}
+\usepackage{siunitx}
+\usepackage{currency}
 
 \renewcommand\familydefault{\sfdefault}
 \renewcommand{\bibitempages}[1]{\newblock {\scriptsize [\mbox{str.\ }#1]}}
@@ -147,6 +149,15 @@
 \makeatletter
 \let\l@ax\l@figure
 \makeatother
+
+\sisetup{locale=PL}
+\DefineCurrency{PLN}{
+    iso=PLN,
+    kind=symbol,
+    name={złoty},
+    plural={złotych},
+    symbol={zł},
+}
 
 \settypeblocksize{23cm}{16cm}{*}
 
