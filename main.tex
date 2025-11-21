@@ -429,20 +429,47 @@ jako~załącznik w~tym~pliku PDF, jako~załącznik w~Archiwum Prac Dyplomowych, 
 Internetowej\thinspace\cite{script}.
 Zawiera~on wszystkie informacje niezbędne do~przygotowania i~uruchomienia środowiska laboratoryjnego na~płytce
 \emph{Raspberry Pi} ze~świeżo zainstalowanym systemem opartym~na \emph{Debianie 13 Trixie}.
+Dzięki użyciu stałych wersji programów ilość zmian niezbędnych do~przystosowania skryptu do~wychodzących w~przyszłości
+wersje systemu powinna~być minimalna.
 Skrypt~ten może~być~również użyty po~zakończeniu laboratoriów do~wyczyszczenia środowiska od~zmian wprowadzonych
 przez~studenta.
 
 \subsection{Testy rozwiązań}\label{subsec:tests}
 
-Testy rozwiązań studentów.
+Zadania pośrednie przygotowane dla~studentów -- wymagające napisania kodu -- są~automatycznie sprawdzane
+przy~wykorzystaniu możliwości środowiska \emph{marimo}.
+Pozwala~to zaoszczędzić czas prowadzącego na~pomoc indywidualną; sprawdzenie końcowego działania programu gwarantuje
+poprawne rozwiązanie wcześniejszych zadań (lub~indywidualną wiedzę studenta, jeśli~rozwiązanie jest~inne, ale~również
+działa poprawnie).
+
+Testy wykorzystują standardową bibliotekę języka, \emph{unittest}, w~celu największej przenoszalności.
+Kod jest~napisany w~sposób niezawierający bezpośrednio prawidłowego rozwiązania, aby~utrudnić możliwe oszukiwanie
+poprzez~sprawdzenie rozwiązania w~teście.
 
 \subsection{Bezpieczeństwo}\label{subsec:security}
 
 Przed pierwszym uruchomieniem skryptu z~nieznanego źródła należy zapoznać~się z~jego~treścią przy~użyciu edytora
 tekstowego.
 Nie~należy uruchamiać kodu, którego~treść jest~nam niezrozumiała.
+Dotyczy~to załączonego przeze~mnie skryptu instalacyjnego.
 
-%TODO: Opis działania testów poprawności rozwiązania zadań laboratoryjnych.
+Skrypt zawiera środki testujące prawidłowość wykonania, jednak w~każdym kodzie możliwe~są błędy i~niezaplanowane
+wykorzystania.
+Wykorzystane środki zapobiegawcze:
+\begin{itemize}
+  \item Wykluczenie sprzętu mogącego uszkodzić płytkę \emph{Raspberry Pi} wyższym napięciem;
+  \item Zawarte w~pracy, a~także w~nagłówku skryptu ostrzeżenie o~nieuruchamianiu nieznanego kodu;
+  \item Test otrzymania uprawnień administratorskich;
+  \item Użycie folderu tymczasowego przez~całą~długość działania kodu;
+  \item Sprawdzenie istnienia zmian wykonywanych przez~skrypt przed~ich~wykonaniem;
+  \item Wykorzystanie stałej wersji języka \emph{Python};
+  \item Wykorzystanie środowiska wirtualnego;
+  \item Wykorzystanie stałej wersji bibliotek języka;
+  \item Załączona~instrukcja połączeń dla~prowadzącego;
+  \item Załączony~plik wprowadzający do~wykorzystania środowisk notatnikowych;
+  \item Automatyczne testy prawidłowości wykonania zadań przez~studenta;
+  \item Powyższe~testy nie~uruchamiają kodu studenta.
+\end{itemize}
 
 \chapter{Laboratorium I}\label{ch:lab-1}
 
