@@ -143,8 +143,8 @@
 \newlistof{listofappendices}{loa}{Spis załączników}
 \DeclareDocumentCommand{\ax}{ m m o }{%
     \refstepcounter{ax}%
-    \textattachfile[#3]{#2}{#1~[\thechapter.\theax]}%
-    \addcontentsline{loa}{ax}{\protect\numberline{\thechapter.\theax}#1}%
+    \textattachfile[#3]{#2}{#1~[F\thechapter.\theax]}%
+    \addcontentsline{loa}{ax}{\protect\numberline{F\thechapter.\theax}#1}%
 }
 \makeatletter
 \let\l@ax\l@figure
