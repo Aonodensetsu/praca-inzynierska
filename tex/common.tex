@@ -1,8 +1,22 @@
-\chapter{Informacje wspólne}\label{ch:info}
+\chapter{Informacje wstępne}\label{ch:info}
 
-Rozdział ten skupia się na informacjach mających znaczenie dla więcej niż jednego z laboratoriów.
-W związku z tym, w celu niepowtarzania tychże informacji w każdym istotnym miejscu, umieszczone są one w przodującej
+Rozdział ten skupia~się na~informacjach mających znaczenie dla~więcej niż~jednego z~laboratoriów.
+W~związku z~tym, w~celu niepowtarzania tych informacji w~każdym istotnym miejscu, umieszczone~są~one w~przodującej
 sekcji pracy.
+
+\section{Przegląd rynku}\label{sec:q}
+
+Na~rynku istnieją zestawy mogące stanowić poszczególne laboratoria, które mogłyby być~wykorzystane do~przygotowania
+laboratoriów na~potrzeby uczelni.
+Przystosowanie jednak niezależnych produktów wiąże~się z~komplikacjami wynikającymi z~różnic w~wykorzystywanych
+rozwiązaniach technicznych oraz~programowych.
+
+Ta~praca jest kolekcją kilku zestawów wykorzystujących sprzęt dostępny~już uczelni, a~także zrealizowanych w~jednolity
+i~przystępny sposób.
+Wygodna metoda instalacji, przygotowania, a~także wyczyszczenia środowiska laboratoryjnego oraz~wykonania zadań zgodna
+dla~wszystkich realizowanych zagadnień niweluje te~komplikacje i~pozwala na~poświęcenie większej ilości czasu treści
+zadań niźli zapoznania z~kolejnymi metodami interakcji ze~sprzętem.
+Wykorzystanie opisanych poniżej rozwiązań pozwala również m.in.~na~automatyczne sprawdzanie poprawności rozwiązań.
 
 \section{Dostępny sprzęt}\label{sec:harware}
 
@@ -10,21 +24,20 @@ sekcji pracy.
 
 \emph{Raspberry Pi}\thinspace\cite{pi} to~seria małych komputerów jednopłytkowych stworzonych przez Fundację
 Raspberry~Pi w~Wielkiej Brytanii.
-Celem Fundacji jest szeroka dostępność systemów o~możliwościach obliczeniowych, co~wpływa na~ograniczony koszt płytki,
-wykorzystanie standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi}, \emph{Bluetooth}), a~zarazem
-szerokie możliwości wykorzystania do~budowy urządzeń m.in.~Internetu Rzeczy.
+Celem Fundacji jest rozpowszechnienie systemów o~możliwościach obliczeniowych, co~wpływa na~niewielki koszt płytki,
+pozwala~na wykorzystanie standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi}, \emph{Bluetooth}).
+Takie urządzenia można zastosować w wielu różnych projektach m.in.~do połączenia urządzeń Internetu Rzeczy.
 
 Koszt najtańszego modelu wynosi ok.~\dPLN{20}, a~najtańszy pełnoprawny komputer w~serii kosztuje ok.~\dPLN{50}.
 
 Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów\thinspace\cite{pinout} \emph{GPIO}
-pozwalających na~budowę dowolnych połączeń wykorzystujących zasilanie \qty{3.3}{\V} lub \qty{5}{\V}\@.
-Stanowią dzięki~temu przystępną drogę zarówno do~nauki i~użytkowania systemów komputerowych jak~i~eksperymentacji
-z~budowaniem własnych urządzeń.
+pozwalających na~podłączenie dowolnych układów wykorzystujących zasilanie \qty{3.3}{\V} lub \qty{5}{\V}\@.
+Stanowią dzięki~temu przystępną opcję zarówno do~nauki i~użytkowania systemów komputerowych jak~i~eksperymentów
+polegających na budowaniu własnych urządzeń.
 
-\newpage
 \subsection{Moduły}\label{subsec:modules}
 
-Dostępne prowadzącemu moduły:
+Moduły udostępnione przez promotora na~potrzeby niniejszej pracy dyplomowej:
 \begin{itemize}
   \item Sense HAT\thinspace\cite{sense};
   \item Flick HAT\thinspace\cite{flick};
@@ -35,7 +48,7 @@ Dostępne prowadzącemu moduły:
   \item Traffic pHAT\thinspace\cite{traffic}.
 \end{itemize}
 
-Niektóre moduły zostały wyłączone z~procesu selekcji:
+Niektóre moduły nie~zostały uwzględnione w~procesie selekcji:
 \begin{itemize}
   \item Flick HAT -- firma producenta została rozwiązana\thinspace\cite{pisupply}, oficjalna dokumentacja ich~produktów
         nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista;
@@ -45,21 +58,27 @@ Niektóre moduły zostały wyłączone z~procesu selekcji:
         możliwości.
 \end{itemize}
 
-Przydział pozostałych modułów opisany jest w~sekcjach przeznaczonych dla~każdego z~laboratoriów.
+Pozostałe moduły zostały rozdzielone do wykorzystania w~poszczególnych laboratoriach.
 W związku z~ilością możliwych zastosowań zestawu \emph{Grove} został on~wykorzystany (używając różnych~urządzeń
 zewnętrznych) dwukrotnie.
+Szczegółowe opisy połączeń i~wykorzystania znajdują~się w~rozdziałach poświęconych każdemu z~laboratoriów z~osobna.
 
 \section{Uzupełnienie: Alternatywy Raspberry Pi}\label{sec:alternate}
 
 Wspominając o~tym urządzeniu nie~można zapomnieć o~podobnych urządzeniach dostępnych na~rynku.
-W~ostatnich latach na~rynku pojawiły się~bowiem alternatywy o~porównywalnej lub~nawet korzystniejszej cenie,
-lecz~to \emph{Raspberry Pi} pełniło ważną funkcję w~popularyzowaniu pojęcia komputerów jednopłytkowych jako~niedrogiego
-narzędzia do~nauki i~prototypowania.
-Nadal jest najlepiej udokumentowanym z~konkurentów, co~jest ważnym elementem przystępności w~środowisku naukowym.
+W~ostatnich latach na~rynku pojawiły się~bowiem alternatywy o~porównywalnej lub~nawet korzystniejszej cenie.
+Niektórymi z~popularnych rozwiązań w~tej~kategorii są~\emph{Banana Pi}\thinspace\cite{bananapi},
+\emph{Odroid}\thinspace\cite{odroid}, \emph{Libre Computer}\thinspace\cite{libre},
+\emph{Orange Pi}\thinspace\cite{orangepi}, lub~poleasingowe komputery w~małej obudowie.
+
+\emph{Raspberry Pi} pełniło ważną funkcję w~popularyzowaniu pojęcia komputerów jednopłytkowych jako~niedrogiego
+narzędzia do~nauki i~prototypowania, i nadal jest najlepiej udokumentowanym z~konkurentów, co~jest ważnym elementem
+przystępności w~środowisku naukowym.
 Alternatywy często skupiają~się w~pierwszej kolejności na~udostępnieniu wyższej funkcjonalności, co~sprawia,~że
 są~dobrą opcją dla~bardziej zaawansowanych użytkowników.
 
-Osobnym rodzajem popularnych urządzeń jest~seria \emph{Arduino}, która jest~często przytaczana wraz~z~\emph{Raspberry Pi}.
+Osobnym rodzajem popularnych urządzeń jest~seria \emph{Arduino}, która jest~często przytaczana
+wraz~z~\emph{Raspberry Pi}.
 Istnieją między nimi jednak istotne różnice, z~powodu których urządzenia~te nie~odgrywają tej~samej roli.
 Urządzenia \emph{Arduino} nie~są pełnoprawnymi komputerami (wymagają osobnego urządzenia do zaprogramowania)
 i~konkurują jedynie z~\emph{Raspberry Pi Pico}, a~nie~z~resztą płytek o~możliwości obsługi pełnego systemu operacyjnego.
@@ -68,8 +87,9 @@ i~konkurują jedynie z~\emph{Raspberry Pi Pico}, a~nie~z~resztą płytek o~możl
 
 \subsection{GPIO}\label{subsec:gpio}
 
-Interfejs \emph{GPIO} płytki \emph{Raspberry Pi} składa~się z~czterdziestu pinów pozwalających płytce na~współpracę
-z~innymi urządzeniami\thinspace\cite{pinout}.
+Złącze \emph{General-Purpose Input/Output} jest stosowane w mikrokontrolerach, komputerach jednopłytkowych, i~innych
+urządzeniach elektronicznych w~celu umożliwienia bezpośredniej komunikacji z~układami zewnętrznymi.
+W~przypadku \emph{Raspberry Pi} składa~się z~czterdziestu pinów\thinspace\cite{pinout}.
 Część możliwości wymaga konfiguracji jądra systemu, co~jest przez~producenta udostępnione w~przystępny sposób.
 Rysunek~\ref{fig:pinout} zaznacza te~dodatkowe możliwości; piny wchodzące w~ich skład można również użyć
 w~standardowy sposób.
@@ -127,23 +147,29 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 \begin{table}[H]
   \caption{Opis złączy \emph{Grove Base HAT}}
   \label{tab:grove}
-  \begin{tabularx}{\linewidth}{@{}lX@{}}
+  \begin{tabularx}{\linewidth}{@{}l|X@{}}
     GPIO      & Bezpośrednie połączenie do złącza \emph{GPIO} płytki \emph{Raspberry~Pi}.
                 Może powodować konflikty ze złączami \emph{Grove}. \\
+    \midrule
     I²C       & Zgodnie ze~standardowymi łączeniami, zewnętrzny pin pełni funkcję zegara, a~wewnętrzny przesyłu
                 danych. \\
+    \midrule
     Cyfrowy   & Zewnętrzny pin pełni funkcję pierwszego cyfrowego łącza wejścia/wyjścia, a~wewnętrzny jest łączem
                 dodatkowym dla~modułów wykorzystujących dwie linie. \\
+    \midrule
     UART      & Specjalizowana forma trybu cyfrowego, pierwszy pin odbiera dane od~podłączonego urządzenia, a~drugi
                 wysyła. \\
+    \midrule
     Analogowy & Wejścia analogowe są~podłączone do~wbudowanego przetwornika analogowo-cyfrowego, co~pozwala
                 na~ich~użycie z~płytką \emph{Raspberry~Pi}, nie~posiadającej natywnie takiej możliwości.
                 Podobnie do~trybu cyfrowego, linia zewnętrzna jest wykorzystywana w~pierwszej kolejności, a~wewnętrzna
                 w~drugiej. \\
+    \midrule
     PWM       & Port \emph{PWM} podłączony~jest do~sprzętowego złącza \emph{PWM} \emph{Raspberry~Pi}.
                 Pozostałe złącza mogą~być używane jako~\emph{PWM} na~poziomie oprogramowania.
                 Złącze sprzętowe pozwala na~lepszą dokładność przy~wysokich częstotliwościach, jednak wchodzi w~konflikt
                 z~niektórymi innymi funkcjami płytki. \\
+    \midrule
     SWD       & Dostęp do wbudowanego oprogramowania modułu \emph{Grove Base HAT}\@.
   \end{tabularx}
 \end{table}
@@ -352,11 +378,11 @@ najlepszej stabilności i~wsparcia w~przypadku wystąpienia problemów.
 \emph{Bash}\thinspace\cite{bash} to~jedna z~najpopularniejszych powłok (interpreterów poleceń) wykorzystywanych
 w~systemach \emph{Unix}, \emph{Linux} oraz~\emph{MacOS}.
 Poza obsługą poleceń użytkownika zawiera zaawansowane możliwości skryptowe, dzięki~czemu może~być wykorzystywana~do
-szeroko zrozumiałej automatyzacji administracji systemem.
+szeroko rozumianej automatyzacji administracji systemem.
 
-W~pracy wykorzystany właśnie w~tym celu, co~ułatwia prowadzącemu wstępną konfigurację, a~także czyszczenie środowiska
-między zajęciami -- załączony skrypt instalacyjny \ax{pi-labs.sh}{media/pi-labs.sh}[mimetype=text/plain] wykorzystuje
-możliwości tego narzędzia do~pełnej konfiguracji płytki do~zajęć przy~użyciu jednej komendy.
+W~pracy wykorzystany właśnie w~tym celu, co~ułatwia osobie prowadzącej zajęcia wstępną konfigurację, a~także czyszczenie
+środowiska między zajęciami -- załączony skrypt instalacyjny \ax{pi-labs.sh}{media/pi-labs.sh}[mimetype=text/plain]
+wykorzystuje możliwości tego narzędzia do~pełnej konfiguracji płytki do~zajęć przy~użyciu jednej komendy.
 
 \subsection{Python}\label{subsec:py}
 
