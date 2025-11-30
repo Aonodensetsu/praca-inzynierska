@@ -215,7 +215,6 @@ def _(mo):
         ## Wykorzystanie Raspberry Pi z Sense HAT jako kompasu
 
         *Raspberry Pi* to mały komputer, posiadający dodatkowo interfejs pozwalający na podłączenie modułów *HAT* spełniających rozmaite funkcje, często zawierających różnego rodzaju sensory.
-        Moduł *Sense HAT* zawiera wyświetlacz kolorowy 8×8, mały joystick, oraz czujniki: żyroskop, akcelerometr, magnetometr, termometr, higrometr, ciśnieniomierz, czujnik naświetlenia.
 
         *Raspberry Pi* oraz moduły są stosunkowo niedrogie, a pozwalają na projektowanie własnych urządzeń, które mogą służyć jako prototyp preprodukcyjny lub spełniać unikalną funkcję. *Raspberry Pi* jest również pełnoprawnym komputerem używającym systemu Linux, ze wzglądu na swoją wielkość bardzo przenośnym, może więc również służyć jako diagnostyczny komputer lub domowy serwer.
 
@@ -227,20 +226,20 @@ def _(mo):
 
         ### Z1. Kalibracja IMU
 
-        Aby użyć czujników inercyjnych (**IMU**), do których zalicza się żyroskop, akcelerometr i magenetometr, należy najpierw je skalibrować. Można to zrobić przy użyciu (zainstalowanej) biblioteki systemowej `octave`.
+        Aby użyć czujników inercyjnych (**IMU**), do których zalicza się żyroskop, akcelerometr i magnetometr, należy najpierw je skalibrować. Można to zrobić przy użyciu (już zainstalowanej) biblioteki systemowej `octave`.
 
         Otwórz terminal i skopiuj domyślne pliki konfiguracyjne sensora do folderu studenta:
         `cp -a /usr/share/librtimulib-utils/RTEllipsoidFit ~`
 
         Przejdź do skopiowanego folderu:
-        `cd RTEllipsoidFit`
+        `cd ~/RTEllipsoidFit`
 
-        W tym folderze znajdują się pliki niezbędne programowi kalibracyjnemu do przetworzenia danych otrzymanych podczas kalibracji na konfigurację prawidłowo dostosowującą dane w trakcie korzystania z czujników. Można dostosować te domyślne wartości do specjalistycznych potrzeb, jednak w tym przypadku w zupełności wystarczą w niezmienionej formie.
+        W tym folderze znajdują się pliki niezbędne programowi kalibracyjnemu do przetworzenia danych otrzymanych podczas kalibracji na konfigurację prawidłowo dostosowującą dane generowane w trakcie korzystania z czujników. Można dostosować te domyślne wartości dla specjalistycznych potrzeb, jednak w tym przypadku w zupełności wystarczą w niezmienionej formie.
 
         Aby uruchomić program kalibracyjny, użyj komendy:
         `RTIMULibCal`
 
-        Program ten posiada prosty interfejs w języku angielskim. Wybierz opcję `m`, i naciśnij dowolny przycisk, aby rozpocząć kalibrację, która odbywa się poprzez poruszanie sensorem (a zatem i komputerem *Raspberry Pi*). Spróbuj obracać urządzenie w taki sposób, aby znalazło się w każdej możliwej pozycji (pod względem obrotów). Kalibracja kończy się również poprzez naciśnięcie dowolnego przycisku.
+        Program ten posiada prosty interfejs w języku angielskim. Wybierz opcję `m` i naciśnij dowolny przycisk, aby rozpocząć kalibrację, która odbywa się poprzez poruszanie sensorem (a zatem i płytką *Raspberry Pi*). Spróbuj obracać urządzenie w taki sposób, aby w trakcie kalibracji znalazło się w każdej możliwej orientacji. Kalibracja kończy się również poprzez naciśnięcie dowolnego przycisku.
 
         Wybierz opcję `x` aby wyjść z programu kalibracyjnego.
 
@@ -251,7 +250,7 @@ def _(mo):
         Czujniki IMU potrzebują chwili, aby uruchomić się i skalibrować po uruchomieniu systemu. Po następnym kroku uruchamiającym system ponownie, upewnij się, że urządzenie przez 6-10 sekund po uruchomieniu (~30 sekund łącznie) nie poruszy się, aby uzyskać najdokładniejsze rezultaty.
         ///
 
-        Po tym należy zrestartować programy używające kalibracji, w tym również środowisko tego laboratorium, więc zapisz wykonane zmiany w tym pliku, a następnie użyj komendy do uruchomienia systemu ponownie:
+        Po tym kroku należy zrestartować programy używające kalibracji, w tym również środowisko tego laboratorium, więc zapisz zmiany wykonane w tym pliku, a następnie użyj komendy do uruchomienia systemu ponownie:
         `sudo reboot`
 
         ---

@@ -101,7 +101,7 @@ w~standardowy sposób.
   }{
     \textcopyright pinout.xyz; Philip~Howard, RogueM i~inni
   }
-  \caption{Układ pinów \emph{Raspberry Pi} -- adresacja BCM}
+  \caption{Układ pinów \emph{Raspberry Pi} -- adresacja \emph{BCM}}
   \label{fig:pinout}
 \end{figure}
 
@@ -231,7 +231,7 @@ Transmisja jest~zakończona poprzez powrót w~stan spoczynku.
   }{
     \textcopyright Soldered Electronics d.o.o.
   }
-  \caption{Przykład wiadomości na linii SDA I²C}
+  \caption{Przykład wiadomości na linii \emph{SDA} interfejsu \emph{I²C}}
   \label{fig:i2c}
 \end{figure}
 
@@ -259,7 +259,7 @@ Rysunek~\ref{fig:i2s} prezentuje te zależności.
   }{
     \textcopyright Walter Dvorak
   }
-  \caption{Diagram czasowy I²S}
+  \caption{Diagram czasowy \emph{I²S}}
   \label{fig:i2s}
 \end{figure}
 
@@ -299,7 +299,7 @@ przesyłanie rozkazów do~urządzeń podrzędnych.
   }{
     \textcopyright Analog Devices Inc.
   }
-  \caption{Łącze bezpośrednie SPI}
+  \caption{Łącze bezpośrednie \emph{SPI}}
   \label{fig:spi1}
 \end{figure}
 
@@ -312,6 +312,7 @@ składania~się przez~nie w~bufor kołowy, a~następnie aktywuje je~wszystkie je
 linii \emph{Chip Select}.
 Urządzenia podrzędne bez~zleconego zadania muszą otrzymać wartość zerową, która~jest~traktowana jako~brak danych.
 Następnie urządzenie nadzorcze zbiera wszystkie odpowiedzi.
+Ten~typ połączenia przedstawia rysunek~\ref{fig:spi2}.
 
 \begin{figure}[H]
   \centering
@@ -320,7 +321,7 @@ Następnie urządzenie nadzorcze zbiera wszystkie odpowiedzi.
   }{
     \textcopyright Analog Devices Inc.
   }
-  \caption{Łącze cykliczne SPI}
+  \caption{Łącze cykliczne \emph{SPI}}
   \label{fig:spi2}
 \end{figure}
 
@@ -354,7 +355,7 @@ Następna wiadomość może zostać przesłana minimalnie po~czasie odpowiadają
   }{
     \textcopyright Arduino
   }
-  \caption{Schemat wiadomości UART}
+  \caption{Schemat wiadomości \emph{UART}}
   \label{fig:uart}
 \end{figure}
 
@@ -450,6 +451,10 @@ Dzięki użyciu stałych wersji programów ilość zmian niezbędnych do~przysto
 wersje systemu powinna~być minimalna.
 Skrypt~ten może~być~również użyty po~zakończeniu laboratoriów do~wyczyszczenia środowiska od~zmian wprowadzonych
 przez~studenta.
+
+\subsection{Wprowadzenie}\label{subsec:entry}
+
+TODO: Wspomnieć `laboratorium 0' i plik połączeń.
 
 \subsection{Testy rozwiązań}\label{subsec:tests}
 
