@@ -3,16 +3,50 @@
 \pagestyle{empty}
 \begin{document}
 
+{\chapnamefont Wstęp}
+
 Na~poniższym rysunku płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO}, wszystkie dalsze
 rysunki będą w~tej~samej orientacji -- z~tym~złączem po~górnej stronie rysunku.
-Kolorem jasnoniebieskim zaznaczone są~złączki mocujące moduły podrzędne.
+Kolorem jasnoniebieskim zaznaczone są~złączki mocujące moduły podrzędne, można wykorzystać~je wraz~z~plastikowymi
+śrubami do~bezpieczniejszego przymocowania modułów.
 
-Po przyciśnięciu modułu do płytki Raspberry Pi
+Moduły mocuje~się wciskając znajdujące się po~ich dolnej stronie panel pasujący~do interfejsu \emph{GPIO} i~opcjonalnie
+przykręcając złączki.
+Moduły są zaprojektowane w~taki sposób, że~w~prawidłowej orientacji nie~wystają poza~granice płytki \emph{Raspbery Pi}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{media/board}
+  \includegraphics[width=0.8\linewidth]{media/board}\\
+  Płytka Raspberry Pi
   \label{fig:board}
 \end{figure}
+
+\newpage
+{\chapnamefont Sense HAT}
+
+Sense HAT odwrócony, aby~widzieć port GPIO obok portu GPIO płytki, ma~wcięcie (zaznaczone kolorem czerwonym)
+po~prawej stronie oraz~szczelinę po~lewej dolnej stronie.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{media/sense_hat_unbuilt}\\
+  Moduł obok płytki
+  \label{fig:sensehatunbuilt}
+\end{figure}
+
+Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{media/sense_hat_built}\\
+  Przymocowany moduł
+  \label{fig:sensehatbuilt}
+\end{figure}
+
+%\newpage
+%{\chapnamefont Grove Base HAT}
+
+%Grove Base HAT jest~wykorzystany w~dwóch zadaniach.
+%Montaż w~obu~przypadkach jest~identyczny, a~różni~się jedynie przymocowaniem rozszerzeń do~modułu Grove.
 
 \end{document}

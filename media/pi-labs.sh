@@ -243,7 +243,7 @@ def _(mo):
 
         Wybierz opcję `x` aby wyjść z programu kalibracyjnego.
 
-        Domyślnie plik konfiguracyjny jest zapisywany w lokalnym folderze użytkownika, jednak aby używać prawidłowej kalibracji we wszystkich programach, przeniesiemy go w miejsce konfiguracji systemowej:
+        Domyślnie plik konfiguracyjny jest zapisywany w lokalnym folderze użytkownika, jednak aby używać prawidłowej kalibracji we wszystkich programach, przenieś go w miejsce konfiguracji systemowej:
         `sudo mv ~/.config/sense_hat/RTIMULib.ini /etc`
 
         /// admonition
@@ -2370,5 +2370,14 @@ systemctl enable pi-labs-workspace
 if [ -d /home/student/RTEllipsoidFit ]; then rm -rf /home/student/RTEllipsoidFit; fi
 if [ -d /home/student/.config/sense_hat ]; then rm -rf /home/student/.config/sense_hat; fi
 if [ -f /etc/RTIMULib.ini ]; then rm /etc/RTIMULib.ini; fi
+# Ikona na pulpicie
+cat >Environment.desktop <<'END'
+[Desktop Entry]
+Type=Link
+URL=http://localhost
+Name=Środowisko Laboratoryjne
+Icon=firefox-esr
+END
+install -m 755 Environment.desktop /home/student/Desktop/
 # Niestety niezbędne z powodu zmian konfiguracji urządzeń
 reboot
