@@ -21,23 +21,34 @@ producenta zintegrowanych urządzeń.
 
 \section{Dodatkowe oprogramowanie}\label{sec:lab1-sw}
 
-W tym laboratorium wykorzystana jest oficjalna biblioteka \emph{sense\_hat}\thinspace\cite{senselib}.
-Jest to najprostszy sposób wykorzystania możliwości sensorów modułu \emph{Sense HAT}, więc stanowi łagodne wprowadzenie
-do dalszych zadań w środowisku marimo.
-Biblioteka udostępnia klasę \emph{SenseHat} zawierającą funkcje pomagające w wykorzystaniu czujników oraz matrycy.
+W~tym laboratorium wykorzystana~jest oficjalna biblioteka \emph{sense\_hat}\thinspace\cite{senselib}.
+Jest to zalecany i~najprostszy sposób wykorzystania możliwości sensorów modułu \emph{Sense HAT}, gdyż biblioteka
+zapewnia wysokopoziomowe interfejsy do~obsługi zarówno czujników, jak~i~matrycy.
+Dzięki temu wykorzystanie sprzętu jest~bliżej paradygmatowi deklaratywnemu, bez~potrzeby zrozumienia niskopoziomowych
+detali komunikacji przeprowadzanej przez~urządzenia.
 
-\section{Rozwiązanie}\label{sec:lab1-sol}
-
-Rysunek~\ref{fig:sensehatlab} to~fragment instrukcji laboratoryjnej opisujący pierwsze z~zadań przeprowadzenia procesu
-kalibracji sensorów inercyjnych.
-Pokazuje~ona i~wyjaśnia kolejne kroki niezbędne do~ukończenia procesu kalibracji, co~zwiększa dokładność późniejszych
-wyników.
-Środowisko \emph{marimo} wspiera zarówno tryb jasny, jak~i~ciemny.
-Ten rysunek jest w~trybie jasnym, ale~tryb ciemny będzie również zaprezentowany na~dalszych rysunkach.
+Zastosowanie tej~biblioteki stanowi łagodne wprowadzenie do~dalszych zadań realizowanych w~środowisku marimo.
+Głównym jej~elementem jest~klasa \emph{SenseHat}, która zbiera zdefiniowane funkcje pod~jedną nazwą, pozwalając
+środowisku marimo na~wyświetlanie podpowiedzi w interfejsie graficznym (rys.~\ref{fig:marimosuggestion}).
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{media/sense_hat_lab}
+  \includegraphics[width=0.5\linewidth]{media/marimo_suggestions}
+  \caption{Podpowiedzi w interfejsie graficznym marimo}
+  \label{fig:marimosuggestion}
+\end{figure}
+
+\section{Rozwiązanie}\label{sec:lab1-sol}
+
+Rysunek~\ref{fig:sensehatlab} to~fragment instrukcji laboratoryjnej opisujący pierwsze z~zadań, jakim~jest
+przeprowadzenie procesu kalibracji sensorów inercyjnych.
+Pokazuje~on i~wyjaśnia kolejne kroki niezbędne do~wykonania podstawowego procesu kalibracji, co~znacząco zwiększa
+dokładność późniejszych pomiarów oraz stabilność danych.
+Instrukcja zwraca uwagę na prawidłowe ułożenie urządzenia w celu ograniczenia zakłóceń magnetycznych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/sense_hat_lab}
   \caption{Fragment instrukcji na temat \emph{Sense HAT}}
   \label{fig:sensehatlab}
 \end{figure}
