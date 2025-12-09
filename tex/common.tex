@@ -48,15 +48,24 @@ Moduły udostępnione przez promotora na~potrzeby niniejszej pracy dyplomowej:
   \item Traffic pHAT\thinspace\cite{traffic}.
 \end{itemize}
 
-Niektóre moduły nie~zostały uwzględnione w~procesie selekcji:
-\begin{itemize}
-  \item Flick HAT -- firma producenta została rozwiązana\thinspace\cite{pisupply}, oficjalna dokumentacja ich~produktów
-        nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista;
-  \item Automation HAT Mini -- jest zaprojektowany do~pracy z~urządzeniami o~napięciu \qty{12}{\V} lub \qty{24}{\V},
-        co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę;
-  \item Unicorn HAT -- jest wyposażony w~macierz diod $8\,\times\,8$, podobnie do~\emph{Sense HAT}, który~ma~szersze
-        możliwości.
-\end{itemize}
+Niektóre moduły nie~zostały uwzględnione w~procesie selekcji -- tab.~\ref{tab:excluded}.
+
+\begin{table}[H]
+  \caption{Spis niewykorzystanych modułów}
+  \label{tab:excluded}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \textbf{Moduł}       & \textbf{Powód} \\
+    \midrule
+    Flick HAT            & Firma producenta została rozwiązana\thinspace\cite{pisupply}, oficjalna dokumentacja
+                           ich~produktów nie~jest dostępna, a~konfiguracja nakładki nie~jest oczywista. \\
+    \midrule
+    Automation HAT Mini  & Zaprojektowany do~pracy z~urządzeniami o~napięciu \qty{12}{\V} lub \qty{24}{\V},
+                           co~przy nieprawidłowym użytkowaniu może uszkodzić płytkę. \\
+    \midrule
+    Unicorn HAT          & Wyposażony w~macierz diod $8\,\times\,8$, podobnie do~\emph{Sense HAT}, który~ma~szersze
+                           możliwości.
+  \end{tabularx}
+\end{table}
 
 Pozostałe moduły zostały rozdzielone do wykorzystania w~poszczególnych laboratoriach.
 W związku z~ilością możliwych zastosowań zestawu \emph{Grove} został on~wykorzystany (używając różnych~urządzeń
@@ -126,7 +135,8 @@ Moduł wyprowadza interfejs \emph{GPIO}, jednak wiele połączeń pokrywa się z
 w~związku z~czym wykorzystanie ich nie~jest bezpieczne bez~wcześniejszego zrozumienia tego~systemu.
 Na~module \emph{Grove Base HAT} złącza podpisane są~przy użyciu numeracji \emph{BCM}.
 
-Połączenia fizyczne wykorzystywane przez interfejs \emph{Grove} przedstawione na~rysunku~\ref{fig:grovehat} są~podobne
+Połączenia fizyczne wykorzystywane przez interfejs \emph{Grove} przedstawione na~rysunku~\ref{fig:grovehat} i~opisane
+w~tabeli~\ref{tab:grove} są~podobne
 do~standardowych połączeń \emph{I²C}\@.
 Połączenia \emph{VCC} i~\emph{GND} zawsze dostarczają elementom zasilanie,
 jednak pozostałe~dwa zachowują~się w~różny sposób w~zależności od~rodzaju złącza.
@@ -147,30 +157,32 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 \begin{table}[H]
   \caption{Opis złączy \emph{Grove Base HAT}}
   \label{tab:grove}
-  \begin{tabularx}{\linewidth}{@{}l|X@{}}
-    GPIO      & Bezpośrednie połączenie do złącza \emph{GPIO} płytki \emph{Raspberry~Pi}.
-                Może powodować konflikty ze złączami \emph{Grove}. \\
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \textbf{Złącze}  & \textbf{Opis} \\
     \midrule
-    I²C       & Zgodnie ze~standardowymi łączeniami, zewnętrzny pin pełni funkcję zegara, a~wewnętrzny przesyłu
-                danych. \\
+    GPIO             & Bezpośrednie połączenie do złącza \emph{GPIO} płytki \emph{Raspberry~Pi}.
+                       Może powodować konflikty ze złączami \emph{Grove}. \\
     \midrule
-    Cyfrowy   & Zewnętrzny pin pełni funkcję pierwszego cyfrowego łącza wejścia/wyjścia, a~wewnętrzny jest łączem
-                dodatkowym dla~modułów wykorzystujących dwie linie. \\
+    I²C              & Zgodnie ze~standardowymi łączeniami, zewnętrzny pin pełni funkcję zegara, a~wewnętrzny przesyłu
+                       danych. \\
     \midrule
-    UART      & Specjalizowana forma trybu cyfrowego, pierwszy pin odbiera dane od~podłączonego urządzenia, a~drugi
-                wysyła. \\
+    Cyfrowy          & Zewnętrzny pin pełni funkcję pierwszego cyfrowego łącza wejścia/wyjścia, a~wewnętrzny jest łączem
+                       dodatkowym dla~modułów wykorzystujących dwie linie. \\
     \midrule
-    Analogowy & Wejścia analogowe są~podłączone do~wbudowanego przetwornika analogowo-cyfrowego, co~pozwala
-                na~ich~użycie z~płytką \emph{Raspberry~Pi}, nie~posiadającej natywnie takiej możliwości.
-                Podobnie do~trybu cyfrowego, linia zewnętrzna jest wykorzystywana w~pierwszej kolejności, a~wewnętrzna
-                w~drugiej. \\
+    UART             & Specjalizowana forma trybu cyfrowego, pierwszy pin odbiera dane od~podłączonego urządzenia,
+                       a~drugi wysyła. \\
     \midrule
-    PWM       & Port \emph{PWM} podłączony~jest do~sprzętowego złącza \emph{PWM} \emph{Raspberry~Pi}.
-                Pozostałe złącza mogą~być używane jako~\emph{PWM} na~poziomie oprogramowania.
-                Złącze sprzętowe pozwala na~lepszą dokładność przy~wysokich częstotliwościach, jednak wchodzi w~konflikt
-                z~niektórymi innymi funkcjami płytki. \\
+    Analogowy        & Wejścia analogowe są~podłączone do~wbudowanego przetwornika analogowo-cyfrowego, co~pozwala
+                       na~ich~użycie z~płytką \emph{Raspberry~Pi}, nie~posiadającej natywnie takiej możliwości.
+                       Podobnie do~trybu cyfrowego, linia zewnętrzna jest wykorzystywana w~pierwszej kolejności,
+                       a~wewnętrzna w~drugiej. \\
     \midrule
-    SWD       & Dostęp do wbudowanego oprogramowania modułu \emph{Grove Base HAT}\@.
+    PWM              & Port \emph{PWM} podłączony~jest do~sprzętowego złącza \emph{PWM} \emph{Raspberry~Pi}.
+                       Pozostałe złącza mogą~być używane jako~\emph{PWM} na~poziomie oprogramowania.
+                       Złącze sprzętowe pozwala na~lepszą dokładność przy~wysokich częstotliwościach, jednak wchodzi
+                       w~konflikt z~niektórymi innymi funkcjami płytki. \\
+    \midrule
+    SWD              & Dostęp do wbudowanego oprogramowania modułu \emph{Grove Base HAT}\@.
   \end{tabularx}
 \end{table}
 
@@ -237,8 +249,8 @@ Transmisja jest~zakończona poprzez powrót w~stan spoczynku.
 
 \subsection{I²S}\label{subsec:i2s}
 
-\emph{Inter-Integrated Circuit Sound}\thinspace\cite{i2s} nie~jest powiązane z~I²C, jednak ta~sama firma utworzyła
-ich~specyfikacje.
+\emph{Inter-Integrated Circuit Sound}\thinspace\cite{i2s} nie~jest powiązane z~\emph{I²C}, jednak ta~sama firma
+utworzyła ich~specyfikacje.
 Protokół~ten jest~skupiony na~wbudowanych urządzeniach audio, zapewniając prostą i~ograniczoną funkcjonalność w~celu
 zapewnienia niezawodności i~prostoty wykorzystania.
 
@@ -270,14 +282,24 @@ urządzeniem nadzorczym i~wieloma podrzędnymi wykorzystujący cztery linie.
 Połączone urządzenia tworzą ze~swoich rejestrów wewnętrznych bufor kołowy, co~zapewnia prostą implementację
 komunikacji w~trybie pełny dupleks.
 
-Wykorzystywane linie pełnią następujące role:
-\begin{itemize}
-  \item Chip Select         -- Sygnał aktywny w~stanie niskim przesyłany przez~urządzenie nadzorcze, uruchamiający
-                               obsługę komend przez~podłączone urządzenia;
-  \item Serial Clock        -- Sygnał zegarowy nadawany przez~urządzenie nadzorcze;
-  \item Master Out Slave In -- Linia wysyłająca dane urządzenia nadzorczego;
-  \item Master In Slave Out -- Linia odbierająca dane urządzenia nadzorczego.
-\end{itemize}
+Wykorzystywane linie pełnią funkcje opisane w~tabeli~\ref{tab:spilines}.
+
+\begin{table}[H]
+  \caption{Opis linii \emph{SPI}}
+  \label{tab:spilines}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \textbf{Linia}       & \textbf{Opis} \\
+    \midrule
+    Chip Select          & Sygnał aktywny w~stanie niskim przesyłany przez~urządzenie nadzorcze, uruchamiający
+                           obsługę komend przez~podłączone urządzenia. \\
+    \midrule
+    Serial Clock         & Sygnał zegarowy nadawany przez~urządzenie nadzorcze. \\
+    \midrule
+    Master Out Slave In  & Linia wysyłająca dane urządzenia nadzorczego. \\
+    \midrule
+    Master In Slave Out  & Linia odbierająca dane urządzenia nadzorczego.
+  \end{tabularx}
+\end{table}
 
 Przesłane komendy są~wykonywane w~momencie wykrycia zbocza rosnącego sygnału \emph{Chip Select}
 Standardowe~są dwa~sposoby połączeń wykorzystujące linie w~odmienny sposób.
@@ -334,14 +356,25 @@ do~komunikacji poprzez dobór parametrów komunikacyjnych na~te~same wartości, 
 gdyż~protokół nie~wykorzystuje linii zegara synchronizującego.
 Linia \emph{TX} jednego z~urządzeń jest~połączona do~linii \emph{RX} drugiego i~vice~versa.
 
-Ustawienia, które muszą mieć na urządzeniach zgodne wartości:
-\begin{itemize}
-  \item Baud rate    -- Prędkość transmisji (ilość czasu przypisana jednemu bitowi);
-  \item Data         -- Ilość bitów w wiadomości;
-  \item Parity       -- Tryb bitu parzystości (brak, parzysty, nieparzysty);
-  \item Stop bits    -- Długość przerwy między wiadomościami;
-  \item Flow control -- Tryb współpracy z wolniejszymi urządzeniami.
-\end{itemize}
+Ustawienia, które muszą mieć na~urządzeniach zgodne wartości przedstawione zostały w~tabeli~\ref{tab:uartparameters}.
+
+\begin{table}[H]
+  \caption{Opis parametrów \emph{UART}}
+  \label{tab:uartparameters}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \textbf{Parametr}  & \textbf{Opis} \\
+    \midrule
+    Baud Rate          & Prędkość transmisji (ilość czasu przypisana jednemu bitowi). \\
+    \midrule
+    Data               & Ilość bitów w~wiadomości. \\
+    \midrule
+    Parity             & Tryb bitu parzystości (brak, parzysty, nieparzysty). \\
+    \midrule
+    Stop Bits          & Długość przerwy między wiadomościami. \\
+    \midrule
+    Flow Control       & Tryb współpracy z~wolniejszymi urządzeniami. \\
+  \end{tabularx}
+\end{table}
 
 Wiadomość UART (rysunek~\ref{fig:uart}) składa~się z~zakończenia domyślnego trybu wysokiego nieczynnej linii
 (stanem niskim) o~czasie trwania równym jednemu bitowi, a~następnie przesłanie \numrange{5}{9} bitów wiadomości
@@ -422,27 +455,43 @@ znaczących wad wcześniej istniejących rozwiązań\thinspace\cite{marimofaq}.
 Poza oferowaniem równie zaawansowanej funkcjonalności notatnika architektura projektu gwarantuje cechy wpływające
 na~wygodę i~stabilność użytkowania.
 
-Wady, na~których rozwiązaniu skupia~się \emph{marimo}:
-\begin{itemize}
-  \item \textbf{Powtarzalność}: kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi
-        projektu, co~sprawia,~że \qty{36}{\percent} nie~jest powtarzalnych\thinspace\cite{jupyfail}.
-        \emph{Marimo} aktualizuje stan pamięci przy~wszelkich zmianach w~kodzie;
-  \item \textbf{Łatwość utrzymania}: notatniki \emph{marimo} są~przechowywane jako~czyste programy \emph{Python},
-        co~pozwala m.in.~na ich~bezproblemowe wersjonowanie;
-  \item \textbf{Interaktywność}: \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
-        automatycznie synchronizowanych w~kodzie przy~zmianie wartości;
-  \item \textbf{Wykorzystanie wtórne}: notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend
-        jak~zwyczajne skrypty w~języku \emph{Python}, można również zaimportować zdefiniowane w~nich symbole
-        do~innych plików;
-  \item \textbf{Udostępnianie}: każdy notatnik \emph{marimo} może~również być~uruchomiony jako~interaktywna aplikacja
-        Internetowa wyświetlająca interfejs użytkownika bez~możliwości edycji kodu.
-\end{itemize}
+Cechy, na~których poprawieniu skupia~się \emph{marimo} zostały przedstawione w~tabeli~\ref{tab:marimotraits}.
+
+\begin{table}[H]
+  \caption{Cechy \emph{marimo} w~porównaniu do~innych rozwiązań}
+  \label{tab:marimotraits}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \textbf{Cecha}        & \textbf{Opis} \\
+    \midrule
+    Powtarzalność         & Kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi projektu,
+                            co~sprawia,~że \qty{36}{\percent} nie~jest powtarzalnych\thinspace\cite{jupyfail}.
+                            Wykorzystanie \emph{marimo} rozwiązuje ten problem. \\
+    \midrule
+    Łatwość utrzymania    & Notatniki \emph{marimo} są~przechowywane jako~czyste programy \emph{Python}, co~pozwala
+                            m.in.~na ich~bezproblemowe wersjonowanie. \\
+    \midrule
+    Interaktywność        & \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
+                            automatycznie synchronizowanych w~kodzie przy~zmianie wartości. \\
+    \midrule
+    Wykorzystanie wtórne  & Notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend jak~zwyczajne skrypty
+                            w~języku \emph{Python}, można również zaimportować zdefiniowane w~nich symbole do~innych
+                            plików. \\
+    \midrule
+    Udostępnianie         & Każdy notatnik \emph{marimo} może~również być~uruchomiony jako~interaktywna aplikacja
+                            Internetowa wyświetlająca interfejs użytkownika bez~możliwości edycji kodu.
+  \end{tabularx}
+\end{table}
 
 Środowisko \emph{marimo} wspiera zarówno tryb jasny, jak~i~ciemny interfejsu użytkownika; w~tej sekcji znajduje~się
-przykład trybu ciemnego, a~w~pozostałych przypadkach w~celu lepszego dopasowania kolorystycznego rysunki
-będą~wykorzystywać tryb jasny.
+przykład trybu ciemnego (rys.~\ref{fig:darkmarimo}), a~w~pozostałych przypadkach w~celu lepszego dopasowania
+kolorystycznego rysunki będą~wykorzystywać tryb jasny.
 
-TODO: rysunek, tryb ciemny
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{media/marimo_dark}
+  \caption{Tryb ciemny interfejsu graficznego \emph{marimo}}
+  \label{fig:darkmarimo}
+\end{figure}
 
 \section{Wdrożenie rozwiązania}\label{sec:deployment}
 
@@ -458,9 +507,11 @@ wersje systemu powinna~być minimalna.
 Skrypt~ten może~być~również użyty po~zakończeniu laboratoriów do~wyczyszczenia środowiska od~zmian wprowadzonych
 przez~studenta.
 
-\subsection{Wprowadzenie}\label{subsec:entry}
+\subsection{Pliki pomocnicze}\label{subsec:helpers}
 
-TODO: Wspomnieć `laboratorium 0' i rozbudować.
+Dla~zapewnienia wstępnej wiedzy na~temat współpracy ze~środowiskiem marimo, poza~laboratoriami część praktyczna pracy
+zawiera również plik wprowadzeniowy, którego fragment znajduje~się na~powyższym rysunku~\ref{fig:darkmarimo}.
+Sumaryzuje~on rozwiązania graficzne i~interakcje możliwe do~przeprowadzenia w~środowisku.
 
 Do pracy dołączony jest również instruktażowy plik łączenia modułów
 \ax{polaczenia.pdf}{out/polaczenia.pdf}[mimetype=application/pdf], pomagający osobie prowadzącej zajęcia połączenie
