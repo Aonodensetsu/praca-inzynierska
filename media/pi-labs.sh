@@ -597,7 +597,9 @@ def _(mo):
 
         Napisz funkcję wyświetlającą wynik pomiaru odległości na panelu LCD. Wyświetl również poprzednią wartość w drugiej linijce.
 
-        Podpowiedź: funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.
+        Podpowiedzi:  
+		Funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.  
+        Wartość cyfrowa powinna zajmować zawsze tyle samo pól.
         """
     )
     return
@@ -626,10 +628,10 @@ def _(mo):
 
         To zadanie jest sprawdzane przez prowadzącego.
 
-        Dane pomocnicze:
-        `sonar` - instancja klasy zbierającej dane z sensora ultradźwiękowego
-        `time_to_dist(t: float) -> float` - konwertuje czas w mikrosekundach na centymetry
-        `show_measurement(new: float, prev: float)` - wyświetla dane na ekranie
+        Dane pomocnicze:  
+        `sonar` - instancja klasy zbierającej dane z sensora ultradźwiękowego  
+        `time_to_dist(t: float) -> float` - konwertuje czas w mikrosekundach na centymetry  
+        `show_measurement(new: float, prev: float)` - wyświetla dane na ekranie  
         `await sleep(1)` - oczekuje przez 1 sekundę
         """
     )
@@ -839,7 +841,7 @@ def _(GroveDisplay, GroveUltrasonicRanger):
             return False
         f = _FT(f.__code__, globals={})
         v = _r() * _r() * 10000
-        t = v * 0.01715
+        t = v * 0x6B3 / 100000
         try:
             return t - 0.0001 < f(v) < t + 0.0001
         except:
