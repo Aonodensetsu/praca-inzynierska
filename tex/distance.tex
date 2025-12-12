@@ -4,21 +4,29 @@
 
 System modułów \emph{Grove} jest~wykorzystany w~dwóch laboratoriach, w~związku z~czym jego~opis znajduje~się w~sekcji
 przodującej (\ref{subsec:grove}).
-W~tym laboratorium zostały użyte dwa~urządzenia współpracujące z~\emph{Grove Base HAT}.
+W~niniejszym laboratorium zostały użyte dwa~urządzenia współpracujące z~modułem \emph{Grove Base HAT}.
 
-Głównym komponentem jest~czujnik odległości wykorzystujący fale ultradźwiękowe.
+Głównym elementem zestawu laboratoryjnego jest~czujnik wykorzystujący czas propagacji fal ultradźwiękowych do~pomiaru
+odległości.
+Sensor emituje krótki sygnał ultradźwiękowy, a~następnie nasłuchuje momentu powrotu echa fali od~przeszkody, co~pozwala
+na~obliczenie dystansu przebytego przez~falę, a~zarazem odległości od~przeszkody.
 
-Do~wyświetlenia wyników pomiaru wybrany został wyświetlacz LCD $2\,\times\,16$ komórek o wielkości komórki $8x5$.
+Do~wyświetlenia wyników pomiaru wybrany został wyświetlacz LCD $2\,\times\,16$ komórek o~wielkości komórki
+$8\,\times\,5$ pikseli.
+Długość \num{16} komórek pozwala na~wyświetlenie mierzonej wartości wraz z~jednostką i~krótkim opisem, a~druga linia
+może~służyć do~danych pomocniczych lub~drugiego rekordu.
+Wyświetlacz~ten jest~zaprojektowany do~obsługi tekstu i~nie~można wykorzystać pikseli do~dowolnego rysowania.
 
 \section{Dodatkowe oprogramowanie}\label{sec:lab2-sw}
 
-\emph{Seeed-grove.py} to oficjalna biblioteka zestawu Grove, niestety niedostępna przy~wykorzystaniu standardowego
-repozytorium bibliotek języka \emph{Python}.
-Kod biblioteki można zobaczyć na~platformie \emph{GitHub}\thinspace\cite{grovelib}.
-Dzięki~temu możliwa nadal~jest stosunkowo prosta instalacja (rys.~\ref{fig:seeed}).
+\emph{Seeed-grove.py} to oficjalna biblioteka programistyczna zestawu \emph{Grove} w języku \emph{Python}.
+Niestety nie jest ona dostępna przy~wykorzystaniu standardowego repozytorium bibliotek języka.
+Kod biblioteki można zobaczyć jednak na~platformie \emph{GitHub}\thinspace\cite{grovelib}, dzięki~czemu nadal
+możliwa~jest stosunkowo prosta instalacja (rys.~\ref{fig:seeed}) przy~użyciu stosunkowo nowych wersji oficjalnego
+menedżera bibliotek.
 
 \begin{figure}[H]
-  \lstinputlisting[language=sh,label={lst:seeed}]{media/seeed.sh}
+  \lstinputlisting[language=bash,label={lst:seeed}]{media/seeed.sh}
   \caption{Instalacja biblioteki \emph{grove} z~platformy \emph{GitHub}}
   \label{fig:seeed}
 \end{figure}
@@ -27,6 +35,10 @@ Dzięki~temu możliwa nadal~jest stosunkowo prosta instalacja (rys.~\ref{fig:see
 
 Rysunek~\ref{fig:distancelab} to~fragment instrukcji przestawiający dwa z~zadań składających~się na~końcowy program
 mierzący odległość do~obiektu przy~wykorzystaniu sensora ultradźwiękowego.
+Pierwsze zadanie polega na~uzupełnieniu ciała funkcji wykorzystując podaną zmienną i~podstawowe prawa fizyki w~celu
+otrzymania wartości odległości zmierzonej przez~czujnik ultradźwiękowy.
+Drugie wyświetla obliczone wartości na~wyświetlaczu LCD -- z~powodu szybkiego odświeżania wykorzystując wyrównanie
+danych bez~czyszczenia ekranu funkcją \emph{clear}.
 
 \begin{figure}[H]
   \centering
@@ -36,7 +48,7 @@ mierzący odległość do~obiektu przy~wykorzystaniu sensora ultradźwiękowego.
 \end{figure}
 
 Rysunek~\ref{fig:distance} przedstawia rozwiązanie zadania.
-W~tym przypadku podana odległość jest~do~telefonu, którym~utworzone zostało to~zdjęcie, a~wyświetlacz jest~w~trakcie
+W~tym przypadku podana odległość jest~do~telefonu, którym~utworzone zostało zdjęcie, a~wyświetlacz jest~w~trakcie
 zmiany wyświetlanej wartości.
 
 \begin{figure}[H]
