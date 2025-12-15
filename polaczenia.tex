@@ -8,7 +8,7 @@
 Na~poniższym rysunku płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO}, wszystkie dalsze
 rysunki będą w~tej~samej orientacji -- z~tym~złączem po~górnej stronie rysunku.
 Kolorem jasnoniebieskim zaznaczone są~złączki mocujące moduły podrzędne, można wykorzystać~je wraz~z~plastikowymi
-śrubami do~bezpieczniejszego przymocowania modułów.
+śrubkami do~bezpieczniejszego przymocowania modułów.
 
 Moduły mocuje~się wciskając znajdujące się po~ich dolnej stronie panel pasujący~do interfejsu \emph{GPIO} i~opcjonalnie
 przykręcając złączki.
@@ -69,7 +69,7 @@ Użyte te~same kolory pomocnicze, co~w~przypadku \emph{Sense HAT}\@.
 
 Laboratorium wykorzystuje \emph{Grove Base HAT}, podłącz najpierw ten~moduł.
 
-Wyświetlacz LCD wykorzystuje port \emph{I²C}\@.
+Wyświetlacz LCD wykorzystuje port \textbf{\emph{I²C}}\@.
 Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z portów \emph{I²C}\@.
 
 \begin{figure}[H]
@@ -79,7 +79,7 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
   \label{fig:grovelcd}
 \end{figure}
 
-Czujnik ultradźwiękowy wykorzystuje port cyfrowy.
+Czujnik ultradźwiękowy wykorzystuje port \textbf{cyfrowy}.
 Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
 
 \begin{figure}[H]
@@ -89,9 +89,29 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
   \label{fig:grovelcdsonic}
 \end{figure}
 
-%\newpage
-%{\chapnamefont Laboratorium ``Alarm''}
+\newpage
+{\chapnamefont Laboratorium ``Alarm''}
 
-%Laboratorium wykorzystuje \emph{Grove Base HAT}, podłącz najpierw ten~moduł.
+Laboratorium wykorzystuje \emph{Grove Base HAT} -- podłącz najpierw ten~moduł.
+
+Czujnik ruchu wykorzystuje port \textbf{cyfrowy}.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{media/grove_pir}\\
+  Montaż rozszerzenia -- czujnik ruchu
+  \label{fig:grovepir}
+\end{figure}
+
+Przycisk LED wykorzystuje port \textbf{cyfrowy}.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{media/grove_pir_btn}\\
+  Montaż rozszerzenia -- przycisk LED
+  \label{fig:grovepirbtn}
+\end{figure}
 
 \end{document}
