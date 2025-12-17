@@ -150,7 +150,7 @@ def _(mo):
         Marimo jest środowiskiem asynchronicznym, w związku z czym w niektórych miejscach mogą pojawić się słowa kluczowe `async` i `await`. W ćwiczeniach często pojawiać się będą dwa asynchroniczne sformułowania.
 
         - `async def` w przeciwieństwie do `def` tworzy funkcję asynchroniczną, opcja ta będzie używana w kilku miejscach do utworzenia funkcji, które mogą wykorzystywać inne funkcje asynchroniczne
-          aby uruchomić funkcje asynchroniczne należy oczekiwać na ich rezultat przy użyciu słówka `await`
+          aby uruchomić funkcje asynchroniczne należy oczekiwać na ich rezultat przy użyciu słówka `await`  
         - `asyncio.sleep` to asynchroniczny odpowiednik `time.sleep`, który na określony czas uśpi kod, jednak nie usypiając również całego środowiska marimo - będzie używany wszędzie tam, gdzie poza notatnikiem pojawiłoby się `time.sleep`
 
         ```python
@@ -228,29 +228,29 @@ def _(mo):
 
         Aby użyć czujników inercyjnych (**IMU**), do których zalicza się żyroskop, akcelerometr i magnetometr, należy najpierw je skalibrować. Można to zrobić przy użyciu (już zainstalowanej) biblioteki systemowej `octave`.
 
-        Otwórz terminal i skopiuj domyślne pliki konfiguracyjne sensora do folderu studenta:
+        Otwórz terminal i skopiuj domyślne pliki konfiguracyjne sensora do folderu studenta:  
         `cp -a /usr/share/librtimulib-utils/RTEllipsoidFit ~`
 
-        Przejdź do skopiowanego folderu:
+        Przejdź do skopiowanego folderu:  
         `cd ~/RTEllipsoidFit`
 
         W tym folderze znajdują się pliki niezbędne programowi kalibracyjnemu do przetworzenia danych otrzymanych podczas kalibracji na konfigurację prawidłowo dostosowującą dane generowane w trakcie korzystania z czujników. Można dostosować te domyślne wartości dla specjalistycznych potrzeb, jednak w tym przypadku w zupełności wystarczą w niezmienionej formie.
 
-        Aby uruchomić program kalibracyjny, użyj komendy:
+        Aby uruchomić program kalibracyjny, użyj komendy:  
         `RTIMULibCal`
 
         Program ten posiada prosty interfejs w języku angielskim. Wybierz opcję `m` i naciśnij dowolny przycisk, aby rozpocząć kalibrację, która odbywa się poprzez poruszanie sensorem (a zatem i płytką *Raspberry Pi*). Spróbuj obracać urządzenie w taki sposób, aby w trakcie kalibracji znalazło się w każdej możliwej orientacji. Kalibracja kończy się również poprzez naciśnięcie dowolnego przycisku.
 
         Wybierz opcję `x` aby wyjść z programu kalibracyjnego.
 
-        Domyślnie plik konfiguracyjny jest zapisywany w lokalnym folderze użytkownika, jednak aby używać prawidłowej kalibracji we wszystkich programach, przenieś go w miejsce konfiguracji systemowej:
+        Domyślnie plik konfiguracyjny jest zapisywany w lokalnym folderze użytkownika, jednak aby używać prawidłowej kalibracji we wszystkich programach, przenieś go w miejsce konfiguracji systemowej:  
         `sudo mv ~/.config/sense_hat/RTIMULib.ini /etc`
 
         /// admonition
         Czujniki IMU potrzebują chwili, aby uruchomić się i skalibrować po uruchomieniu systemu. Po następnym kroku uruchamiającym system ponownie, upewnij się, że urządzenie przez 6-10 sekund po uruchomieniu (~30 sekund łącznie) nie poruszy się, aby uzyskać najdokładniejsze rezultaty.
         ///
 
-        Po tym kroku należy zrestartować programy używające kalibracji, w tym również środowisko tego laboratorium, więc zapisz zmiany wykonane w tym pliku, a następnie użyj komendy do uruchomienia systemu ponownie:
+        Po tym kroku należy zrestartować programy używające kalibracji, w tym również środowisko tego laboratorium, więc zapisz zmiany wykonane w tym pliku, a następnie użyj komendy do uruchomienia systemu ponownie:  
         `sudo reboot`
 
         ---
@@ -263,8 +263,8 @@ def _(mo):
 
         ### Z2. Konfiguracja sensorów
 
-        Ustaw czujnik inercyjny IMU do wykorzystania żyroskopu i magnetometru, ale nie akcelerometru.
-        Odpowiedzią na zadanie jest uzupełnienie funkcji wykonującej tą czynność.
+        Ustaw czujnik inercyjny IMU do wykorzystania żyroskopu i magnetometru, ale nie akcelerometru.  
+        Odpowiedzią na zadanie jest uzupełnienie funkcji wykonującej tą czynność.  
         Obiekt czujnika jest dostępny jako zmienna o nazwie `sense`.
         """
     )
@@ -544,8 +544,8 @@ def _(mo):
 
         Uzupełnij zmienne tworzące instancje klas, podając odpowiednie parametry do ich konstruktorów. Pozwoli to na wykorzystanie tych urządzeń w pozostałych zadaniach.
 
-        Sygnatury konsturktorów:
-        `GroveUltrasonicRanger(port: int)`
+        Sygnatury konsturktorów:  
+        `GroveUltrasonicRanger(port: int)`  
         `GroveDisplay(adres: int)`
         """
     )
@@ -598,7 +598,7 @@ def _(mo):
         Napisz funkcję wyświetlającą wynik pomiaru odległości na panelu LCD. Wyświetl również poprzednią wartość w drugiej linijce.
 
         Podpowiedzi:  
-		Funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.  
+		    Funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.  
         Wartość cyfrowa powinna zajmować zawsze tyle samo pól.
         """
     )
@@ -955,8 +955,8 @@ def _(mo):
 
         Klasa `GroveMiniPIR` wykorzystuje mechanizm flagi, w momencie wykrycia ruchu flaga zostaje ustawiona na `True`, a odczytanie wartości flagi zmienia jej wartość na `False`. Wykorzystaj ten często używany mechanizm, aby ułatwić rozwiązanie zadania.
 
-        Dane pomocnicze:
-        `motion.flag` - flaga wykrycia ruchu
+        Dane pomocnicze:  
+        `motion.flag` - flaga wykrycia ruchu  
         `btn.led` - stan diody przycisku, można go zmieniać nadając wartość tej zmiennej
         """
     )
@@ -986,8 +986,8 @@ def _(mo):
 
         Przycisk nie wykorzystuje mechanizmu flagi, natomiast daje dostęp do obecnego stanu wciśnięcia.
 
-        Dane pomocnicze:
-        `btn.pressed` - stan wciśnięcia przycisku
+        Dane pomocnicze:  
+        `btn.pressed` - stan wciśnięcia przycisku  
         `btn.led` - stan diody przycisku, można go zmieniać nadając wartość tej zmiennej
         """
     )
@@ -1017,9 +1017,9 @@ def _(mo):
 
         To zadanie jest sprawdzane przez prowadzącego.
 
-        Dane pomocnicze:
-        `motion_detected()` - aktualizacja diody przy wykryciu ruchu
-        `btn_pressed()` - aktualizacja diody przy wciśnięciu przycisku
+        Dane pomocnicze:  
+        `motion_detected()` - aktualizacja diody przy wykryciu ruchu  
+        `btn_pressed()` - aktualizacja diody przy wciśnięciu przycisku  
         `await sleep(delay: float)` - oczekiwanie przez `delay` sekund
         """
     )
@@ -1252,8 +1252,8 @@ def _(mo):
 
         **Podpowiedź:** Każda z metryk może wykorzystać funkcje jednolinijkowe lambda (nie będą za długie).
 
-        Dostępne są funkcje pomocnicze:
-        `compensate_temperature(float) -> float` - termometr znajduje się blisko procesora generującego ciepło, funkcja ta próbuje skompensować dane z sensora, aby pomiar temperatury pomieszczenia był mniej niedokładny
+        Dostępne są funkcje pomocnicze:  
+        `compensate_temperature(float) -> float` - termometr znajduje się blisko procesora generującego ciepło, funkcja ta próbuje skompensować dane z sensora, aby pomiar temperatury pomieszczenia był mniej niedokładny  
         `proximity_to_mm(int) -> float` - sensor zbliżeniowy zbiera dane jako wartość bezjednostkowa (2047 = blisko, 0 = daleko), funkcja ta przelicza tą wartość na milimetry (w przybliżeniu)
         """
     )
@@ -1320,12 +1320,12 @@ def _(mo):
 
         Napisz pętlę główną programu, która odbywa się co sekundę. Jako opóźnienie wykorzystaj `await sleep(1)`.
 
-        Funkcje pomocnicze:
-        `await sleep(1)` - 1 sekunda opóźnienia (w trybie asynchronicznym, który jest używany w tym środowisku laboratoryjnym)
-        `data_loop(list[Metric], times: int = 5) -> Metric` - jest to nieskończony iterator, która zwraca kolejne metryki po `times` razy, co pomaga w wygodnym wyświetleniu ich na ekranie
-        `insert_vals(list[Metric])` - funkcja zbierająca i dopisująca wartości metryk do słownika `values`
-        `display_text(Metric)` - funkcja wyświetlające na ekranie dane metryki
-        `update_sensors()` - wcześniej utworzona funkcja uaktualniająca dane sensorów, pamiętaj, że pierwsze wywołanie zwraca nieprawidłowe dane
+        Funkcje pomocnicze:  
+        `await sleep(1)` - 1 sekunda opóźnienia (w trybie asynchronicznym, który jest używany w tym środowisku laboratoryjnym)  
+        `data_loop(list[Metric], times: int = 5) -> Metric` - jest to nieskończony iterator, która zwraca kolejne metryki po `times` razy, co pomaga w wygodnym wyświetleniu ich na ekranie  
+        `insert_vals(list[Metric])` - funkcja zbierająca i dopisująca wartości metryk do słownika `values`  
+        `display_text(Metric)` - funkcja wyświetlające na ekranie dane metryki  
+        `update_sensors()` - wcześniej utworzona funkcja uaktualniająca dane sensorów, pamiętaj, że pierwsze wywołanie zwraca nieprawidłowe dane  
         `send_message()` - wcześniej utworzona funkcja wysyłające dane
         """
     )
@@ -1355,7 +1355,7 @@ def _(mo):
 
         Kalibracja wykorzystuje bardzo prosty wzór, do którego niezbędne są dwie wartości.
 
-        `dbms_base` - pomiar nieskalibrowanego mikrofonu
+        `dbms_base` - pomiar nieskalibrowanego mikrofonu  
         `spl_base` - pomiar prawdziwej głośności otoczenia w tym samym momencie
 
         Wykorzystaj mikrofon w swoim telefonie do pomiaru głośności pomieszczenia (np. [link](https://www.checkhearing.org/soundmeter.php)) i uzupełnij wartości funkcji, aby skalibrować odczyt płytki.
