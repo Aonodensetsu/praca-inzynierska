@@ -1,0 +1,148 @@
+\documentclass[12pt, a4paper, oneside]{memoir}
+\input{tex/style}
+\pagestyle{empty}
+\begin{document}
+
+\setcounter{chapter}{1}
+{\chapnamefont \thechapter. Informacje wstępne}
+
+\section{Raspberry Pi}\label{sec:rpi}
+
+Na~poniższym rysunku płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO}, wszystkie dalsze
+rysunki będą w~tej~samej orientacji -- z~tym~złączem po~górnej stronie rysunku.
+Kolorem jasnoniebieskim zaznaczone są~złączki mocujące moduły podrzędne, można wykorzystać~je wraz~z~plastikowymi
+śrubkami do~bezpieczniejszego przymocowania modułów.
+
+Moduły mocuje~się wciskając znajdujące się po~ich dolnej stronie panel pasujący~do interfejsu \emph{GPIO} i~opcjonalnie
+przykręcając złączki.
+Moduły są zaprojektowane w~taki sposób, że~w~prawidłowej orientacji nie~wystają poza~granice płytki \emph{Raspberry Pi}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{media/board}\\
+  \caption{Płytka \emph{Raspberry Pi}}
+  \label{fig:board}
+\end{figure}
+
+\section{Grove Base HAT}\label{sec:grove}
+
+\emph{Grove Base HAT} jest~wykorzystany w~dwóch zadaniach.
+\emph{Grove Base HAT} odwrócony tak, aby~widzieć jego~port \emph{GPIO} obok~portu \emph{GPIO} płytki, ma~wcięcie
+(zaznaczone kolorem czerwonym) po~prawej stronie oraz~szczelinę (kolor żółty) po~lewej dolnej stronie.
+Montaż w~obu~przypadkach jest~identyczny, a~różni~się jedynie przymocowaniem rozszerzeń do~modułu Grove.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{media/grove_hat_unbuilt}\\
+  \caption{Moduł \emph{Grove Base HAT} obok płytki}
+  \label{fig:grovehatunbuilt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{media/grove_hat_built}\\
+  \caption{Przymocowany moduł \emph{Grove Base HAT}}
+  \label{fig:grovehatbuilt}
+\end{figure}
+
+\newpage
+\setcounter{chapter}{2}
+{\chapnamefont \thechapter. Laboratorium I}
+
+W~tym laboratorium wykorzystano moduł \emph{Sense HAT}\@.
+Użyte te~same kolory pomocnicze, co~w~przypadku \emph{Grove Base HAT}\@.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{media/sense_hat_unbuilt}\\
+  \caption{Moduł \emph{Sense HAT} obok płytki}
+  \label{fig:sensehatunbuilt}
+\end{figure}
+
+Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{media/sense_hat_built}\\
+  \caption{Przymocowany moduł \emph{Sense HAT}}
+  \label{fig:sensehatbuilt}
+\end{figure}
+
+\newpage
+\setcounter{chapter}{3}
+{\chapnamefont \thechapter. Laboratorium II}
+
+Laboratorium wykorzystuje \emph{Grove Base HAT}, podłącz najpierw ten~moduł.
+
+Wyświetlacz LCD wykorzystuje port \textbf{\emph{I²C}}\@.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z portów \emph{I²C}\@.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{media/grove_lcd}\\
+  \caption{Montaż rozszerzenia -- wyświetlacz LCD}
+  \label{fig:grovelcd}
+\end{figure}
+
+Czujnik ultradźwiękowy wykorzystuje port \textbf{cyfrowy}.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{media/grove_lcd_sonic}\\
+  \caption{Montaż rozszerzenia -- moduł ultradźwiękowy}
+  \label{fig:grovelcdsonic}
+\end{figure}
+
+\newpage
+\setcounter{chapter}{4}
+{\chapnamefont \thechapter. Laboratorium III}
+
+Laboratorium wykorzystuje \emph{Grove Base HAT} -- podłącz najpierw ten~moduł.
+
+Czujnik ruchu wykorzystuje port \textbf{cyfrowy}.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\linewidth]{media/grove_pir}\\
+  \caption{Montaż rozszerzenia -- czujnik ruchu}
+  \label{fig:grovepir}
+\end{figure}
+
+Przycisk LED wykorzystuje port \textbf{cyfrowy}.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{media/grove_pir_btn}\\
+  \caption{Montaż rozszerzenia -- przycisk LED}
+  \label{fig:grovepirbtn}
+\end{figure}
+
+\newpage
+\setcounter{chapter}{5}
+{\chapnamefont \thechapter. Laboratorium IV}
+
+Moduł \emph{Enviro HAT} nie~ma widocznego na~poprzednio montowanych modułach wcięcia, ale~w~podobny sposób
+można~wykorzystać cięcie odgradzające czujnik temperatury od~większej części modułu.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{media/enviro_hat_unbuilt}\\
+  \caption{Moduł \emph{Enviro HAT} obok płytki}
+  \label{fig:envirohatunbuilt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{media/enviro_hat_built}\\
+  \caption{Przymocowany moduł \emph{Enviro HAT}}
+  \label{fig:envirohatbuilt}
+\end{figure}
+
+\newpage
+\setcounter{chapter}{6}
+{\chapnamefont \thechapter. Laboratorium V}
+  
+\end{document}

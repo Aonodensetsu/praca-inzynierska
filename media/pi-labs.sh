@@ -1284,7 +1284,7 @@ def _(mo):
 
         Zgodnie z wcześniejszym opisem, dane będą również wysyłane przy użyciu serwisu `ntfy.sh` ([dokumentacja](https://docs.ntfy.sh/publish/#__tabbed_1_7)), co pozwoli na otrzymywanie powiadomień. Uzupełnij funkcję, aby wysłać najnowsze dane.
 
-        Dane znajdują się w słowniku o nazwie `values`. Kluczami słownika są **nazwy metryk**. Wyślij najnowszą wartość każdej metryki. Wykorzystaj parametr `json` funkcji `requests.post` (już zaimportowanej pod nazwą `post`).
+        Dane znajdują się w słowniku o nazwie `values`. Kluczami słownika są **nazwy metryk**. Wyślij najnowszą wartość każdej metryki jako typ danych `float`. Wykorzystaj parametr `json` funkcji `requests.post` (już zaimportowanej pod nazwą `post`) i zmiennej `ntfy_topic`.
 
         Wysyłaj wiadomości tylko jeśli użytkownik dotyka sensora zbliżeniowego.
         """
@@ -1293,7 +1293,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo, ntfy_topic):
-    mo.md(f'Twoja nazwa tematu: `{ntfy_topic}`.')
+    mo.md(f'Twoja nazwa tematu (zmienna `ntfy_topic`): `{ntfy_topic}`.')
     return
 
 
@@ -1653,22 +1653,32 @@ def _():
         if str(_inspect.signature(f)) != '()':
             return False
         mock = _mock.MagicMock()
+        post = _mock.MagicMock()
+        mock.items.return_value = ({'abc': [_np.float32(1)]}).items()
         mock.__getitem__.return_value.__getitem__.return_value = 0
+        fl_called = False
+        def fl(v):
+            nonlocal fl_called
+            fl_called = True
+            return _fl(v)
         try:
-            _types.FunctionType(f.__code__, {'post': mock, 'values': mock, 'ntfy_topic': 'abc'})()
+            _types.FunctionType(f.__code__, {'post': post, 'float': fl, 'values': mock, 'ntfy_topic': 'abc'})()
         except:
             return False
         try:
             mock.assert_has_calls([
-                #_mock.call.__getitem__(<PROXIMITY VALUE>),
                 _mock.call.__getitem__().__getitem__(-1),
                 _mock.call.items(),
-                _mock.call.items().__iter__(),
-                _mock.call('https://ntfy.sh/abc', json={}),
             ], any_order=True)
+            post.assert_called_once()
+            assert all(type(x) is float for x in post.call_args_list[0][1]['json'].values())
         except AssertionError:
             return False
-        return len(mock.mock_calls) == 5
+        return (
+            len(mock.mock_calls) == 3
+            and len(post.mock_calls) == 1
+            and fl_called
+        )
 
     async def test_z4(f):
         mock = _mock.Mock()
