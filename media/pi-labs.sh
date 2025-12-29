@@ -215,6 +215,7 @@ def _(mo):
         ## Wykorzystanie Raspberry Pi z Sense HAT jako kompasu
 
         *Raspberry Pi* to mały komputer, posiadający dodatkowo interfejs pozwalający na podłączenie modułów *HAT* spełniających rozmaite funkcje, często zawierających różnego rodzaju sensory.
+        Moduł *Sense HAT* zawiera wyświetlacz kolorowy 8×8, mały joystick, oraz czujniki: żyroskop, akcelerometr, magnetometr, termometr, higrometr, ciśnieniomierz, czujnik naświetlenia.
 
         *Raspberry Pi* oraz moduły są stosunkowo niedrogie, a pozwalają na projektowanie własnych urządzeń, które mogą służyć jako prototyp preprodukcyjny lub spełniać unikalną funkcję. *Raspberry Pi* jest również pełnoprawnym komputerem używającym systemu Linux, ze wzglądu na swoją wielkość bardzo przenośnym, może więc również służyć jako diagnostyczny komputer lub domowy serwer.
 
@@ -269,6 +270,7 @@ def _(mo):
         """
     )
     return
+
 
 @app.cell
 def set_imu():
@@ -356,6 +358,7 @@ async def _(
         draw_compass(get_yaw())
         await sleep(0.1)
     return
+
 
 @app.cell(hide_code=True)
 def _(mo):
@@ -512,6 +515,7 @@ def _(LCD_address, mo, test_z1):
     mo.md(f'Zadanie Z1. {"" if test_z1(LCD_address) else "nie"} jest rozwiązane.')
     return
 
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
@@ -589,6 +593,7 @@ def _(mo, test_z4, time_to_dist):
     mo.md(f'Zadanie Z4. {"" if test_z4(time_to_dist) else "nie"} jest rozwiązane.')
     return
 
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
@@ -598,8 +603,8 @@ def _(mo):
         Napisz funkcję wyświetlającą wynik pomiaru odległości na panelu LCD. Wyświetl również poprzednią wartość w drugiej linijce.
 
         Podpowiedzi:  
-		    Funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.  
-        Wartość cyfrowa powinna zajmować zawsze tyle samo pól.
+        Funkcja `display.setCursor` wyznacza miejsce, gdzie umieszczona zostanie treść wiadomości.  
+        Wartość zmiennych powinna zajmować zawsze tyle samo pól.
         """
     )
     return
@@ -643,6 +648,7 @@ def _(mo):
     stp = mo.ui.run_button(label='Uruchom')
     stp
     return (stp,)
+
 
 @app.cell
 async def _(
@@ -719,7 +725,7 @@ def _():
             self.dio.dir(GPIO.IN)
 
             # Pomiar czasu referencyjnego.
-            t0 = time()
+            t0 = time() * 10**6
 
             # Odebranie pulsu wysyłającego.
             count = 0
@@ -729,10 +735,10 @@ def _():
                 count += 1
             if count >= self.TIMEOUT_SEND:
                 return None
-            t1 = time()
+            t1 = time() * 10**6
 
             # Test, czy puls został wysłany w odpowiednim czasie od zapytania.
-            if (t1 - t0) * 1000000 > 530:
+            if t1 - t0 > 530:
                 return None
 
             # Odebranie pulsu zwrotnego.
@@ -743,9 +749,9 @@ def _():
                 count += 1
             if count >= self.TIMEOUT_RECV:
                 return None
-            t2 = time()
+            t2 = time() * 10**6
 
-            return (t2 - t1) * 1000000
+            return t2 - t1
 
         def get_time(self) -> float:
             while True:
@@ -813,6 +819,7 @@ def _():
         tsleep,
     )
 
+
 @app.cell(hide_code=True)
 def _(GroveDisplay, GroveUltrasonicRanger):
     from asyncio import sleep
@@ -843,7 +850,7 @@ def _(GroveDisplay, GroveUltrasonicRanger):
         v = _r() * _r() * 10000
         t = v * 0x6B3 / 100000
         try:
-            return t - 0.0001 < f(v) < t + 0.0001
+            return t - 0.001 < f(v) < t + 0.001
         except:
             return False
 
@@ -927,6 +934,7 @@ def _(btn_pin, led_pin, mo, sensor_port, test_z1):
 def _(mo):
     mo.md(r"""Obiekty pomocnicze `motion` i `btn` pozwalają na dostęp do sensorów. Wymagają one sprecyzowania portu podłączenia w interfejsie GPIO.""")
     return
+
 
 @app.cell
 def _(
@@ -1032,6 +1040,7 @@ def _(mo):
     stp
     return (stp,)
 
+
 @app.cell
 def _(
     btn_pin,
@@ -1051,7 +1060,6 @@ def _(
     mo.stop(not stp.value, mo.md('Wciśnij uruchom'))
 
     # Uzupełnij kod poniżej.
-
     return
 
 
@@ -1128,6 +1136,7 @@ def _(GPIO):
             # Zapis obecnego stanu przycisku.
             self.pressed = not GPIO.input(pin)
     return GroveLEDButton, GroveMiniPIR
+
 
 @app.cell(hide_code=True)
 def _():
@@ -1265,7 +1274,6 @@ def _(Metric, get_cpu_temperature):
     metrics = [
         Metric('CPU',   '°C',  lambda: get_cpu_temperature()),
         # dodaj linijki metryk dla temperatury, ciśnienia, wilgotności, bliskości, jasności, głośności SPL
-
     ]
     return (metrics,)
 
@@ -1290,6 +1298,7 @@ def _(mo):
         """
     )
     return
+
 
 @app.cell(hide_code=True)
 def _(mo, ntfy_topic):
@@ -1396,6 +1405,7 @@ def _(mo):
     stp
     return (stp,)
 
+
 @app.cell
 async def _(
     loop,
@@ -1429,6 +1439,7 @@ def _():
     from collections import deque as _deque
     from itertools import cycle as _cycle
     from threading import Lock as _Lock
+    from builtins import float as _fl
     from bme280 import BME280 as _BME  # temperatura, ciśnienie, wilgotność
     from ltr559 import LTR559 as _LTR  # zbliżeniowy, światło
     from st7735 import ST7735 as _ST   # wyświetlacz
@@ -1696,7 +1707,6 @@ def _():
             else:
                 sleep_se = True
         sleep_mock = _mock.AsyncMock(side_effect=as_se)
-
         try:
             with _mock.patch.dict(f.__globals__, {
                 'metrics': mock.metr,
@@ -1743,7 +1753,7 @@ def _():
     bme280 = _BME()
     ltr559 = _LTR()
 
-    # Pierwszy rezultat jest nieprawidłowy
+    # Pierwszy rezultat jest nieprawidłowy.
     bme280.update_sensor()
     ltr559.update_sensor()
     return (
@@ -1884,6 +1894,7 @@ def _(mo, port_config, test_z3):
     mo.md(f'Zadanie Z3. {"" if test_z3(port_config) else "nie"} jest rozwiązane.')
     return
 
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
@@ -1899,6 +1910,8 @@ def _(mo):
         Funkcja `red_to_green` rozpoczyna się w fazie 1, a ma przejść przez fazę 2 i skończyć w fazie 3. Funkcja `green_to_red` rozpoczyna się w fazie 3, a ma przejść przez fazę 4 i skończyć w fazie 1.
 
         Test poprawności działania sprawdza stan świateł w momencie oczekania `asyncio.sleep` oraz na końcu funkcji. Te dwa momenty powinny zgadzać się z kolejnymi fazami systemu czterofazowego. Opóźnienie powinno wynosić standardowe 2 sekundy.
+
+        Funkcja `asyncio.sleep` jest zaimportowana i asynchroniczna (`await sleep(t)`).
         """
     )
     return
@@ -1952,7 +1965,7 @@ def _(mo):
 
         Funkcja odbierająca **musi** obsługiwać wiadomość **zakańczającą pętlę**, a funkcja wysyłająca **nie może** być nieskończona, aby ułatwić sprawdzanie zadania.
 
-        Uzupełnij funkcje wykonujące obie z tych ról wspomagając się dokumentacją `ntfy.sh`. Następnie wybierz drugą osobę, z którą przetestujesz odpowiedź. Po przetestowaniu zamieńcie role płytek, przetestujcie drugą część zadania i zgłoście zakończenie ćwiczenia.
+        Wybierz drugą osobę, z którą przetestujesz odpowiedź. Uzupełnijcie funkcje wykonujące obie z ról wspomagając się dokumentacją `ntfy.sh`. Po przetestowaniu działania jednej strony zamieńcie role płytek, przetestujcie drugą część zadania, i zgłoście zakończenie ćwiczenia.
 
         **Podpowiedź:** Obie części wymagają uruchomienia w pętli, która w przypadku płytki podrzędnej będzie stale nasłuchiwać i obsługiwać otrzymane wiadomości, a w przypadku płytki nadrzędnej w odpowiednich momentach wysyłać komunikaty i zmieniać stan własny, aby sygnalizacja była zsynchronizowana. Pamiętaj, że światło zielone ani żółte nie może się pojawić na obu światłach jednocześnie.
         """
@@ -2031,7 +2044,6 @@ def _(ntfy_task_completed):
     import RPi.GPIO as GPIO
     import fcntl as _fcntl
     import types as _types
-    import json as _json
     import marimo as mo
 
 
@@ -2044,21 +2056,16 @@ def _(ntfy_task_completed):
 
     ntfy_topic = _ntfy_topic()
 
-    def receive_task(duration=10):
+    def receive_task(duration=30):
         global ntfy_task_completed
         if ntfy_task_completed:
             return mo.md('Zadanie Z5. jest rozwiązane.')
-        resp = _requests.get(f"https://ntfy.sh/{ntfy_topic}/json", stream=True, timeout=duration)
+        resp = _requests.get(f"https://ntfy.sh/{ntfy_topic}/raw", stream=True, timeout=duration)
         for line in resp.iter_lines():
-            if line:
-                try:
-                    j = _json.loads(line)
-                    if j['message'] == 'zaliczono':
-                        ntfy_task_completed = True
-                        return mo.md('Zadanie Z5. jest rozwiązane.')
-                except:
-                    pass
-                print(j)
+            print('Wiadomość:', line.decode('utf-8'))
+            if line == b'zaliczono':
+                ntfy_task_completed = True
+                return mo.md('Zadanie Z5. jest rozwiązane.')
 
     def test_z1(f):
         if str(_inspect.signature(f)) != '()':
