@@ -3,13 +3,14 @@
 \pagestyle{empty}
 \begin{document}
 
+\setcounter{figure}{0}
 \setcounter{chapter}{1}
 {\chapnamefont \thechapter. Informacje wstępne}
 
 \section{Raspberry Pi}\label{sec:rpi}
 
-Na~poniższym rysunku płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO}, wszystkie dalsze
-rysunki będą w~tej~samej orientacji -- z~tym~złączem po~górnej stronie rysunku.
+Na~poniższym rysunku [\ref{fig:board}] płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO},
+wszystkie dalsze rysunki będą w~tej~samej orientacji -- z~tym~złączem po~górnej stronie rysunku.
 Kolorem jasnoniebieskim zaznaczone są~złączki mocujące moduły podrzędne, można wykorzystać~je wraz~z~plastikowymi
 śrubkami do~bezpieczniejszego przymocowania modułów.
 
@@ -28,8 +29,9 @@ Moduły są zaprojektowane w~taki sposób, że~w~prawidłowej orientacji nie~wys
 \section{Grove Base HAT}\label{sec:grove}
 
 \emph{Grove Base HAT} jest~wykorzystany w~dwóch zadaniach.
-\emph{Grove Base HAT} odwrócony tak, aby~widzieć jego~port \emph{GPIO} obok~portu \emph{GPIO} płytki, ma~wcięcie
-(zaznaczone kolorem czerwonym) po~prawej stronie oraz~szczelinę (kolor żółty) po~lewej dolnej stronie.
+\emph{Grove Base HAT} odwrócony tak, aby~widzieć jego~port \emph{GPIO} obok~portu \emph{GPIO} płytki
+[\ref{fig:grovehatunbuilt}], ma~wcięcie (zaznaczone kolorem czerwonym) po~prawej stronie oraz~szczelinę (kolor żółty)
+po~lewej dolnej stronie.
 Montaż w~obu~przypadkach jest~identyczny, a~różni~się jedynie przymocowaniem rozszerzeń do~modułu Grove.
 
 \begin{figure}[H]
@@ -39,7 +41,8 @@ Montaż w~obu~przypadkach jest~identyczny, a~różni~się jedynie przymocowaniem
   \label{fig:grovehatunbuilt}
 \end{figure}
 
-Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole.
+Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole
+[\ref{fig:grovehatbuilt}].
 
 \begin{figure}[H]
   \centering
@@ -49,11 +52,12 @@ Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~p
 \end{figure}
 
 \newpage
+\setcounter{figure}{0}
 \setcounter{chapter}{2}
 {\chapnamefont \thechapter. Laboratorium I}
 
 W~tym laboratorium wykorzystano moduł \emph{Sense HAT}\@.
-Użyte te~same kolory pomocnicze, co~w~przypadku \emph{Grove Base HAT}\@.
+Na rysunku [\ref{fig:sensehatunbuilt}] użyto te~same kolory pomocnicze, co~w~przypadku \emph{Grove Base HAT}\@.
 
 \begin{figure}[H]
   \centering
@@ -62,7 +66,8 @@ Użyte te~same kolory pomocnicze, co~w~przypadku \emph{Grove Base HAT}\@.
   \label{fig:sensehatunbuilt}
 \end{figure}
 
-Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole.
+Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~prawej, ale~nadal na~dole
+[\ref{fig:sensehatbuilt}].
 
 \begin{figure}[H]
   \centering
@@ -72,13 +77,15 @@ Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~p
 \end{figure}
 
 \newpage
+\setcounter{figure}{0}
 \setcounter{chapter}{3}
 {\chapnamefont \thechapter. Laboratorium II}
 
 Laboratorium wykorzystuje \emph{Grove Base HAT}, podłącz najpierw ten~moduł.
 
 Wyświetlacz LCD wykorzystuje port \textbf{\emph{I²C}}\@.
-Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z portów \emph{I²C}\@.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z portów \emph{I²C} (kolor
+jasnozielony) [\ref{fig:grovelcd}].
 
 \begin{figure}[H]
   \centering
@@ -88,7 +95,8 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
 \end{figure}
 
 Czujnik ultradźwiękowy wykorzystuje port \textbf{cyfrowy}.
-Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych
+[\ref{fig:grovelcdsonic}].
 
 \begin{figure}[H]
   \centering
@@ -98,13 +106,15 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
 \end{figure}
 
 \newpage
+\setcounter{figure}{0}
 \setcounter{chapter}{4}
 {\chapnamefont \thechapter. Laboratorium III}
 
 Laboratorium wykorzystuje \emph{Grove Base HAT} -- podłącz najpierw ten~moduł.
 
 Czujnik ruchu wykorzystuje port \textbf{cyfrowy}.
-Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych
+[\ref{fig:grovepir}].
 
 \begin{figure}[H]
   \centering
@@ -114,7 +124,8 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
 \end{figure}
 
 Przycisk LED wykorzystuje port \textbf{cyfrowy}.
-Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych.
+Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzystaj losowy z~portów cyfrowych
+[\ref{fig:grovepirbtn}].
 
 \begin{figure}[H]
   \centering
@@ -124,12 +135,13 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
 \end{figure}
 
 \newpage
+\setcounter{figure}{0}
 \setcounter{chapter}{5}
 {\chapnamefont \thechapter. Laboratorium IV}
 
 Moduł \emph{Enviro HAT} nie~ma widocznego na~poprzednio montowanych modułach wcięcia, ale~w~podobny sposób
-można~wykorzystać cięcie odgradzające czujnik temperatury od~większej części modułu wraz~z~otworami wyprowadzającymi
-\emph{GPIO}\@.
+można~wykorzystać cięcie odgradzające czujnik temperatury od~większej części modułu (kolor czerwony) wraz~z~otworami
+wyprowadzającymi \emph{GPIO} (kolor żółty) [\ref{fig:envirohatunbuilt}].
 
 \begin{figure}[H]
   \centering
@@ -138,7 +150,7 @@ można~wykorzystać cięcie odgradzające czujnik temperatury od~większej czę�
   \label{fig:envirohatunbuilt}
 \end{figure}
 
-Przymocowanie sprawi, że~to~cięcie będzie po~stronie lewej, a otwory nadal po~dolnej stronie.
+Przymocowanie sprawi, że~to~cięcie będzie po~stronie lewej, a otwory nadal po~dolnej stronie [\ref{fig:envirohatbuilt}].
 
 \begin{figure}[H]
   \centering
@@ -148,11 +160,13 @@ Przymocowanie sprawi, że~to~cięcie będzie po~stronie lewej, a otwory nadal po
 \end{figure}
 
 \newpage
+\setcounter{figure}{0}
 \setcounter{chapter}{6}
 {\chapnamefont \thechapter. Laboratorium V}
 
 Moduł \emph{Traffic pHAT} również~różni~się od~poprzednich modułów, ale~w~podobny sposób do~pomocy w~orientacji
-można~wykorzystać złącza elementu oznaczonego \emph{RN2} (kolor czerwony) i~dolny otwór montażowy (kolor żółty).
+można~wykorzystać złącza elementu oznaczonego \emph{RN2} (kolor czerwony) i~dolny otwór montażowy (kolor żółty)
+[\ref{fig:traffichatunbuilt}].
 
 \begin{figure}[H]
   \centering
@@ -161,8 +175,8 @@ można~wykorzystać złącza elementu oznaczonego \emph{RN2} (kolor czerwony) i~
   \label{fig:traffichatunbuilt}
 \end{figure}
 
-Po~przymocowaniu modułu zaznaczone elementy będą~jak~w~poprzednich modułach poziomym odbiciem lustrzanym stanu
-początkowego.
+Po~przymocowaniu modułu zaznaczone elementy będą~jak~w~poprzednich modułach odbiciem lustrzanym stanu początkowego
+[\ref{fig:traffichatbuilt}].
 
 \begin{figure}[H]
   \centering

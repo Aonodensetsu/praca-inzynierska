@@ -1938,7 +1938,7 @@ def _(mo, ntfy_topic):
     mo.md(f"""
     ### Z5. Wysyłanie wiadomości
 
-    Dana płytka ma zamocowane tylko jedno świało. W związku z tym do przetestowania systemu sygnalizacji będzie potrzebna praca w parach, jednak można najpierw skonfigurować i przetestować komunikację przy wykorzystaniu jednego światła. Do komunikacji podobnie jak w poprzednim laboratorium użyty zostanie serwis `ntfy.sh` ([dokumentacja](https://docs.ntfy.sh/publish/#__tabbed_1_7)).
+    Dana płytka ma zamocowany tylko jeden zestaw świateł sygnalizacyjnych. W związku z tym do przetestowania systemu sygnalizacji będzie potrzebna praca w parach, jednak można najpierw skonfigurować i przetestować komunikację przy wykorzystaniu jednego światła. Do komunikacji podobnie jak w poprzednim laboratorium użyty zostanie serwis `ntfy.sh` ([dokumentacja](https://docs.ntfy.sh/publish/#__tabbed_1_7)).
 
     Nazwa twojego kanału to: `{ntfy_topic}`. W kodzie dostępna jest zmienna `ntfy_topic`, która ją przechowuje.
 

@@ -205,32 +205,26 @@ async def green_to_red():
 "curl https://ntfy.sh/<identyfikator> -d 'zaliczono'"
 
 # Z6.
-import requests
-import json
+from requests import post, get
 
 async def sender():
     for i in range(3):
         await green_to_red()
-        await sleep(5)
-        requests.post(f"https://ntfy.sh/{ntfy_topic}", data=b'rg')
-        await sleep(20)
-        requests.post(f"https://ntfy.sh/{ntfy_topic}", data=b'gr')
-        await sleep(5)
+        await sleep(2)
+        post(f'https://ntfy.sh/{ntfy_topic}', data=b'rg')
+        await sleep(10)
+        post(f'https://ntfy.sh/{ntfy_topic}', data=b'gr')
+        await sleep(4)
         await red_to_green()
-        await sleep(20)
-    requests.post(f"https://ntfy.sh/{ntfy_topic}", data=b'stop')
+        await sleep(10)
+    post(f'https://ntfy.sh/{ntfy_topic}', data=b'stop')
 
 async def receiver():
-    resp = requests.get(f"https://ntfy.sh/{ntfy_topic}/json", stream=True)
-    for line in resp.iter_lines():
-        try:
-            j = json.loads(line)
-            match j['message']:
-                case 'rg':
-                    await red_to_green()
-                case 'gr':
-                    await green_to_red()
-                case 'stop':
-                    break
-        except:
-            pass
+    for line in get(f'https://ntfy.sh/{ntfy_topic}/raw', stream=True).iter_lines():
+        match line:
+            case b'rg':
+                await red_to_green()
+            case b'gr':
+                await green_to_red()
+            case b'stop':
+                break

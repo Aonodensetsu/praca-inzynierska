@@ -139,12 +139,12 @@
     color=black
 }
 
-\newcounter{ax}[chapter]
+\newcounter{ax}
 \newlistof{listofappendices}{loa}{Spis załączników}
 \DeclareDocumentCommand{\ax}{ m m o }{%
     \refstepcounter{ax}%
-    \textattachfile[#3]{#2}{#1~[F\thechapter.\theax]}%
-    \addcontentsline{loa}{ax}{\protect\numberline{F\thechapter.\theax}#1}%
+    \textattachfile[#3]{#2}{#1~[F\theax]}%
+    \addcontentsline{loa}{ax}{\protect\numberline{F\theax}#1}%
 }
 \makeatletter
 \let\l@ax\l@figure
