@@ -367,6 +367,24 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        ### Sprawozdanie
+        Prześlij do prowadzącego sprawozdanie podsumowujące przebieg zajęć.  
+        W treści sprawozdania laboratoryjnego powinny znaleźć się:
+
+        - nagłówek wydziału
+        - rozwiązania zadań
+        - zdjęcie płytki przy uruchomionym programie końcowym
+        - inne wykorzystania urządzeń użytych w laboratorium
+        - przemyślenia, wnioski, itp.
+        """
+    )
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import sense_hat as _sense_hat
     import unittest.mock as _mock
@@ -821,6 +839,24 @@ def _():
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        ### Sprawozdanie
+        Prześlij do prowadzącego sprawozdanie podsumowujące przebieg zajęć.  
+        W treści sprawozdania laboratoryjnego powinny znaleźć się:
+
+        - nagłówek wydziału
+        - rozwiązania zadań
+        - zdjęcie płytki przy uruchomionym programie końcowym
+        - inne wykorzystania urządzeń użytych w laboratorium
+        - przemyślenia, wnioski, itp.
+        """
+    )
+    return
+
+
+@app.cell(hide_code=True)
 def _(GroveDisplay, GroveUltrasonicRanger):
     from asyncio import sleep
     import marimo as mo
@@ -1139,6 +1175,24 @@ def _(GPIO):
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        ### Sprawozdanie
+        Prześlij do prowadzącego sprawozdanie podsumowujące przebieg zajęć.  
+        W treści sprawozdania laboratoryjnego powinny znaleźć się:
+
+        - nagłówek wydziału
+        - rozwiązania zadań
+        - zdjęcie płytki przy uruchomionym programie końcowym
+        - inne wykorzystania urządzeń użytych w laboratorium
+        - przemyślenia, wnioski, itp.
+        """
+    )
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     from inspect import signature as _sig
     from types import FunctionType as _FT
@@ -1428,6 +1482,24 @@ async def _(
 
     values.clear()
     await loop()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        ### Sprawozdanie
+        Prześlij do prowadzącego sprawozdanie podsumowujące przebieg zajęć.  
+        W treści sprawozdania laboratoryjnego powinny znaleźć się:
+
+        - nagłówek wydziału
+        - rozwiązania zadań
+        - zdjęcie płytki przy uruchomionym programie końcowym
+        - inne wykorzystania urządzeń użytych w laboratorium
+        - przemyślenia, wnioski, itp.
+        """
+    )
     return
 
 
@@ -2030,6 +2102,24 @@ async def _(
 
     # wyczyszczenie stanu GPIO
     GPIO.cleanup()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        ### Sprawozdanie
+        Prześlij do prowadzącego sprawozdanie podsumowujące przebieg zajęć.  
+        W treści sprawozdania laboratoryjnego powinny znaleźć się:
+
+        - nagłówek wydziału
+        - rozwiązania zadań
+        - zdjęcie płytki przy uruchomionym programie końcowym
+        - inne wykorzystania urządzeń użytych w laboratorium
+        - przemyślenia, wnioski, itp.
+        """
+    )
     return
 
 

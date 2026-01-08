@@ -220,7 +220,7 @@ async def sender():
     post(f'https://ntfy.sh/{ntfy_topic}', data=b'stop')
 
 async def receiver():
-    for line in get(f'https://ntfy.sh/{ntfy_topic}/raw', stream=True).iter_lines():
+    for line in get('https://ntfy.sh/<identyfikator płytki nadrzędnej>/raw', stream=True).iter_lines():
         match line:
             case b'rg':
                 await red_to_green()

@@ -1,6 +1,6 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO  # Taki sam import jak wcześniejsza biblioteka rpi-gpio.
 
-# Wybór trybu adresacji BCM, zgodny z powyższym rysunkiem.
+# Wybór trybu adresacji BCM, zgodny z rysunkiem w sekcji GPIO.
 GPIO.setmode(GPIO.BCM)
 
 # Pin 23 w adresacji BCM (16 w adresacji fizycznej) uruchomiony jako wyjściowy.

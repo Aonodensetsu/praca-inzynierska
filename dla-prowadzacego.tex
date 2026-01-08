@@ -7,6 +7,10 @@
 \setcounter{chapter}{1}
 {\chapnamefont \thechapter. Informacje wstępne}
 
+Dokument przygotowany~jest do~druku dwustronnego w~kolorze -- w~takim formacie każde~laboratorium zajmuje jedną kartkę,
+opisując połączenia na~przedniej stronie, a~rozwiązania zadań (\ref{fig:compasssol},\ \ref{fig:distancesol},\ 
+\ref{fig:alarmsol},\ \ref{fig:weathersol},\ \ref{fig:trafficsol}) na~tylnej.
+
 \section{Raspberry Pi}\label{sec:rpi}
 
 Na~poniższym rysunku [\ref{fig:board}] płytki \emph{Raspberry Pi} kolorem zielonym zaznaczone~jest złącze \emph{GPIO},
@@ -76,6 +80,12 @@ Przymocowanie sprawi, że~to~wcięcie będzie po~stronie lewej, a~szczelina po~p
   \label{fig:sensehatbuilt}
 \end{figure}
 
+\begin{figure}[H]
+  \lstinputlisting[language=python,linerange={58-68},label={lst:compasssol}]{media/solved.py}
+  \caption{Rozwiązania laboratorium I}
+  \label{fig:compasssol}
+\end{figure}
+
 \newpage
 \setcounter{figure}{0}
 \setcounter{chapter}{3}
@@ -103,6 +113,12 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
   \includegraphics[width=0.7\linewidth]{media/grove_lcd_sonic}\\
   \caption{Montaż rozszerzenia -- moduł ultradźwiękowy}
   \label{fig:grovelcdsonic}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=python,linerange={73-106},label={lst:distancesol}]{media/solved.py}
+  \caption{Rozwiązania laboratorium II}
+  \label{fig:distancesol}
 \end{figure}
 
 \newpage
@@ -134,6 +150,12 @@ Laboratorium zawiera zadanie odczytania podłączonego numeru portu -- wykorzyst
   \label{fig:grovepirbtn}
 \end{figure}
 
+\begin{figure}[H]
+  \lstinputlisting[language=python,linerange={111-132},label={lst:alarmsol}]{media/solved.py}
+  \caption{Rozwiązania laboratorium III}
+  \label{fig:alarmsol}
+\end{figure}
+
 \newpage
 \setcounter{figure}{0}
 \setcounter{chapter}{5}
@@ -157,6 +179,12 @@ Przymocowanie sprawi, że~to~cięcie będzie po~stronie lewej, a otwory nadal po
   \includegraphics[width=0.6\linewidth]{media/enviro_hat_built}\\
   \caption{Przymocowany moduł \emph{Enviro HAT}}
   \label{fig:envirohatbuilt}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=python,linerange={137-169},label={lst:weathersol}]{media/solved.py}
+  \caption{Rozwiązania laboratorium IV}
+  \label{fig:weathersol}
 \end{figure}
 
 \newpage
@@ -183,6 +211,12 @@ Po~przymocowaniu modułu zaznaczone elementy będą~jak~w~poprzednich modułach 
   \includegraphics[width=0.6\linewidth]{media/traffic_built}\\
   \caption{Przymocowany moduł \emph{Traffic pHAT}}
   \label{fig:traffichatbuilt}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=python,linerange={174-230},label={lst:trafficsol}]{media/solved.py}
+  \caption{Rozwiązania laboratorium V}
+  \label{fig:trafficsol}
 \end{figure}
 
 \end{document}

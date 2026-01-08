@@ -25,14 +25,15 @@ Wykorzystanie opisanych poniżej rozwiązań pozwala również m.in.~na~automaty
 \emph{Raspberry Pi}\thinspace\cite{pi} to~seria małych komputerów jednopłytkowych stworzonych przez Fundację
 Raspberry~Pi w~Wielkiej Brytanii.
 Celem Fundacji jest rozpowszechnienie systemów o~możliwościach obliczeniowych, co~wpływa na~niewielki koszt płytki,
-pozwala~na wykorzystanie standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi}, \emph{Bluetooth}).
+i~prowadzi~do wykorzystania standardowej architektury procesora i~modułów komunikacyjnych (\emph{WiFi},
+\emph{Bluetooth}).
 Takie urządzenia można zastosować w wielu różnych projektach m.in.~do połączenia urządzeń Internetu Rzeczy.
 
 Koszt najtańszego modelu wynosi ok.~\dPLN{20}, a~najtańszy pełnoprawny komputer w~serii kosztuje ok.~\dPLN{50}.
 
-Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów\thinspace\cite{pinout} \emph{GPIO}
-pozwalających na~podłączenie dowolnych układów wykorzystujących zasilanie \qty{3.3}{\V} lub \qty{5}{\V}\@.
-Stanowią dzięki~temu przystępną opcję zarówno do~nauki i~użytkowania systemów komputerowych jak~i~eksperymentów
+Urządzenia \emph{Raspberry Pi} wyposażone~są w~zestaw czterdziestu pinów \emph{GPIO} pozwalających na~podłączenie
+dowolnych układów wykorzystujących zasilanie \qty{3.3}{\V} lub \qty{5}{\V}\@.
+Stanowią dzięki~temu przystępną opcję zarówno do~nauki, użytkowania systemów komputerowych, jak~i~eksperymentów
 polegających na budowaniu własnych urządzeń.
 
 \subsection{Moduły}\label{subsec:modules}
@@ -114,9 +115,9 @@ w~standardowy sposób.
   \label{fig:pinout}
 \end{figure}
 
-Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~\num{1}~i~\num{2} i~odnosząca~się
+Drugą dostępną metodą adresacji jest~adresacja fizyczna, rozpoczynająca~się od~\num{1}~i~\num{2} odnoszących~się
 odpowiednio do~pinów \qty{3.3}{\V} i~\qty{5}{\V} po~lewej stronie powyższego rysunku, numerując kolejne kolumny
-tego~rysunku.
+pinów.
 
 Piny oznaczone mianem \emph{GCLK} udostępniają dostęp do~wbudowanego zegara sprzętowego.
 \emph{PWM}, \emph{I²C}, \emph{UART}, i~\emph{SPI} zostaną omówione w~sekcji~\ref{sec:protocol} opisującej
@@ -125,7 +126,7 @@ połączenia logiczne.
 Istnieje wiele bibliotek oferujących środowiska upraszczające interakcję z~urządzeniami wykorzystującymi interfejs
 \emph{GPIO}, w~zależności od~języka programowania.
 Praca~ta używa języka programowania \emph{Python}, więc przykłady wykorzystują wiązania \emph{liblgpio} dla~tego~języka
-(opisane bardziej szczegółowo w~sekcji~\ref{subsec:lgpio}).
+(opisane w~sekcji~\ref{subsec:lgpio}).
 
 \subsection{Grove}\label{subsec:grove}
 
@@ -191,7 +192,7 @@ wraz z~pinami \emph{GPIO} o~tej~samej numeracji wiąże~się z~konfliktem.
 \subsection{PWM}\label{subsec:pwm}
 
 \emph{Pulse Width Modulation}\thinspace\cite{pwm} to~technika polegająca na~kodowaniu wartości sygnału danych na~sygnale
-nośnym prostokątnym o~stałej częstotliwości i~amplitudzie jako~szerokości poszczególnych impulsów elektrycznych,
+nośnym prostokątnym o~stałej częstotliwości i~amplitudzie jako~czasu trwania poszczególnych impulsów elektrycznych,
 przedstawiona na~rysunku~\ref{fig:pwm}.
 Wartość przesyłaną ustanawia się~regulując proporcję czasu, w~której sygnał przyjmuje wartość wysoką.
 Zbocze rosnące sygnału jest~wysyłane w~stałych odstępach czasowych, co~pozwala na~wykorzystanie sygnału
@@ -301,7 +302,7 @@ Wykorzystywane linie pełnią funkcje opisane w~tabeli~\ref{tab:spilines}.
   \end{tabularx}
 \end{table}
 
-Przesłane komendy są~wykonywane w~momencie wykrycia zbocza rosnącego sygnału \emph{Chip Select}
+Przesłane komendy są~wykonywane w~momencie wykrycia zbocza rosnącego sygnału \emph{Chip Select}.
 Standardowe~są dwa~sposoby połączeń wykorzystujące linie w~odmienny sposób.
 
 W~pierwszej z~nich dla~$N$ urządzeń podrzędnych wymagane~jest~$N$ linii \emph{Chip Select}.
@@ -327,7 +328,7 @@ przesyłanie rozkazów do~urządzeń podrzędnych.
 
 Druga z~wykorzystywanych konfiguracji nie~wymaga wykorzystania więcej niż~jednej linii \emph{Chip Select},
 w~zamian za~nieco bardziej skomplikowany schemat komunikacji wywołany niejednolitą ilością cykli zegara obsługującą
-dane urządzenie podrzędne.
+dane urządzenie podrzędne, w~tej~pracy otrzymuje miano metody ``cyklicznej''.
 W~tym schemacie wejścia kolejnych urządzeń podrzędnych są~podłączone do~wyjść poprzedzających urządzeń.
 Urządzenie nadzorcze wysyła serię komend dla~wszystkich z~urządzeń podrzędnych, wykorzystując cechę
 składania~się przez~nie w~bufor kołowy, a~następnie aktywuje je~wszystkie jednocześnie zmieniając stan współdzielonej
@@ -410,11 +411,11 @@ najlepszej stabilności i~wsparcia w~przypadku wystąpienia problemów.
 \subsection{Bash}\label{subsec:bash}
 
 \emph{Bash}\thinspace\cite{bash} to~jedna z~najpopularniejszych powłok (interpreterów poleceń) wykorzystywanych
-w~systemach \emph{Unix}, \emph{Linux} oraz~\emph{MacOS}.
+w~systemach \emph{Unix}, \emph{Linux}, \emph{MacOS}, oraz \emph{Solaris}.
 Poza obsługą poleceń użytkownika zawiera zaawansowane możliwości skryptowe, dzięki~czemu może~być wykorzystywana~do
 szeroko rozumianej automatyzacji administracji systemem.
 
-W~pracy wykorzystany właśnie w~tym celu, co~ułatwia osobie prowadzącej zajęcia wstępną konfigurację, a~także czyszczenie
+W~pracy wykorzystana właśnie w~tym celu, co~ułatwia osobie prowadzącej zajęcia wstępną konfigurację, a~także czyszczenie
 środowiska między zajęciami -- załączony skrypt instalacyjny \ax{pi-labs.sh}{media/pi-labs.sh}[mimetype=text/plain]
 wykorzystuje możliwości tego narzędzia do~pełnej konfiguracji płytki do~zajęć przy~użyciu jednej komendy.
 
@@ -427,11 +428,12 @@ Dzięki~temu również ilość materiałów na~temat wykorzystania języka jest~
 
 Ekspresywność języka pozwala na~wyrażenie szerokiego zakresu wyrażeń w~prosty sposób, a~także wykorzystanie wszystkich
 popularnych paradygmatów programowania, co~jest dużą~zaletą w~trakcie nauki innych narzędzi -- dzięki tej~prostocie
-nie~trzeba `walczyć' ze~składnią języka, a~można skupić~się na~przyswojeniu nowych informacji na~temat nowego narzędzia.
+nie~trzeba ``walczyć'' ze~składnią języka, a~można skupić~się na~przyswojeniu nowych informacji na~temat nowego
+narzędzia.
 
 Największą wadą języka jest~prędkość interpretera, która~nie~pozwala na~wykorzystania w~zastosowaniach
 o~krytycznej wydajności.
-Część osób jest~również przeciwna użyciu przez~język białych znaków do~definicji bloków.
+Część osób jest~również przeciwna użyciu przez~język białych znaków do~definicji bloków semantycznych.
 
 \subsection{rpi-lgpio}\label{subsec:lgpio}
 
@@ -451,34 +453,32 @@ Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
 \subsection{marimo}\label{subsec:marimo}
 
 \emph{Marimo}\thinspace\cite{marimo} jest~środowiskiem notatnikowym \emph{Python} mającym na~celu usunięcie niektórych
-znaczących wad wcześniej istniejących rozwiązań\thinspace\cite{marimofaq}.
+znaczących wad wcześniej istniejących rozwiązań\thinspace\cite{marimofaq} (tabela~\ref{tab:marimotraits}).
 Poza oferowaniem równie zaawansowanej funkcjonalności notatnika architektura projektu gwarantuje cechy wpływające
 na~wygodę i~stabilność użytkowania.
 
-Cechy, na~których poprawieniu skupia~się \emph{marimo} zostały przedstawione w~tabeli~\ref{tab:marimotraits}.
-
 \begin{table}[H]
-  \caption{Cechy \emph{marimo} w~porównaniu do~innych rozwiązań}
+  \caption{Cechy \emph{marimo} wynikające z~braków w~innych rozwiązaniach}
   \label{tab:marimotraits}
   \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \textbf{Cecha}        & \textbf{Opis} \\
+    \textbf{Cecha}       & \textbf{Opis} \\
     \midrule
-    Powtarzalność         & Kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi projektu,
-                            co~sprawia,~że \qty{36}{\percent} nie~jest powtarzalnych\thinspace\cite{jupyfail}.
-                            Wykorzystanie \emph{marimo} rozwiązuje ten problem. \\
+    Powtarzalność        & Kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi projektu,
+                           co~sprawia,~że \qty{36}{\percent} notatników nie~jest powtarzalnych\thinspace\cite{jupyfail}.
+                           Wykorzystanie \emph{marimo} rozwiązuje ten problem. \\
     \midrule
-    Łatwość utrzymania    & Notatniki \emph{marimo} są~przechowywane jako~czyste programy \emph{Python}, co~pozwala
-                            m.in.~na ich~bezproblemowe wersjonowanie. \\
+    Łatwość utrzymania   & Notatniki \emph{marimo} są~przechowywane jako~standardowe programy \emph{Python}, co~pozwala
+                           m.in.~na ich~bezproblemowe wersjonowanie. \\
     \midrule
-    Interaktywność        & \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
-                            automatycznie synchronizowanych w~kodzie przy~zmianie wartości. \\
+    Interaktywność       & \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
+                           automatycznie synchronizowanych w~kodzie przy~zmianie wartości. \\
     \midrule
-    Wykorzystanie wtórne  & Notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend jak~zwyczajne skrypty
-                            w~języku \emph{Python}, można również zaimportować zdefiniowane w~nich symbole do~innych
-                            plików. \\
+    Wykorzystanie wtórne & Notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend jak~zwyczajne skrypty
+                           w~języku \emph{Python}, można również zaimportować zdefiniowane w~nich symbole do~innych
+                           plików. \\
     \midrule
-    Udostępnianie         & Każdy notatnik \emph{marimo} może~również być~uruchomiony jako~interaktywna aplikacja
-                            Internetowa wyświetlająca interfejs użytkownika bez~możliwości edycji kodu.
+    Udostępnianie        & Każdy notatnik \emph{marimo} może~również być~uruchomiony jako~interaktywna aplikacja
+                           Internetowa wyświetlająca interfejs użytkownika bez~możliwości edycji kodu.
   \end{tabularx}
 \end{table}
 
@@ -502,23 +502,23 @@ jako~załącznik w~tym~pliku PDF, jako~załącznik w~Archiwum Prac Dyplomowych, 
 Internetowej\thinspace\cite{script}.
 Zawiera~on wszystkie informacje niezbędne do~przygotowania i~uruchomienia środowiska laboratoryjnego na~płytce
 \emph{Raspberry Pi} ze~świeżo zainstalowanym systemem opartym~na \emph{Debianie 13 Trixie}.
-Dzięki użyciu stałych wersji programów ilość zmian niezbędnych do~przystosowania skryptu do~wychodzących w~przyszłości
+Dzięki użyciu stałych wersji programów ilość zmian niezbędnych do~przystosowania skryptu do~istniejących w~przyszłości
 wersji systemu powinna~być minimalna.
 Skrypt~ten może~być~również użyty po~zakończeniu laboratoriów do~wyczyszczenia środowiska od~zmian wprowadzonych
 przez~studenta.
 
 \subsection{Pliki pomocnicze}\label{subsec:helpers}
 
-Dla~zapewnienia wstępnej wiedzy na~temat współpracy ze~środowiskiem marimo, poza~laboratoriami część praktyczna pracy
-zawiera również plik wprowadzeniowy, którego fragment znajduje~się na~powyższym rysunku~\ref{fig:darkmarimo}.
-Sumaryzuje~on rozwiązania graficzne i~interakcje możliwe do~przeprowadzenia w~środowisku.
+Dla~zapewnienia wstępnej wiedzy na~temat współpracy ze~środowiskiem \emph{marimo}, poza~laboratoriami część praktyczna
+pracy zawiera również plik wprowadzeniowy, którego fragment znajduje~się na~powyższym rysunku~\ref{fig:darkmarimo}.
+Opisuje~on rozwiązania graficzne i~interakcje możliwe do~przeprowadzenia w~środowisku.
 
-Do~ pracy dołączony~jest również instruktażowy plik łączenia modułów wraz z~odpowiedziami na~zadania laboratoryjne
+Do~pracy dołączony~jest również instruktażowy plik łączenia modułów wraz z~odpowiedziami na~zadania laboratoryjne
 \ax{dla-prowadzacego.pdf}{out/dla-prowadzacego.pdf}[mimetype=application/pdf], pomagający osobie prowadzącej zajęcia
-połączenie elementów sprzętowych laboratoriów.
+połączenie elementów sprzętowych laboratoriów oraz pomoc w~przypadku problemów z~rozwiązaniem zadania.
 
-W~celu pokazania pełnej treści laboratoriów dołączony~jest również plik zawierający pełne zdjęcia instrukcji studenckich 
-\ax{instrukcje.pdf}{instrukcje.pdf}[mimetype=application/pdf].
+W~celu pokazania pełnej treści laboratoriów dołączony~jest również plik zawierający zdjęcia pełnej zawartości instrukcji
+studenckich \ax{instrukcje.pdf}{instrukcje.pdf}[mimetype=application/pdf].
 
 \subsection{Testy rozwiązań}\label{subsec:tests}
 
@@ -531,27 +531,29 @@ działa poprawnie).
 Testy wykorzystują standardową bibliotekę języka, \emph{unittest}, w~celu największej przenoszalności.
 Kod jest~napisany w~sposób niezawierający bezpośrednio prawidłowego rozwiązania, aby~utrudnić możliwe oszukiwanie
 poprzez~sprawdzenie rozwiązania w~teście.
+Całkowite zlikwidowanie takich sytuacji nie~jest możliwe, jednak również udowadnia wysoki poziom wiedzy studenta
+o~języku \emph{Python}.
 
 \subsection{Bezpieczeństwo}\label{subsec:security}
 
 Przed pierwszym uruchomieniem skryptu z~nieznanego źródła należy zapoznać~się z~jego~treścią przy~użyciu edytora
 tekstowego.
 Nie~należy uruchamiać kodu, którego~treść jest~nam niezrozumiała.
-Dotyczy~to załączonego przeze~mnie skryptu instalacyjnego.
+Dotyczy~to załączonego do~pracy skryptu instalacyjnego.
 
 Skrypt zawiera środki testujące prawidłowość wykonania, jednak w~każdym kodzie możliwe~są błędy i~niezaplanowane
 wykorzystania.
 Wykorzystane środki zapobiegawcze:
 \begin{itemize}
   \item Wykluczenie sprzętu mogącego uszkodzić płytkę \emph{Raspberry Pi} wyższym napięciem;
-  \item Zawarte w~pracy, a~także w~nagłówku skryptu ostrzeżenie o~nieuruchamianiu nieznanego kodu;
-  \item Test otrzymania uprawnień administratorskich;
-  \item Użycie folderu tymczasowego przez~całą~długość działania kodu;
-  \item Sprawdzenie istnienia zmian wykonywanych przez~skrypt przed~ich~wykonaniem;
-  \item Wykorzystanie stałej wersji języka \emph{Python} i bibliotek;
-  \item Wykorzystanie środowiska wirtualnego;
-  \item Załączona~instrukcja połączeń dla~prowadzącego;
-  \item Załączony~plik wprowadzający do~wykorzystania środowisk notatnikowych;
-  \item Automatyczne testy prawidłowości wykonania zadań przez~studenta;
-  \item Powyższe~testy nie~uruchamiają kodu studenta.
+  \item zawarte w~pracy, a~także w~nagłówku skryptu ostrzeżenie o~nieuruchamianiu nieznanego kodu;
+  \item test otrzymania uprawnień administratorskich;
+  \item użycie folderu tymczasowego przez~całą~długość działania kodu;
+  \item sprawdzenie istnienia zmian wykonywanych przez~skrypt przed~ich~wykonaniem;
+  \item wykorzystanie stałej wersji języka \emph{Python} i bibliotek;
+  \item wykorzystanie środowiska wirtualnego;
+  \item załączona~instrukcja połączeń dla~prowadzącego zajęcia;
+  \item załączony~plik wprowadzający do~wykorzystania środowisk notatnikowych;
+  \item automatyczne testy prawidłowości wykonania zadań przez~studenta;
+  \item wyżej wymienione testy nie~uruchamiają kodu studenta.
 \end{itemize}
