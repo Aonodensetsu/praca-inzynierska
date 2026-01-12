@@ -1,3 +1,30 @@
 \chapter{Podsumowanie}\label{ch:summary}
 
-TODO: Podsumowanie i dalszy rozwój.
+Niniejsza praca inżynierska implementuje zestawy laboratoryjne wprowadzające studentów do~wykorzystania peryferiów
+\emph{GPIO} z~komputerem jednopłytkowym \emph{Raspberry Pi}.
+W~tym~celu dobrane moduły sprzętowe, a~także rozwiązania architektury oprogramowania są~dopasowane do~warunków uczelni,
+pozwalając zarówno na~szybkie i~nieskomplikowane przygotowanie urządzeń do~zajęć -- co~ogranicza nakład powtarzalnych
+czynności dla~osoby prowadzącej zajęcia -- jak~i~dokładnie udokumentowane i~spójne środowisko udostępnione studentom.
+Laboratoria wykorzystują różne moduły fizyczne i~w~różny sposób wchodzą z~nimi w~interakcje z~poziomu kodu, co~pozwala
+studentom na~nabycie unikalnych umiejętności w~każdym z~zestawów.
+
+Poprawne rozwiązania zadań zostały przetestowane i~umieszczone w~załączniku dla~prowadzącego, co~w~razie wątpliwości
+pozwoli na~uzupełnienie wszystkich przygotowanych zadań.
+Skrypt instalacyjny zawiera~bezpośrednio kod notatnika, dzięki~czemu jakiekolwiek zmiany lub~uzupełnienia treści
+laboratoriów mogą~być zintegrowane do~dalszych zajęć kopiując nową treść pomiędzy znaczniki graniczące zawartość pliku
+-- rysunek~\ref{fig:labsh}.
+W~ten~sam~sposób można rozszerzyć zakres pracy o~nowe laboratoria, zwiększając zakres dostępnego materiału.
+
+\begin{figure}[H]
+  \lstinputlisting[language=bash,firstline=2,label={lst:labsh}]{media/lab.sh}
+  \caption{Populacja treści pliku}
+  \label{fig:labsh}
+\end{figure}
+
+W~celu zapewnienia względów bezpieczeństwa środowisko laboratoryjne jest~dostępne jedynie z~lokalnej maszyny, jednak
+oprogramowanie \emph{marimo} wspiera uruchamianie za~wstecznym proxy, co~może~pozwolić na~rozszerzenie projektu
+o~prowadzenie zajęć zdalnych.
+
+Obecnie sprawozdania pełnią funkcję archiwizacji pracy studentów, ale~ciekawą opcją do~rozważenia mogłoby~być
+wykorzystanie uzupełnionych notatników laboratoryjnych w~tym~celu, gdyż wielkość tych plików jest~nieduża, a~zawierają
+już informacje powielane przez~studentów do~edytora dokumentów \emph{Word} za~pomocą zrzutów ekranu.
