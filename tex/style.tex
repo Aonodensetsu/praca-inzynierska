@@ -144,7 +144,8 @@
 \newlistof{listofappendices}{loa}{Spis załączników}
 \DeclareDocumentCommand{\ax}{ m m o }{%
     \refstepcounter{ax}%
-    \textattachfile[#3]{#2}{#1~[F\theax]}%
+    %\textattachfile[#3]{#2}{#1~[F\theax]}% Wyłączone z powodu limitu wielkości pliku.
+    #1~[F\theax]%
     \addcontentsline{loa}{ax}{\protect\numberline{F\theax}#1}%
 }
 \makeatletter
