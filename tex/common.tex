@@ -435,7 +435,7 @@ Największą wadą języka jest~prędkość interpretera, która~nie~pozwala na~
 o~krytycznej wydajności.
 Część osób jest~również przeciwna użyciu przez~język białych znaków do~definicji bloków semantycznych.
 
-\subsection{rpi-lgpio}\label{subsec:lgpio}
+\subsection{Rpi-lgpio}\label{subsec:lgpio}
 
 Wiązania \emph{rpi-lgpio}\thinspace\cite{lgpio} języka~C do~użytkowania interfejsu \emph{GPIO} zastępują bibliotekę
 \emph{rpi-gpio}.
@@ -450,7 +450,7 @@ Podstawowe wykorzystanie prezentuje rysunek~\ref{fig:gpio}.
   \label{fig:gpio}
 \end{figure}
 
-\subsection{marimo}\label{subsec:marimo}
+\subsection{Marimo}\label{subsec:marimo}
 
 \emph{Marimo}\thinspace\cite{marimo} jest~środowiskiem notatnikowym \emph{Python} mającym na~celu usunięcie niektórych
 znaczących wad wcześniej istniejących rozwiązań\thinspace\cite{marimofaq} (tabela~\ref{tab:marimotraits}).
@@ -458,19 +458,19 @@ Poza oferowaniem równie zaawansowanej funkcjonalności notatnika architektura p
 na~wygodę i~stabilność użytkowania.
 
 \begin{table}[H]
-  \caption{Cechy \emph{marimo} wynikające z~braków w~innych rozwiązaniach}
+  \caption{Cechy notatnika \emph{marimo} wynikające z~braków w~innych rozwiązaniach}
   \label{tab:marimotraits}
   \begin{tabularx}{\linewidth}{@{}lX@{}}
     \textbf{Cecha}       & \textbf{Opis} \\
     \midrule
     Powtarzalność        & Kod widoczny w~notatniku \emph{Jupyter} niekoniecznie odpowiada obecnemu stanowi projektu,
                            co~sprawia,~że \qty{36}{\percent} notatników nie~jest powtarzalnych\thinspace\cite{jupyfail}.
-                           Wykorzystanie \emph{marimo} rozwiązuje ten problem. \\
+                           Wykorzystanie notatnika \emph{marimo} rozwiązuje ten problem. \\
     \midrule
     Łatwość utrzymania   & Notatniki \emph{marimo} są~przechowywane jako~standardowe programy \emph{Python}, co~pozwala
                            m.in.~na ich~bezproblemowe wersjonowanie. \\
     \midrule
-    Interaktywność       & \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
+    Interaktywność       & Środowisko \emph{marimo} zawiera funkcjonalność tworzenia elementów interfejsu użytkownika,
                            automatycznie synchronizowanych w~kodzie przy~zmianie wartości. \\
     \midrule
     Wykorzystanie wtórne & Notatniki \emph{marimo} mogą~być wykorzystane z~poziomu linii komend jak~zwyczajne skrypty
@@ -489,7 +489,7 @@ kolorystycznego rysunki będą~wykorzystywać tryb jasny.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{media/marimo_dark}
-  \caption{Tryb ciemny interfejsu graficznego \emph{marimo}}
+  \caption{Tryb ciemny interfejsu graficznego notatnika \emph{marimo}}
   \label{fig:darkmarimo}
 \end{figure}
 
@@ -525,7 +525,7 @@ archiwalnym\thinspace\cite{repo}.
 \subsection{Testy rozwiązań}\label{subsec:tests}
 
 Zadania pośrednie przygotowane dla~studentów -- wymagające napisania kodu -- są~automatycznie sprawdzane
-przy~wykorzystaniu możliwości środowiska \emph{marimo}.
+przy~wykorzystaniu możliwości środowiska notatnika \emph{marimo}.
 Pozwala~to zaoszczędzić czas prowadzącego na~pomoc indywidualną; sprawdzenie końcowego działania programu gwarantuje
 poprawne rozwiązanie wcześniejszych zadań (lub~indywidualną wiedzę studenta, jeśli~rozwiązanie jest~inne, ale~również
 działa poprawnie).
