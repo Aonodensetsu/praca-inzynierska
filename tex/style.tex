@@ -145,7 +145,10 @@
 \DeclareDocumentCommand{\ax}{ m m o }{%
     \refstepcounter{ax}%
     \textattachfile[#3]{#2}{#1~[F\theax]}%
-    \addcontentsline{loa}{ax}{\protect\numberline{F\theax}#1}%
+    \addcontentsline{loa}{ax}{%
+      \protect\numberline{F\theax}%
+      \textattachfile[#3]{#2}{#1}%
+    }%
 }
 \makeatletter
 \let\l@ax\l@figure
