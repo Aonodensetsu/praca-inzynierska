@@ -1,16 +1,3 @@
-# Pliki edytora IntelliJ
-.idea/
 # Pliki tymczasowe LaTeX
 auxd/
 out/
-# Pliki pomocnicze do pracy
-formatka.tex
-formatka.pdf
-instrukcje.docx
-instrukcje.bat
-DYPLOMY - Harmonogram realizacji pracy dyplomowej.pdf
-Wytyczne_do_pisania_prac_dyplomowych_ELE_EN_IIE_2016.pdf
-PBS-WTIiE-PPT-szablon-v4.pptx
-prezentacja-prygotowanie.pdf
-prezentacja-dyplomowa.pptx
-lista_pytań.docx
